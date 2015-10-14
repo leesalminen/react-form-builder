@@ -32,6 +32,15 @@ var ElementStore = Reflux.createStore({
   },
 
   _create: function(element) {
+    if(element.isUnique) {
+      var exists = _.find(_data, {element: element.element});
+
+      if(exists) {
+        console.warn('Unique Field Constraint Violation: ' + element.element);
+        return;
+      }
+    }
+
     _data.push(element);
     this.trigger(_data);
     this.save();

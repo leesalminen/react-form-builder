@@ -206,6 +206,9 @@ export default class Toolbar extends React.Component {
     if (item.href)
       elementOptions['href'] = item.href;
 
+    if(item.isUnique)
+      elementOptions['isUnique'] = true;
+
     if (item.key === "Download") {
       elementOptions['_href'] = item._href;
       elementOptions['file_path'] = item.file_path;
