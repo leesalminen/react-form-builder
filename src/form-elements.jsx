@@ -83,6 +83,37 @@ let TextInput = React.createClass({
   }
 })
 
+let FirstName = React.createClass({
+  mixins: [SortableItemMixin],
+  render() {
+    let props = {};
+    props.type = "first_name";
+    props.className = "form-control";
+    props.name = this.props.data.field_name;
+
+    if (this.props.mutable) {
+      props.defaultValue = this.props.defaultValue;
+      props.ref = "child_ref_" + this.props.data.field_name;
+    }
+    return this.renderWithSortable(
+      <div className="rfb-item">
+        { !this.props.mutable &&
+          <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
+        }
+        <div className="form-group">
+          <label>
+            {this.props.data.label}
+            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
+              <span className="label-required label label-danger">Required</span>
+            }
+          </label>
+          <input {...props} />
+        </div>
+      </div>
+    );
+  }
+})
+
 let TextArea = React.createClass({
   mixins: [SortableItemMixin],
   render() {
@@ -559,6 +590,7 @@ let Range = React.createClass({
 FormElements.Header = Header;
 FormElements.Paragraph = Paragraph;
 FormElements.LineBreak = LineBreak;
+FormElements.FirstName = FirstName;
 FormElements.TextInput = TextInput;
 FormElements.TextArea = TextArea;
 FormElements.Dropdown = Dropdown;

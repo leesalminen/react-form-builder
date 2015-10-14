@@ -5,7 +5,7 @@
 import React from 'react';
 import {EventEmitter} from 'fbemitter';
 import FormValidator from './form-validator';
-import {Header,Paragraph,LineBreak,TextInput,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,Rating,Tags,Signature,HyperLink,Download,Camera,Range} from './form-elements';
+import {Header,Paragraph,LineBreak,TextInput,FirstName,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,Rating,Tags,Signature,HyperLink,Download,Camera,Range} from './form-elements';
 
 export default class ReactForm extends React.Component {
 
@@ -136,6 +136,8 @@ export default class ReactForm extends React.Component {
           return <LineBreak mutable={true} key={'form_'+item.id} data={item} />
         case "TextInput":
           return <TextInput ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+        case "FirstName":
+          return <FirstName ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
         case "TextArea":
           return <TextArea ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
         case "Dropdown":

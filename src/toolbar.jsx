@@ -118,6 +118,15 @@ export default class Toolbar extends React.Component {
         field_name: 'text_input_'
       },
       {
+        key: 'FirstName',
+        canHaveAnswer: true,
+        name: 'First Name',
+        label: 'First Name',
+        icon: 'fa fa-male',
+        field_name: 'first_name_',
+        isUnique: true
+      },
+      {
         key: 'TextArea',
         canHaveAnswer: true,
         name: 'Multi-line Input',
