@@ -6,6 +6,7 @@ import React from 'react';
 import ToolbarItem from './toolbar-item';
 import ID from './UUID';
 import ElementActions from './actions/ElementActions';
+import _ from 'lodash';
 
 export default class Toolbar extends React.Component {
 
