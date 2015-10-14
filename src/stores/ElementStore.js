@@ -36,6 +36,7 @@ var ElementStore = Reflux.createStore({
       var exists = _.find(_data, {element: element.element});
 
       if(exists) {
+        alert('This field has a unique constraint, and is already in use on this form.');
         console.warn('Unique Field Constraint Violation: ' + element.element);
         return;
       }
