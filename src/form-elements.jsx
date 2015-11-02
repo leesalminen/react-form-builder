@@ -545,6 +545,41 @@ let Range = React.createClass({
   }
 })
 
+let TrueFalse = React.createClass({
+  mixins: [SortableItemMixin],
+  render() {
+    let self    = this;
+    return this.renderWithSortable(
+      <div className="rfb-item">
+        { !this.props.mutable &&
+          <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
+        }
+        <div className="form-group">
+          <FormElementLabels
+            data={this.props.data} />
+          {this.props.data.options.map(function (option) {
+            let this_key = 'preview_' + option.key;
+            let props = {};
+            props.name = self.props.data.field_name;
+
+            props.type = "radio"
+            props.value = option.value;
+            if (self.props.mutable) {
+              props.defaultChecked = (self.props.defaultValue !== undefined && self.props.defaultValue.indexOf(option.value) > -1) ? true : false;
+              props.ref = "child_ref_" + option.key;
+            }
+            return (
+              <label className="radio-label" key={this_key}>
+                <input {...props} /> {option.text}
+              </label>
+            )
+          })}
+        </div>
+      </div>
+    );
+  }
+})
+
 let Email = React.createClass({
   mixins: [SortableItemMixin],
   getInitialState() {
@@ -710,6 +745,7 @@ FormElements.HyperLink = HyperLink;
 FormElements.Download = Download;
 FormElements.Camera = Camera;
 FormElements.Range = Range;
+FormElements.TrueFalse = TrueFalse;
 FormElements.Email = Email;
 FormElements.Telephone = Telephone;
 

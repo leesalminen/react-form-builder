@@ -46,6 +46,11 @@ export default class Toolbar extends React.Component {
           {value: 'place_holder_option_2', text: 'Place holder option 2', key: 'radiobuttons_option_' + ID.uuid()},
           {value: 'place_holder_option_3', text: 'Place holder option 3', key: 'radiobuttons_option_' + ID.uuid()}
         ];
+      case "TrueFalse":
+        return [
+          {value: '1', text: 'Yes/On', key: 'truefalse_option_' + ID.uuid()},
+          {value: '0', text: 'No/Off', key: 'truefalse_option_' + ID.uuid()}
+        ];
       default:
         return [];
     }
@@ -107,6 +112,15 @@ export default class Toolbar extends React.Component {
         icon: 'fa fa-dot-circle-o',
         label: 'Placeholder Label',
         field_name: 'radio_buttons_',
+        options: []
+      },
+      {
+        key: 'TrueFalse',
+        canHaveAnswer: true,
+        name: 'True / False',
+        icon: 'fa fa-dot-circle-o',
+        label: 'True or False',
+        field_name: 'truefalse_',
         options: []
       },
       {

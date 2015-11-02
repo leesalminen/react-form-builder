@@ -5,7 +5,7 @@
 import React from 'react';
 import {EventEmitter} from 'fbemitter';
 import FormValidator from './form-validator';
-import {Header,Paragraph,LineBreak,TextInput,FirstName,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,Rating,Tags,Signature,HyperLink,Download,Camera,Range,Email,Telephone} from './form-elements';
+import {Header,Paragraph,LineBreak,TextInput,FirstName,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,TrueFalse,Rating,Tags,Signature,HyperLink,Download,Camera,Range,Email,Telephone} from './form-elements';
 
 export default class ReactForm extends React.Component {
 
@@ -162,6 +162,8 @@ export default class ReactForm extends React.Component {
           return <Camera mutable={true} key={'form_'+item.id} data={item} />
         case "Range":
           return <Range ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+        case "TrueFalse":
+          return <TrueFalse ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
         case "Email":
           return <Email ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
         case "Telephone":
