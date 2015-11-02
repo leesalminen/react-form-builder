@@ -127,6 +127,22 @@ export default class Toolbar extends React.Component {
         isUnique: true
       },
       {
+        key: 'Email',
+        canHaveAnswer: true,
+        name: 'Email',
+        label: 'Email',
+        icon: 'fa fa-envelope',
+        field_name: 'email_'
+      },
+      {
+        key: 'Telephone',
+        canHaveAnswer: true,
+        name: 'Telephone',
+        label: 'Telephone',
+        icon: 'fa fa-phone',
+        field_name: 'telephone_'
+      },
+      {
         key: 'TextArea',
         canHaveAnswer: true,
         name: 'Multi-line Input',
@@ -193,15 +209,7 @@ export default class Toolbar extends React.Component {
         icon: 'fa fa-camera',
         label: 'Placeholder Label',
         field_name: 'camera_'
-      },
-      {
-        key: 'Email',
-        canHaveAnswer: true,
-        name: 'Email',
-        label: 'Placeholder Label',
-        icon: 'fa fa-font',
-        field_name: 'email_'
-      },
+      }
     ]
   }
 
