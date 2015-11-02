@@ -193,7 +193,15 @@ export default class Toolbar extends React.Component {
         icon: 'fa fa-camera',
         label: 'Placeholder Label',
         field_name: 'camera_'
-      }
+      },
+      {
+        key: 'Email',
+        canHaveAnswer: true,
+        name: 'Email',
+        label: 'Placeholder Label',
+        icon: 'fa fa-font',
+        field_name: 'email_'
+      },
     ]
   }
 

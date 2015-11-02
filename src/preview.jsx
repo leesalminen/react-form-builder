@@ -6,7 +6,7 @@ import React from 'react';
 import Sortable from 'react-sortable-items';
 import ElementStore from './stores/ElementStore';
 import ElementActions from './actions/ElementActions';
-import {Header,Paragraph,LineBreak,TextInput,FirstName,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,Rating,Tags,Signature,HyperLink,Download,Camera,Range} from './form-elements';
+import {Header,Paragraph,LineBreak,TextInput,FirstName,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,Rating,Tags,Signature,HyperLink,Download,Camera,Range,Email,Telephone} from './form-elements';
 import FormElementsEdit from './form-elements-edit';
 
 export default class Preview extends React.Component {
@@ -108,6 +108,13 @@ export default class Preview extends React.Component {
           return <Camera mutable={false} parent={this.props.parent} editModeOn={this.props.editModeOn} isDraggable={true} key={item.id} sortData={item.id} data={item} _onDestroy={this._onDestroy} />
         case "Range":
           return <Range mutable={false} parent={this.props.parent} editModeOn={this.props.editModeOn} isDraggable={true} key={item.id} sortData={item.id} data={item} _onDestroy={this._onDestroy} />
+        case "Email":
+          return <Email mutable={false} parent={this.props.parent} editModeOn={this.props.editModeOn} isDraggable={true} key={item.id} sortData={item.id} data={item} _onDestroy={this._onDestroy} />
+        case "Telephone":
+          return <Telephone mutable={false} parent={this.props.parent} editModeOn={this.props.editModeOn} isDraggable={true} key={item.id} sortData={item.id} data={item} _onDestroy={this._onDestroy} />
+        default:
+          console.error('Form element type ' + item.element + ' does not exist')
+          return null
       }
     })
     return (
