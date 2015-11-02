@@ -6,7 +6,8 @@ import FormBuilder from "./src/index";
 require('./css/application.css.scss');
 
 React.render(
-  <FormBuilder.ReactFormBuilder />,
+  <FormBuilder.ReactFormBuilder
+    url="ownerForm.json" />,
   document.getElementById('form-builder')
 )
 

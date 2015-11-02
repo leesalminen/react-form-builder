@@ -5,7 +5,7 @@
   "main": "lib/app.js",
   "scripts": {
     "test": "mocha --compilers js:babel/register --recursive",
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack-dev-server -d --hot --inline",
     "dist": "webpack -p --config webpack.production.config.js"
   },
   "repository": {

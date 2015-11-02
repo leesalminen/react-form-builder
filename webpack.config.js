@@ -1,8 +1,11 @@
 module.exports = {
-  entry: ["webpack/hot/dev-server", "./app.js"],
+  entry: {
+    app:   ["webpack/hot/dev-server", "./app.js"],
+    gingr: ["webpack/hot/dev-server", "./gingr.js"]
+  },
 
   output: {
-    filename: "app.js",
+    filename: "[name].js",
     path: __dirname + "/build",
   },
 
