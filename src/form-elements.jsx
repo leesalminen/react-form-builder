@@ -23,6 +23,21 @@ let Header = React.createClass({
   }
 })
 
+let FormElementLabels = React.createClass({
+  render() {
+    return (
+      <label>
+        {this.props.data.label}
+        { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
+          <span className="label-required label label-danger">Required</span>
+        }
+        { (this.props.data.hasOwnProperty('public') && this.props.data.public === true) &&
+          <span className="label-required label label-success">Public</span>
+        }
+      </label>
+    )
+  }
+});
 
 let Paragraph = React.createClass({
   mixins: [SortableItemMixin],
@@ -70,12 +85,7 @@ let TextInput = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           <input {...props} />
         </div>
       </div>
@@ -101,12 +111,7 @@ let FirstName = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           <input {...props} />
         </div>
       </div>
@@ -131,12 +136,7 @@ let TextArea = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           <textarea {...props} />
         </div>
       </div>
@@ -162,12 +162,6 @@ let DatePicker = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
           <input {...props} />
         </div>
       </div>
@@ -192,12 +186,7 @@ let Dropdown = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           <select {...props}>
             {this.props.data.options.map(function (option) {
               let this_key = 'preview_' + option.key;
@@ -240,13 +229,8 @@ let Signature = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
-          <SignaturePad {...pad_props} /> 
+          <FormElementLabels data={this.props.data} />
+          <SignaturePad {...pad_props} />
           <input {...props} />
         </div>
       </div>
@@ -284,12 +268,7 @@ let Tags = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           <Select {...props} />
         </div>
       </div>
@@ -307,12 +286,7 @@ let Checkboxes = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           {this.props.data.options.map(function (option) {
             let this_key = 'preview_' + option.key;
             let props = {};
@@ -346,12 +320,7 @@ let RadioButtons = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           {this.props.data.options.map(function (option) {
             let this_key = 'preview_' + option.key;
             let props = {};
@@ -393,12 +362,7 @@ let Rating = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           <StarRating {...props} />
         </div>
       </div>
@@ -476,12 +440,7 @@ let Camera = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           <div className="image-upload-container">
 
             { !this.state.img &&
@@ -522,7 +481,7 @@ let Range = React.createClass({
     props.step = this.props.data.step;
 
     props.defaultValue = this.props.defaultValue !== undefined ? parseInt(this.props.defaultValue, 10) : parseInt(this.props.data.default_value, 10);
-      
+
     if (this.props.mutable) {
       props.ref = "child_ref_" + this.props.data.field_name;
     }
@@ -556,12 +515,7 @@ let Range = React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <label>
-            {this.props.data.label}
-            { (this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
-              <span className="label-required label label-danger">Required</span>
-            }
-          </label>
+          <FormElementLabels data={this.props.data} />
           <div className="range">
             <div className="clearfix">
               <span className="pull-left">{this.props.data.min_label}</span>

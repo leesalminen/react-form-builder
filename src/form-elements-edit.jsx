@@ -37,6 +37,7 @@ export default class FormElementsEdit extends React.Component {
   }
   render() {
     let this_checked = this.props.element.hasOwnProperty('required') ? this.props.element.required : false;
+    let public_checked = this.props.element.hasOwnProperty('public') ? this.props.element.public   : false;
     let this_files = this.props.files.length ? this.props.files : [];
     if (this_files.length < 1 || this_files.length > 0 && this_files[0].id !== "")
       this_files.unshift({id: '', file_name: ''});
@@ -76,6 +77,10 @@ export default class FormElementsEdit extends React.Component {
             <br />
             <label>
               <input type="checkbox" checked={this_checked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required
+            </label>
+            <br />
+            <label>
+              <input type="checkbox" checked={public_checked} value={true} onChange={this.editElementProp.bind(this, 'public', 'checked')} /> Public
             </label>
           </div>
         }

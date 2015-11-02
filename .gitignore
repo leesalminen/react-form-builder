@@ -1,4 +1,5 @@
 node_modules
+build/
 components
 example/bundle.js
 example/.git
