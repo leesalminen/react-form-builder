@@ -11,7 +11,7 @@ A complete react form builder that interfaces with a json endpoint to load and s
 var React = require('react');
 var FormBuilder = require('react-forms-builder');
 
-React.render(
+ReactDOM.render(
   <FormBuilder.ReactFormBuilder />,
   document.body
 )
@@ -32,7 +32,7 @@ Now that a form is built and saved, let's generate it from the saved json.
 var React = require('react');
 var FormBuilder = require('react-forms-builder');
 
-React.render(
+ReactDOM.render(
   <FormBuilder.ReactFormGenerator
     form_action="/path/to/form/submit"
     form_method="POST"

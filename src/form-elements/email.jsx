@@ -17,11 +17,11 @@ export default React.createClass({
     var self = this;
     var ref  = self.refs['child_ref_' + self.props.data.field_name];
 
-    if(!_.isUndefined(ref) && !_.isUndefined(ref.getDOMNode)) {
+    if(!_.isUndefined(ref)) {
       $.getScript("https://demo.gingrapp.com/assets/js/mailgun_validator.js", function() {
         // console.log(self.refs['child_ref_' + self.props.data.field_name].getDOMNode());
         // attach jquery plugin to validate address
-        $(ref.getDOMNode()).mailgun_validator({
+        $(ref).mailgun_validator({
           api_key: 'pubkey-5ymei-eyi6yy91c2hp87npj9e61e5cv1', // replace this with your Mailgun public API key
           in_progress: self.validation_in_progress,
           success: self.validation_success,

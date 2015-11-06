@@ -2,8 +2,9 @@ require('./dom-mock')('<html><body></body></html>');
 
 var jsdom = require('mocha-jsdom');
 var assert = require('assert');
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+var React = require('react');
+
+var TestUtils = require('react-addons-test-utils');
 
 import StarRating from 'react-star-rating';
 
@@ -18,7 +19,7 @@ describe('Testing StarRating', function() {
     var element = React.findDOMNode(starRating);
     var starDiv = element.querySelector('.rating-stars');
     var input = element.querySelector('input');
-    
+
     assert.equal(starDiv.style.width, '50%');
     assert.equal(input.value, '2.5');
   });
@@ -29,7 +30,7 @@ describe('Testing StarRating', function() {
     );
     var element = React.findDOMNode(starRating);
     var starDiv = element.querySelector('.rating-stars');
-    
+
     assert.equal(starDiv.style.width, '0px');
   });
 });

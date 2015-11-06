@@ -2,9 +2,9 @@ require('./dom-mock')('<html><body></body></html>');
 
 var jsdom = require('mocha-jsdom');
 var assert = require('assert');
-var React = require('react/addons');
+var React = require('react');
 var Toolbar = require('../src/toolbar.jsx');
-var TestUtils = React.addons.TestUtils;
+var TestUtils = require('react-addons-test-utils');
 
 describe('Testing toolbar', function() {
 
@@ -19,7 +19,7 @@ describe('Testing toolbar', function() {
   });
 
   it('should contain header', function() {
-    var divText = TestUtils.findRenderedDOMComponentWithTag(this.toolBar, 'h4');  
+    var divText = TestUtils.findRenderedDOMComponentWithTag(this.toolBar, 'h4');
     assert.equal(divText.getDOMNode().textContent, 'Toolbox');
   });
 
@@ -42,13 +42,13 @@ describe('Testing toolbar', function() {
       icon: 'fa fa-paragraph',
       content: 'Placeholder Text...'
     }];
-    
+
     this.toolBar = TestUtils.renderIntoDocument(
       <Toolbar items={items} />
     );
 
     this.inputElement = React.findDOMNode(this.toolBar);
 
-    assert.equal(this.inputElement.querySelector('ul').children.length, items.length);    
+    assert.equal(this.inputElement.querySelector('ul').children.length, items.length);
   })
 });
