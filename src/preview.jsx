@@ -46,9 +46,13 @@ export default class Preview extends React.Component {
   }
 
   _onChange(data) {
-    this.setState({
-      data: data
-    });
+    if (data.error !== undefined) {
+        console.log(data.error);
+    } else {
+      this.setState({
+        data: data
+      });    
+    }
   }
 
   _onDestroy(item) {

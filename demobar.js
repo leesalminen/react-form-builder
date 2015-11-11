@@ -3,7 +3,7 @@ import ElementStore from './src/stores/ElementStore';
 import ReactFormGenerator from './src/form';
 
 export default class Demobar extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,11 +27,13 @@ export default class Demobar extends React.Component {
   }
 
   _onChange(data) {
-    this.setState({
-      data: data
-    });
+    if (data.error === undefined) {
+      this.setState({
+        data: data
+      });
+    }
   }
-  
+
   render() {
     var modalClass = 'modal';
     if(this.state.previewVisible) {
@@ -46,7 +48,7 @@ export default class Demobar extends React.Component {
           <div className="modal-dialog">
             <div className="modal-content">
               <ReactFormGenerator download_path="" back_action="" answer_data={{}} form_action="/" form_method="POST" data={this.state.data} />
-              
+
               <div className="modal-footer">
                 <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>Close</button>
               </div>

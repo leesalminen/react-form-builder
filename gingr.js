@@ -15,6 +15,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_first_FBADB136-78B6-419E-9EC9-6B0105498525",
         "label": "First Name",
+        "name": "first_name",
         "public": true,
         "canEdit": false,
         "canRemove": false,
@@ -29,6 +30,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_last_C988EED4-293F-4661-8A08-C5A24E634F2C",
         "label": "Last Name",
+        "name": "last_name",
         "public": true,
         "canEdit": false,
         "canRemove": false
@@ -41,6 +43,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_address_1_4C1F11FD-AC3D-407C-BC90-14569B8D6D2E",
         "label": "Address 1",
+        "name": "address_1",
         "public": true,
         "canEdit": false,
         "canRemove": false
@@ -53,6 +56,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_address_2_1BADAFCF-EDE3-497B-BC6F-57834C78CC4F",
         "label": "Address 2",
+        "name": "address_2",
         "public": true,
         "canEdit": true,
         "canRemove": true
@@ -65,6 +69,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_city_DF36A3A7-830C-4801-BBB9-558161B61367",
         "label": "City",
+        "name": "city",
         "public": true,
         "canEdit": false,
         "canRemove": false
@@ -77,6 +82,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_state_BF53FC56-976A-470E-B34B-84B420BB8E66",
         "label": "Region",
+        "name": "region",
         "public": true,
         "canEdit": false,
         "canRemove": false
@@ -89,6 +95,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_zip_26C4547A-D22D-40DF-880C-52430795B850",
         "label": "Zip",
+        "name": "zip",
         "public": true,
         "canEdit": false,
         "canRemove": false
@@ -101,6 +108,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_email_0F5AF6AD-0330-4690-B8D5-82A66D98175D",
         "label": "Email",
+        "name": "email",
         "public": true,
         "canEdit": false,
         "canRemove": false
@@ -113,6 +121,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_home_phone_690E89D5-1E1A-4296-9DC7-D08163505F35",
         "label": "Home Phone",
+        "name": "home_phone",
         "public": true,
         "canEdit": true,
         "canRemove": false
@@ -125,6 +134,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_cell_phone_21E18592-F20F-4963-B691-7BD79EBEC48E",
         "label": "Cell Phone",
+        "name": "cell_phone",
         "public": true,
         "canEdit": true,
         "canRemove": false
@@ -137,6 +147,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_emergency_contact_name_A0235005-CA3F-44C1-B874-80DF274C00B7",
         "label": "Emergency Contact Name",
+        "name": "emergency_contact_name",
         "public": true,
         "canEdit": true,
         "canRemove": true
@@ -149,6 +160,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_emergency_contact_phone_3E9B7312-B6FC-45B4-88B4-FD8BF3D54BD1",
         "label": "Emergency Contact Phone",
+        "name": "emergency_contact_phone",
         "public": true,
         "canEdit": true,
         "canRemove": true
@@ -161,6 +173,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_vet_name_FD5F7E9E-977F-451D-80B5-8FE21D8FBCD7",
         "label": "Vet Name",
+        "name": "vet_name",
         "public": true,
         "canEdit": true,
         "canRemove": true
@@ -173,6 +186,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_vet_phone_A9EF9770-3828-432A-88C8-DADAA11B9DD2",
         "label": "Vet Phone",
+        "name": "vet_phone",
         "public": true,
         "canEdit": true,
         "canRemove": true
@@ -185,6 +199,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_barcode_E77415CD-C997-41E0-BB8A-2E82464914F5",
         "label": "Barcode",
+        "name": "barcode",
         "public": false,
         "canEdit": true,
         "canRemove": true
@@ -197,6 +212,7 @@ var formData = [
         "canHaveAnswer": true,
         "field_name": "o_notes_4024766B-5D19-42A1-9AE5-3A6E5E73FCAF",
         "label": "Notes",
+        "name": "notes",
         "public": false,
         "canEdit": true,
         "canRemove": true
