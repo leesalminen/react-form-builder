@@ -4,7 +4,7 @@ var ElementActions = Reflux.createActions([
   'createElement',
   'editElement',
   'deleteElement',
-  'saveData',
+  'updateElements',
   'save'
 ]);
 

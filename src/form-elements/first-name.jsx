@@ -8,7 +8,7 @@ export default React.createClass({
   mixins: [SortableItemMixin],
   render() {
     let props = {};
-    props.type = "first_name";
+    props.type = "text";
     props.className = "form-control";
     props.name = this.props.data.field_name;
 
@@ -22,7 +22,7 @@ export default React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} />
+          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
           <input {...props} />
         </div>
       </div>

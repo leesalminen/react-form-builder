@@ -3,6 +3,7 @@ require('./dom-mock')('<html><body></body></html>');
 var jsdom = require('mocha-jsdom');
 var assert = require('assert');
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var TestUtils = require('react-addons-test-utils');
 
@@ -16,7 +17,7 @@ describe('Testing StarRating', function() {
     var starRating = TestUtils.renderIntoDocument(
       <StarRating rating={2.5} name="star-test" />
     );
-    var element = React.findDOMNode(starRating);
+    var element = ReactDOM.findDOMNode(starRating);
     var starDiv = element.querySelector('.rating-stars');
     var input = element.querySelector('input');
 
@@ -28,7 +29,7 @@ describe('Testing StarRating', function() {
     var starRating = TestUtils.renderIntoDocument(
       <StarRating name="star-test" />
     );
-    var element = React.findDOMNode(starRating);
+    var element = ReactDOM.findDOMNode(starRating);
     var starDiv = element.querySelector('.rating-stars');
 
     assert.equal(starDiv.style.width, '0px');

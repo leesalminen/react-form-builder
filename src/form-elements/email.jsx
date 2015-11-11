@@ -4,6 +4,8 @@ import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
+import _ from 'lodash';
+
 export default React.createClass({
   mixins: [SortableItemMixin],
   getInitialState() {
@@ -102,8 +104,7 @@ export default React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <HeaderLabels
-            data={this.props.data} />
+          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
           <input {...props} />
           {(!_.isNull(this.state.validationMsg)) ?
             <p className="help-block" dangerouslySetInnerHTML={{__html: this.state.validationMsg}}></p>

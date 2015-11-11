@@ -3,6 +3,7 @@ require('./dom-mock')('<html><body></body></html>');
 var jsdom = require('mocha-jsdom');
 var assert = require('assert');
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Toolbar = require('../src/toolbar.jsx');
 var TestUtils = require('react-addons-test-utils');
 
@@ -15,7 +16,7 @@ describe('Testing toolbar', function() {
       <Toolbar />
     );
 
-    this.inputElement = React.findDOMNode(this.toolBar);
+    this.inputElement = ReactDOM.findDOMNode(this.toolBar);
   });
 
   it('should contain header', function() {
@@ -47,7 +48,7 @@ describe('Testing toolbar', function() {
       <Toolbar items={items} />
     );
 
-    this.inputElement = React.findDOMNode(this.toolBar);
+    this.inputElement = ReactDOM.findDOMNode(this.toolBar);
 
     assert.equal(this.inputElement.querySelector('ul').children.length, items.length);
   })

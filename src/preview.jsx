@@ -32,7 +32,7 @@ export default class Preview extends React.Component {
     let data = this.state.data;
     let found = false;
 
-    for(var i=0, len=data.length; i < len; i++) {
+    for(var i=0; i < data.length; i++) {
       if (element.id === data[i].id) {
         data[i] = element;
         found = true;
@@ -60,7 +60,7 @@ export default class Preview extends React.Component {
     let data = this.state.data;
     let index = 0;
 
-    for(var i=0, len=data.length; i < len; i++) {
+    for(var i=0; i < data.length; i++) {
       index = orderedIds.indexOf(data[i].id);
       sortedArray[index] = data[i];
     }

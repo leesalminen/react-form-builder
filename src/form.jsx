@@ -3,8 +3,10 @@
   */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {EventEmitter} from 'fbemitter';
 import FormValidator from './form-validator';
+import serializeForm from 'form-serialize';
 import {Header,Paragraph,LineBreak,TextInput,FirstName,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,TrueFalse,Rating,Tags,Signature,HyperLink,Download,Camera,Range,Email,Telephone} from './form-elements';
 
 export default class ReactForm extends React.Component {
@@ -27,7 +29,7 @@ export default class ReactForm extends React.Component {
     if (item.canHaveAnswer) {
       if (item.element === "Checkboxes" || item.element === "RadioButtons") {
         item.options.forEach(option => {
-          let $option = React.findDOMNode(this.refs[item.field_name].refs["child_ref_"+option.key]);
+          let $option = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+option.key]);
           if ((option.hasOwnProperty("correct") && !$option.checked) || (!option.hasOwnProperty("correct") && $option.checked))
             incorrect = true;
         })
@@ -43,7 +45,7 @@ export default class ReactForm extends React.Component {
             $item = {};
             $item.value = this.refs[item.field_name].refs["child_ref_"+item.field_name].state.value
           } else {
-            $item = React.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
+            $item = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
             $item.value = $item.value.trim();
           }
 
@@ -61,7 +63,7 @@ export default class ReactForm extends React.Component {
       if (item.element === "Checkboxes" || item.element === "RadioButtons") {
         let checked_options = 0;
         item.options.forEach(option => {
-          let $option = React.findDOMNode(this.refs[item.field_name].refs["child_ref_"+option.key]);
+          let $option = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+option.key]);
           if ($option.checked)
             checked_options += 1;
         })
@@ -80,7 +82,7 @@ export default class ReactForm extends React.Component {
             $item = {};
             $item.value = this.refs[item.field_name].refs["child_ref_"+item.field_name].state.value
           } else {
-            $item = React.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
+            $item = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
             $item.value = $item.value.trim();
           }
 
@@ -96,7 +98,7 @@ export default class ReactForm extends React.Component {
     let $canvas_sig = this.refs[item.field_name].refs["canvas_"+item.field_name]
     let base64 = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
     let isEmpty = $canvas_sig.isEmpty();
-    let $input_sig = React.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
+    let $input_sig = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
     if (isEmpty) {
       $input_sig.value = "";
     } else {
@@ -107,7 +109,7 @@ export default class ReactForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let $form = React.findDOMNode(this.refs.form);
+    let $form = ReactDOM.findDOMNode(this.refs.form);
     let errors = [];
     this.props.data.forEach(item => {
       if (item.element === "Signature")
@@ -121,8 +123,10 @@ export default class ReactForm extends React.Component {
     });
     // publish errors, if any
     this.emitter.emit('formValidation', errors);
-    if (errors.length < 1)
-      $form.submit();
+
+    if (errors.length < 1) {
+        console.log(serializeForm($form, {hash: true}));
+    }
   }
 
   render() {
@@ -191,8 +195,10 @@ export default class ReactForm extends React.Component {
               </div>
             }
             {items}
-            <input type="submit" className="btn btn-school btn-big btn-agree" value="Submit" />
-            <a href={this.props.back_action} className="btn btn-default btn-cancel btn-big"> Cancel</a>
+            <div className="text-right">
+                <a href={this.props.back_action} className="btn btn-default btn-cancel btn-big"> Cancel</a>
+                <input type="submit" className="btn btn-primary btn-big btn-agree" value="Submit" />
+            </div>
           </form>
         </div>
       </div>
@@ -200,4 +206,7 @@ export default class ReactForm extends React.Component {
   }
 }
 
-ReactForm.defaultProps = { validateForCorrectness: false };
+ReactForm.defaultProps = {
+    answer_data:            {},
+    validateForCorrectness: false
+};

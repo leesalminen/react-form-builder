@@ -2,8 +2,9 @@
 
 // var jsdom = require('mocha-jsdom');
 // var assert = require('assert');
-// var React = require('react/addons');
-// var TestUtils = React.addons.TestUtils;
+// var React = require('react');
+// var ReactDOM = require('react-dom');
+//var TestUtils = require('react-addons-test-utils');
 
 // import SliderNativeBootstrap from 'react-bootstrap-native-slider';
 
@@ -20,10 +21,10 @@
 //         max={5}
 //         min={0} />
 //     );
-//     // var element = React.findDOMNode(slider);
+//     // var element = ReactDOM.findDOMNode(slider);
 //     console.log('hi');
 //     //var starDiv = element.querySelector('.rating-stars');
-    
+
 //     //assert.equal(starDiv.style.width, '50%');
 //   });
 // });

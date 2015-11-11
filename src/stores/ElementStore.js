@@ -6,10 +6,10 @@ var _saveUrl;
 
 var ElementStore = Reflux.createStore({
   init: function() {
-    this.listenTo(ElementActions.createElement, this._create);
-    this.listenTo(ElementActions.deleteElement, this._delete);
-    this.listenTo(ElementActions.save, this.save);
-    this.listenTo(ElementActions.saveData, this._updateOrder)
+    this.listenTo(ElementActions.createElement,     this._create);
+    this.listenTo(ElementActions.deleteElement,     this._delete);
+    this.listenTo(ElementActions.save,              this.save);
+    this.listenTo(ElementActions.updateElements,    this._updateOrder)
   },
 
   load: function(urlOrData, saveUrl) {
@@ -44,20 +44,17 @@ var ElementStore = Reflux.createStore({
 
     _data.push(element);
     this.trigger(_data);
-    this.save();
   },
 
   _delete: function(element) {
     var index = _data.indexOf(element);
     _data.splice(index, 1);
     this.trigger(_data);
-    this.save();
   },
 
-  _updateOrder: function(elements) {
+  _updateElements: function(elements) {
     _data = elements;
     this.trigger(_data);
-    this.save();
   },
 
   save: function() {

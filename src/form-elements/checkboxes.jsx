@@ -14,11 +14,11 @@ export default React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} />
+          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
           {this.props.data.options.map(function (option) {
             let this_key = 'preview_' + option.key;
             let props = {};
-            props.name = 'option_'+option.key;
+            props.name = 'option_' + option.key;
 
             props.type = "checkbox"
             props.value = option.value;

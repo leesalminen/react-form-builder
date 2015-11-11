@@ -237,17 +237,21 @@ export default class Toolbar extends React.Component {
       required: false
     };
 
-    if (item.canHaveAnswer)
+    if (item.canHaveAnswer) {
       elementOptions['canHaveAnswer'] = item.canHaveAnswer;
+    }
 
-    if (item.content)
+    if (item.content) {
       elementOptions['content'] = item.content;
+    }
 
-    if (item.href)
+    if (item.href) {
       elementOptions['href'] = item.href;
+    }
 
-    if(item.isUnique)
+    if(item.isUnique) {
       elementOptions['isUnique'] = true;
+    }
 
     if (item.key === "Download") {
       elementOptions['_href'] = item._href;
@@ -263,14 +267,22 @@ export default class Toolbar extends React.Component {
       elementOptions['max_label'] = item.max_label;
     }
 
-    if (item.defaultValue)
+    if (item.defaultValue) {
       elementOptions['defaultValue'] = item.defaultValue;
+    }
 
-    if (item.field_name)
+    if (item.field_name) {
       elementOptions['field_name'] = item.field_name + ID.uuid();
+    }
 
-    if (item.label)
+    if (item.label) {
       elementOptions['label'] = item.label;
+      elementOptions['name']  = _.snakeCase(item.label);
+    } else {
+        if (elementOptions['field_name']) {
+          elementOptions['name'] = elementOptions['field_name'];
+        }
+    }
 
     if (item.options) {
       elementOptions['options'] = this._defaultItemOptions(elementOptions['element']);

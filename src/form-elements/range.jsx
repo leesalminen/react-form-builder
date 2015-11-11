@@ -51,7 +51,7 @@ export default React.createClass({
           <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} />
+          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
           <div className="range">
             <div className="clearfix">
               <span className="pull-left">{this.props.data.min_label}</span>

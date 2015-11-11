@@ -6,11 +6,11 @@ import React from 'react';
 import Preview from './preview'
 import Toolbar from './toolbar'
 import ElementActions from './actions/ElementActions';
-import ReactFormGenerator from './form';
+import FormGenerator from './form';
 
 let FormBuilders = {};
 
-class ReactFormBuilder extends React.Component {
+class FormBuilder extends React.Component {
 
   constructor(props) {
     super(props);
@@ -69,6 +69,9 @@ class ReactFormBuilder extends React.Component {
               editMode={this.state.editMode}
               editElement={this.state.editElement} />
             <Toolbar {...toolbarProps} />
+            <div className="text-right">
+                <button className="btn btn-primary btn-big btn-agree" onClick={ElementActions.save}>Save</button>
+            </div>
           </div>
         </div>
       </div>
@@ -77,7 +80,7 @@ class ReactFormBuilder extends React.Component {
 
 }
 
-FormBuilders.ReactFormBuilder = ReactFormBuilder;
-FormBuilders.ReactFormGenerator = ReactFormGenerator;
+FormBuilders.FormBuilder = FormBuilder;
+FormBuilders.FormGenerator = FormGenerator;
 
 module.exports = FormBuilders;
