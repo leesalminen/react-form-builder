@@ -18,7 +18,7 @@ export default React.createClass({
           {this.props.data.options.map(function (option) {
             let this_key = 'preview_' + option.key;
             let props = {};
-            props.name = 'option_' + option.key;
+            props.name = self.props.data.name; + option.key;
 
             props.type = "checkbox"
             props.value = option.value;

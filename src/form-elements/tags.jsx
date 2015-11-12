@@ -20,7 +20,7 @@ export default React.createClass({
     })
     let props = {};
     props.multi = true;
-    props.name = this.props.data.field_name;
+    props.name = this.props.data.name;
     props.onChange = this.handleChange;
 
     props.options = options;

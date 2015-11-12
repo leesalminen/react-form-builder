@@ -9,7 +9,7 @@ export default React.createClass({
   mixins: [SortableItemMixin],
   render() {
     let props = {};
-    props.name = this.props.data.field_name;
+    props.name = this.props.data.name;
     props.ratingAmount = 5;
 
     if (this.props.mutable) {

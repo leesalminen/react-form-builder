@@ -9,7 +9,7 @@ export default React.createClass({
   render() {
     let props = {};
     props.className = "form-control";
-    props.name = this.props.data.field_name;
+    props.name = this.props.data.name;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;

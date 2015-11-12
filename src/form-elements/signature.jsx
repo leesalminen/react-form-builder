@@ -16,7 +16,7 @@ export default React.createClass({
   render() {
     let props = {};
     props.type = "hidden";
-    props.name = this.props.data.field_name;
+    props.name = this.props.data.name;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;

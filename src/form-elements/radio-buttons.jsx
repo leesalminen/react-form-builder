@@ -18,7 +18,7 @@ export default React.createClass({
           {this.props.data.options.map(function (option) {
             let this_key = 'preview_' + option.key;
             let props = {};
-            props.name = self.props.data.field_name;
+            props.name = self.props.data.name;
 
             props.type = "radio"
             props.value = option.value;

@@ -15,7 +15,7 @@ export default React.createClass({
     let props = {};
     props.type = "telephone";
     props.className = "form-control telephone";
-    props.name = this.props.data.field_name;
+    props.name = this.props.data.name;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;

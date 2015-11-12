@@ -10,6 +10,7 @@ export default React.createClass({
     let props = {};
     props.type = "date";
     props.className = "form-control";
+    props.name = this.props.data.name;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;

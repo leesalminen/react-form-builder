@@ -9,6 +9,7 @@ export default React.createClass({
   render() {
     let props = {};
     props.type = "text";
+    props.name = this.props.data.name;
     props.className = "form-control";
 
     if (this.props.mutable) {

@@ -10,7 +10,7 @@ export default React.createClass({
   render() {
     let props = {};
     props.type = "range";
-    props.name = this.props.data.field_name;
+    props.name = this.props.data.name;
     props.list = "tickmarks_" + this.props.data.field_name;
     props.min = this.props.data.min_value;
     props.max = this.props.data.max_value;
