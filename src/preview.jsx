@@ -77,8 +77,6 @@ export default class Preview extends React.Component {
     let classes = this.props.className;
     if (this.props.editMode) { classes += ' is-editing'; }
 
-    console.log(classes);
-
     let items = this.state.data.map( item => {
       switch (item.element) {
         case "Header":
