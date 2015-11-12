@@ -1,6 +1,6 @@
 module.exports = {
   entry: {
-    app: ["./src/index.jsx"]
+    app: ["./src/form-builder.jsx"]
   },
 
   output: {
@@ -21,9 +21,12 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ["babel-loader"]
+        loader: ['babel-loader'],
+        query: {
+            presets: ['es2015', 'react']
+        }
       }
     ],
   },
