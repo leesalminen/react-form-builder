@@ -9,7 +9,7 @@ var ElementStore = Reflux.createStore({
         this.listenTo(ElementActions.createElement,     this._create);
         this.listenTo(ElementActions.deleteElement,     this._delete);
         this.listenTo(ElementActions.save,              this.save);
-        this.listenTo(ElementActions.updateElements,    this._updateOrder)
+        this.listenTo(ElementActions.updateElements,    this._updateElements)
     },
 
     load: function(urlOrData, saveUrl) {

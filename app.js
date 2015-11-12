@@ -7,8 +7,7 @@ import FormBuilder from "./src/form-builder";
 require('./css/application.css.scss');
 
 ReactDOM.render(
-  <FormBuilder.FormBuilder
-    saveUrl="/test"/>,
+  <FormBuilder.FormBuilder />,
   document.getElementById('form-builder')
 )
 

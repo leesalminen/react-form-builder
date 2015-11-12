@@ -41,7 +41,7 @@ export default class Preview extends React.Component {
     }
 
     if (found) {
-      ElementActions.saveData(data);
+      ElementActions.updateElements(data);
     }
   }
 
@@ -69,13 +69,16 @@ export default class Preview extends React.Component {
       sortedArray[index] = data[i];
     }
 
-    ElementActions.saveData(sortedArray);
+    ElementActions.updateElements(sortedArray);
     this.state.data = sortedArray;
   }
 
   render() {
     let classes = this.props.className;
     if (this.props.editMode) { classes += ' is-editing'; }
+
+    console.log(classes);
+
     let items = this.state.data.map( item => {
       switch (item.element) {
         case "Header":
