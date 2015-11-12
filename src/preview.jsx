@@ -51,7 +51,7 @@ export default class Preview extends React.Component {
     } else {
       this.setState({
         data: data
-      });    
+      });
     }
   }
 
@@ -137,4 +137,4 @@ export default class Preview extends React.Component {
     )
   }
 }
-Preview.defaultProps = { showCorrectColumn: false, files: [], editMode: false, editElement: null, className: 'react-form-builder-preview pull-left'}
+Preview.defaultProps = { showCorrectColumn: false, files: [], editMode: false, editElement: null, className: ''}
