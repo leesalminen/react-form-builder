@@ -99,7 +99,7 @@ var ElementStore = Reflux.createStore({
         } else {
             this.trigger(
                 {
-                    error: 'uniqueViolation'
+                    error: 'All input fields must have unique names'
                 }
             );
         }

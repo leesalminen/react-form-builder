@@ -14,7 +14,8 @@ export default class Preview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      errors: []
     }
 
     var loadData = (this.props.url) ? this.props.url : (this.props.data) ? this.props.data : [];
@@ -47,7 +48,12 @@ export default class Preview extends React.Component {
 
   _onChange(data) {
     if (data.error !== undefined) {
-        console.log(data.error);
+      let errors = this.state.errors;
+      errors.push(data.error);
+
+      this.setState({
+        errors: errors
+      });
     } else {
       this.setState({
         data: data
@@ -57,6 +63,11 @@ export default class Preview extends React.Component {
 
   _onDestroy(item) {
     ElementActions.deleteElement(item);
+  }
+
+  dismissErrors(e) {
+      e.preventDefault();
+      this.setState({errors: []});
   }
 
   handleSort(orderedIds) {
@@ -126,6 +137,19 @@ export default class Preview extends React.Component {
     })
     return (
       <div className={classes}>
+        { this.state.errors.length > 0 &&
+          <div className="alert alert-danger validation-error">
+            <div className="clearfix">
+              <i className="fa fa-exclamation-triangle pull-left"></i>
+              <ul>
+                {this.state.errors.map((error, index) => <li key={index}>{error}</li>)}
+              </ul>
+            </div>
+            <div className="clearfix">
+              <a className="pull-right btn btn-default btn-sm btn-danger" onClick={this.dismissErrors.bind(this)}>Dismiss</a>
+            </div>
+          </div>
+        }
         <div className="edit-form">
           { this.props.editElement !== null &&
             <FormElementsEdit showCorrectColumn={this.props.showCorrectColumn} files={this.props.files} manualEditModeOff={this.props.manualEditModeOff} preview={this} element={this.props.editElement} updateElement={this.updateElement} />

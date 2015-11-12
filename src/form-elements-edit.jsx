@@ -84,6 +84,12 @@ export default class FormElementsEdit extends React.Component {
             </label>
           </div>
         }
+        { this.props.element.hasOwnProperty('name') &&
+          <div className="form-group">
+            <label>Field Name</label>
+            <input type="text" className="form-control" defaultValue={this.props.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
+          </div>
+        }
         { this.props.element.hasOwnProperty('step') &&
           <div className="form-group">
             <div className="form-group-range">
