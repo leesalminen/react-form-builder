@@ -164,14 +164,14 @@ export default class Toolbar extends React.Component {
         icon: 'fa fa-text-height',
         field_name: 'text_area_'
       },
-      {
-        key: 'Rating',
-        canHaveAnswer: true,
-        name: 'Rating',
-        label: 'Placeholder Label',
-        icon: 'fa fa-star',
-        field_name: 'rating_'
-      },
+    //   {
+    //     key: 'Rating',
+    //     canHaveAnswer: true,
+    //     name: 'Rating',
+    //     label: 'Placeholder Label',
+    //     icon: 'fa fa-star',
+    //     field_name: 'rating_'
+    //   },
       {
         key: 'DatePicker',
         name: 'Date',
