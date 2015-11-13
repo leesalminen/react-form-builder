@@ -128,6 +128,15 @@ export default class ReactForm extends React.Component {
       return errors;
   }
 
+  /**
+   * Serialize the form
+   * @return {Object} The serialized form
+   */
+  serialize() {
+      let $form = ReactDOM.findDOMNode(this.refs.form);
+      return serializeForm($form, {hash: true})
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
@@ -140,11 +149,11 @@ export default class ReactForm extends React.Component {
     var isValid = errors.length < 1;
 
     if (isValid) {
-        let $form = ReactDOM.findDOMNode(this.refs.form);
         if (this.props.handleSubmit) {
-            this.props.handleSubmit(serializeForm($form, {hash: true}));
+            this.props.handleSubmit(this.serialize());
         } else {
-             $form.submit();
+            let $form = ReactDOM.findDOMNode(this.refs.form);
+            $form.submit();
         }
     } else {
         if (this.props.handleInvalid) {
