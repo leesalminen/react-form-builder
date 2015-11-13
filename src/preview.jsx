@@ -55,8 +55,13 @@ export default class Preview extends React.Component {
         errors: errors
       });
     } else {
+
+      if (data.length > this.state.data.length) {
+        this.props.editModeOn.call(this.props.parent, data[data.length - 1]);
+      }
+
       this.setState({
-        data: data
+        data: _.cloneDeep(data)
       });
     }
   }

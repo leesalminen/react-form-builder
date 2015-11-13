@@ -23,7 +23,10 @@ class FormBuilder extends React.Component {
   }
 
   editModeOn(data, e) {
-    e.stopPropagation()
+    if (e) {
+        e.stopPropagation();
+    }
+
     if (this.state.editMode) {
       this.setState({editMode: !this.state.editMode, editElement: null});
     } else {
