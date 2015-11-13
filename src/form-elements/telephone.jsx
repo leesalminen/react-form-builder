@@ -6,6 +6,18 @@ import HeaderLabels from './util/header-labels.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Telephone',
+          canHaveAnswer: true,
+          name: 'Telephone',
+          label: 'Telephone',
+          icon: 'fa fa-phone',
+          field_name: 'telephone_'
+        };
+      }
+  },
   componentDidMount() {
     if(this.props.prefs) {
       $(this.refs['child_ref_' + this.props.data.field_name]).mask(this.props.prefs.telephone_format);

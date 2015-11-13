@@ -5,8 +5,27 @@ import Select from 'react-select';
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
+import ID from '../UUID';
+
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Tags',
+          canHaveAnswer: true,
+          name: 'Tags',
+          icon: 'fa fa-tags',
+          label: 'Placeholder Label',
+          field_name: 'tags_',
+          options: [
+            {value: 'place_holder_tag_1', text: 'Place holder tag 1', key: 'tags_option_' + ID.uuid()},
+            {value: 'place_holder_tag_2', text: 'Place holder tag 2', key: 'tags_option_' + ID.uuid()},
+            {value: 'place_holder_tag_3', text: 'Place holder tag 3', key: 'tags_option_' + ID.uuid()}
+          ]
+        };
+      }
+  },
   getInitialState() {
     return {value: this.props.defaultValue !== undefined ? this.props.defaultValue.split(",") : []};
   },

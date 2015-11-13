@@ -4,8 +4,26 @@ import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
+import ID from '../UUID';
+
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'TrueFalse',
+          canHaveAnswer: true,
+          name: 'True / False',
+          icon: 'fa fa-dot-circle-o',
+          label: 'True or False',
+          field_name: 'truefalse_',
+          options: [
+            {value: '1', text: 'Yes/On', key: 'truefalse_option_' + ID.uuid()},
+            {value: '0', text: 'No/Off', key: 'truefalse_option_' + ID.uuid()}
+          ]
+        };
+      }
+  },
   render() {
     let self    = this;
     return this.renderWithSortable(

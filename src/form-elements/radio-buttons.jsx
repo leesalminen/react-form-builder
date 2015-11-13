@@ -4,8 +4,27 @@ import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
+import ID from '../UUID';
+
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'RadioButtons',
+          canHaveAnswer: true,
+          name: 'Multiple Choice',
+          icon: 'fa fa-dot-circle-o',
+          label: 'Placeholder Label',
+          field_name: 'radio_buttons_',
+          options: [
+            {value: 'place_holder_option_1', text: 'Place holder option 1', key: 'radiobuttons_option_' + ID.uuid()},
+            {value: 'place_holder_option_2', text: 'Place holder option 2', key: 'radiobuttons_option_' + ID.uuid()},
+            {value: 'place_holder_option_3', text: 'Place holder option 3', key: 'radiobuttons_option_' + ID.uuid()}
+          ]
+        };
+      }
+  },
   render() {
     let self = this;
     return this.renderWithSortable(

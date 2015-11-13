@@ -6,11 +6,23 @@ import HeaderLabels from './util/header-labels.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'TextArea',
+          canHaveAnswer: true,
+          name: 'Multi-line Input',
+          label: 'Placeholder Label',
+          icon: 'fa fa-text-height',
+          field_name: 'text_area_'
+        };
+      }
+  },
   render() {
     let props = {};
     props.className = "form-control";
     props.name = this.props.data.name;
-    
+
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
       props.ref = "child_ref_" + this.props.data.field_name;

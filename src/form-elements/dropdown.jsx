@@ -4,8 +4,27 @@ import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
+import ID from '../UUID';
+
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Dropdown',
+          canHaveAnswer: true,
+          name: 'Dropdown',
+          icon: 'fa fa-caret-square-o-down',
+          label: 'Placeholder Label',
+          field_name: 'dropdown_',
+          options: [
+            {value: '', text: '', key: 'dropdown_option_' + ID.uuid()},
+            {value: '', text: '', key: 'dropdown_option_' + ID.uuid()},
+            {value: '', text: '', key: 'dropdown_option_' + ID.uuid()}
+          ]
+        };
+      }
+  },
   render() {
     let props = {};
     props.className = "form-control";

@@ -7,6 +7,18 @@ import HeaderLabels from './util/header-labels.jsx';
 export default React.createClass({
   mixins: [SortableItemMixin],
 
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Camera',
+          name: 'Camera',
+          icon: 'fa fa-camera',
+          label: 'Placeholder Label',
+          field_name: 'camera_'
+        };
+      }
+  },
+
   getInitialState() {
     return {img: null};
   },

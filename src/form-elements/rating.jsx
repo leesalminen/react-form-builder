@@ -7,6 +7,18 @@ import HeaderLabels from './util/header-labels.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Rating',
+          canHaveAnswer: true,
+          name: 'Rating',
+          label: 'Placeholder Label',
+          icon: 'fa fa-star',
+          field_name: 'rating_'
+        };
+      }
+  },
   render() {
     let props = {};
     props.name = this.props.data.name;

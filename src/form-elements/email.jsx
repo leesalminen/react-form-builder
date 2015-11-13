@@ -8,6 +8,18 @@ import _ from 'lodash';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Email',
+          canHaveAnswer: true,
+          name: 'Email',
+          label: 'Email',
+          icon: 'fa fa-envelope',
+          field_name: 'email_'
+        };
+      }
+  },
   getInitialState() {
     return {
       validationMsg: null,

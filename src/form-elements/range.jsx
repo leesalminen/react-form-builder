@@ -7,6 +7,23 @@ import HeaderLabels from './util/header-labels.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Range',
+          name: 'Range',
+          icon: 'fa fa-sliders',
+          label: 'Placeholder Label',
+          field_name: 'range_',
+          step: 1,
+          default_value: 3,
+          min_value: 1,
+          max_value: 5,
+          min_label: 'Easy',
+          max_label: 'Difficult'
+        };
+      }
+  },
   render() {
     let props = {};
     props.type = "range";

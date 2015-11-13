@@ -6,6 +6,17 @@ import HeaderLabels from './util/header-labels.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'DatePicker',
+          name: 'Date',
+          icon: 'fa fa-calendar',
+          label: 'Placeholder Label',
+          field_name: 'date_picker_'
+        };
+      }
+  },
   render() {
     let props = {};
     props.type = "date";

@@ -5,6 +5,17 @@ import HeaderBar from './util/header-bar.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Header',
+          name: 'Header Text',
+          icon: 'fa fa-header',
+          static: true,
+          content: 'Placeholder Text...'
+        };
+      }
+  },
   render() {
     let headerClasses = 'dynamic-input ' + this.props.data.element + '-input';
     return this.renderWithSortable(

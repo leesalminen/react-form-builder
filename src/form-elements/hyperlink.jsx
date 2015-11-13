@@ -5,6 +5,18 @@ import HeaderBar from './util/header-bar.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'HyperLink',
+          name: 'Web site',
+          icon: 'fa fa-link',
+          static: true,
+          content: 'Placeholder Web site link ...',
+          href: 'http://www.example.com'
+        };
+      }
+  },
   render() {
     return this.renderWithSortable(
       <div className="rfb-item">

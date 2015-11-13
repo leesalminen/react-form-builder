@@ -7,6 +7,17 @@ import HeaderLabels from './util/header-labels.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Signature',
+          name: 'Signature',
+          icon: 'fa fa-pencil-square-o',
+          label: 'Signature',
+          field_name: 'signature_'
+        };
+      }
+  },
   componentDidMount() {
     if (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) {
       let canvas = this.refs['canvas_'+this.props.data.field_name];

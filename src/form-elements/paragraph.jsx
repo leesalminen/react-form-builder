@@ -5,6 +5,17 @@ import HeaderBar from './util/header-bar.jsx';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
+  statics: {
+      toolbarEntry: function() {
+        return {
+          key: 'Paragraph',
+          name: 'Paragraph',
+          static: true,
+          icon: 'fa fa-paragraph',
+          content: 'Placeholder Text...'
+        };
+      }
+  },
   render() {
     return this.renderWithSortable(
       <div className="rfb-item">
