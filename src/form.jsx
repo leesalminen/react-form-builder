@@ -125,6 +125,17 @@ export default class ReactForm extends React.Component {
           errors.push(item.label + " was answered incorrectly!");
       });
 
+      if (errors.length > 0) {
+          if (this.props.handleInvalid) {
+              this.props.handleInvalid(errors);
+          }
+      }
+
+      if (this.props.showErrors !== false) {
+          // publish errors, if any
+          this.emitter.emit('formValidation', errors);
+      }
+
       return errors;
   }
 
@@ -155,15 +166,6 @@ export default class ReactForm extends React.Component {
             let $form = ReactDOM.findDOMNode(this.refs.form);
             $form.submit();
         }
-    } else {
-        if (this.props.handleInvalid) {
-            this.props.handleInvalid(errors);
-        }
-    }
-
-    if (this.props.showErrors !== false) {
-        // publish errors, if any
-        this.emitter.emit('formValidation', errors);
     }
   }
 
