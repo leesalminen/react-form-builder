@@ -147,8 +147,14 @@ export default class ReactForm extends React.Component {
              $form.submit();
         }
     } else {
-        // publish errors, if any
-        this.emitter.emit('formValidation', errors);
+        if (this.props.handleInvalid) {
+            this.props.handleInvalid(errors);
+        }
+
+        if (this.props.showErrors !== false) {
+            // publish errors, if any
+            this.emitter.emit('formValidation', errors);
+        }
     }
   }
 
@@ -210,11 +216,11 @@ export default class ReactForm extends React.Component {
         <FormValidator emitter={this.emitter} />
         <div className="react-form-builder-form">
           <form
-              encType="multipart/form-data"
-              ref="form"
-              action={this.props.form_action}
-              onSubmit={this.props.handleSubmit.bind(this.props.parent, this) || this.handleSubmit.bind(this)}
-              method={this.props.form_method}>
+              encType   = "multipart/form-data"
+              ref       = "form"
+              action    = {this.props.form_action}
+              onSubmit  = {this.handleSubmit.bind(this)}
+              method    = {this.props.form_method}>
             { this.props.authenticity_token &&
               <div style={formTokenStyle}>
                 <input name="utf8" type="hidden" value="&#x2713;" />
@@ -240,6 +246,7 @@ export default class ReactForm extends React.Component {
 ReactForm.defaultProps = {
     answer_data:            {},
     validate:               true,
+    showErrors:             true,
     validateForCorrectness: false,
     submitLabel:            'Submit'
 };
