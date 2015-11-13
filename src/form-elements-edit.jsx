@@ -1,6 +1,7 @@
 import React from 'react';
 import DynamicOptionList from './dynamic-option-list';
 import TextAreaAutosize from 'react-textarea-autosize';
+import classNames from 'classnames';
 
 export default class FormElementsEdit extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class FormElementsEdit extends React.Component {
     this.state = {
       element: this.props.element,
       data: this.props.data,
-      dirty: false
+      dirty: false,
+      name_changed: false
     }
   }
   toggleRequired() {
@@ -19,6 +21,17 @@ export default class FormElementsEdit extends React.Component {
     // targProperty could be value or checked
     let this_element = this.state.element;
     this_element[elemProperty] = e.target[targProperty];
+
+    // Change field name automatically
+    if (elemProperty === 'label' && !this.state.name_changed) {
+      this_element.name = _.snakeCase(e.target[targProperty]);
+    }
+
+    if (elemProperty === 'name') {
+      this.setState({
+        name_changed: true
+      });
+    }
 
     this.setState({
       element: this_element,
@@ -75,6 +88,9 @@ export default class FormElementsEdit extends React.Component {
             <label>Display Label</label>
             <input type="text" className="form-control" defaultValue={this.props.element.label} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'label', 'value')} />
             <br />
+            <label>Field Name</label>
+            <input type="text" className={classNames({'form-control': true, 'grayed-input': !this.state.name_changed})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
+            <br/>
             <label>
               <input type="checkbox" checked={this_checked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required
             </label>
@@ -82,12 +98,6 @@ export default class FormElementsEdit extends React.Component {
             <label>
               <input type="checkbox" checked={public_checked} value={true} onChange={this.editElementProp.bind(this, 'public', 'checked')} /> Public
             </label>
-          </div>
-        }
-        { this.props.element.hasOwnProperty('name') &&
-          <div className="form-group">
-            <label>Field Name</label>
-            <input type="text" className="form-control" defaultValue={this.props.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
           </div>
         }
         { this.props.element.hasOwnProperty('step') &&

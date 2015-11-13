@@ -166,6 +166,10 @@
         // width: 80%;
         left: 0;
         transition: .5s;
+
+        .grayed-input {
+          color: #999999;
+        }
       }
     }
   }
