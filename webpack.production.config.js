@@ -10,14 +10,6 @@ module.exports = {
     libraryTarget: 'umd',
   },
 
-  externals: {
-    //don't bundle the 'react' npm package with our bundle.js
-    //but get it from a global 'React' variable
-    'react': 'react',
-    'jquery': 'jquery',
-    'bootstrap': 'bootstrap'
-  },
-
   module: {
     loaders: [
       {
