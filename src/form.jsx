@@ -107,25 +107,48 @@ export default class ReactForm extends React.Component {
     return true;
   }
 
+  /**
+   * Validate the form and return errors
+   * @return {Array} An array of errors
+   */
+  validate() {
+      let $form = ReactDOM.findDOMNode(this.refs.form);
+      let errors = [];
+      this.props.data.forEach(item => {
+        if (item.element === "Signature")
+          this._getSignatureImg(item);
+
+        if (this._isInvalid(item))
+          errors.push(item.label + " is required!");
+
+        if (this.props.validateForCorrectness && this._isIncorrect(item))
+          errors.push(item.label + " was answered incorrectly!");
+      });
+
+      return errors;
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    let $form = ReactDOM.findDOMNode(this.refs.form);
-    let errors = [];
-    this.props.data.forEach(item => {
-      if (item.element === "Signature")
-        this._getSignatureImg(item);
 
-      if (this._isInvalid(item))
-        errors.push(item.label + " is required!");
+    var errors  = [];
 
-      if (this.props.validateForCorrectness && this._isIncorrect(item))
-        errors.push(item.label + " was answered incorrectly!");
-    });
-    // publish errors, if any
-    this.emitter.emit('formValidation', errors);
+    if (this.props.validate !== false) {
+        errors = this.validate();
+    }
 
-    if (errors.length < 1) {
-        console.log(serializeForm($form, {hash: true}));
+    var isValid = errors.length < 1;
+
+    if (isValid) {
+        let $form = ReactDOM.findDOMNode(this.refs.form);
+        if (this.props.handleSubmit) {
+            this.props.handleSubmit(serializeForm($form, {hash: true}));
+        } else {
+             $form.submit();
+        }
+    } else {
+        // publish errors, if any
+        this.emitter.emit('formValidation', errors);
     }
   }
 
@@ -186,7 +209,12 @@ export default class ReactForm extends React.Component {
       <div>
         <FormValidator emitter={this.emitter} />
         <div className="react-form-builder-form">
-          <form encType="multipart/form-data" ref="form" action={this.props.form_action} onSubmit={this.handleSubmit.bind(this)} method={this.props.form_method}>
+          <form
+              encType="multipart/form-data"
+              ref="form"
+              action={this.props.form_action}
+              onSubmit={this.props.handleSubmit.bind(this.props.parent, this) || this.handleSubmit.bind(this)}
+              method={this.props.form_method}>
             { this.props.authenticity_token &&
               <div style={formTokenStyle}>
                 <input name="utf8" type="hidden" value="&#x2713;" />
@@ -196,8 +224,11 @@ export default class ReactForm extends React.Component {
             }
             {items}
             <div className="text-right">
-                <a href={this.props.back_action} className="btn btn-default btn-cancel btn-big"> Cancel</a>
-                <input type="submit" className="btn btn-primary btn-big btn-agree" value="Submit" />
+                {
+                    this.props.back_action &&
+                    <a href={this.props.back_action} className="btn btn-default btn-cancel btn-big"> Cancel</a>
+                }
+                <input type="submit" className="btn btn-primary btn-big btn-agree" value={this.props.submitLabel} />
             </div>
           </form>
         </div>
@@ -208,5 +239,7 @@ export default class ReactForm extends React.Component {
 
 ReactForm.defaultProps = {
     answer_data:            {},
-    validateForCorrectness: false
+    validate:               true,
+    validateForCorrectness: false,
+    submitLabel:            'Submit'
 };
