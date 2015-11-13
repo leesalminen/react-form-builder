@@ -150,11 +150,11 @@ export default class ReactForm extends React.Component {
         if (this.props.handleInvalid) {
             this.props.handleInvalid(errors);
         }
+    }
 
-        if (this.props.showErrors !== false) {
-            // publish errors, if any
-            this.emitter.emit('formValidation', errors);
-        }
+    if (this.props.showErrors !== false) {
+        // publish errors, if any
+        this.emitter.emit('formValidation', errors);
     }
   }
 
