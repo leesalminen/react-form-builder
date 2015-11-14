@@ -57,7 +57,9 @@ export default class Preview extends React.Component {
     } else {
 
       if (data.length > this.state.data.length) {
-        this.props.editModeOn.call(this.props.parent, data[data.length - 1]);
+        if (data[data.length - 1].hasOptions !== false) {
+          this.props.editModeOn.call(this.props.parent, data[data.length - 1]);    
+        }
       }
 
       this.setState({

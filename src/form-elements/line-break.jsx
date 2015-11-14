@@ -12,6 +12,7 @@ export default React.createClass({
           key: 'LineBreak',
           name: 'Line Break',
           static: true,
+          hasOptions: false,
           icon: 'fa fa-arrows-h'
         }
       }
