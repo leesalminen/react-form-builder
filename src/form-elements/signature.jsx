@@ -1,12 +1,13 @@
 import React from 'react';
 import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
+import FormElementMixin from './util/form-element-mixin.jsx';
 import SignaturePad from 'react-signature-pad';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
 export default React.createClass({
-  mixins: [SortableItemMixin],
+  mixins: [SortableItemMixin, FormElementMixin],
   statics: {
       toolbarEntry: function() {
         return {
@@ -42,7 +43,7 @@ export default React.createClass({
     return this.renderWithSortable(
       <div className="rfb-item">
         { !this.props.mutable &&
-          <HeaderBar parent={this.props.parent} editModeOn={this.props.editModeOn} data={this.props.data} onDestroy={this.props._onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
+          <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
           <HeaderLabels data={this.props.data} mutable={this.props.mutable} />

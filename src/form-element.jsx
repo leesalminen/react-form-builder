@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderBar from './header-bar';
 import TextAreaAutosize from 'react-textarea-autosize';
-var SortableItemMixin = require('react-sortable-items/SortableItemMixin')
+import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
