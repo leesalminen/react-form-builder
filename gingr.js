@@ -8,6 +8,20 @@ require('./css/application.css.scss');
 
 var formData = [
     {
+        "id": "5A909057-A579-4AE4-A1BE-D8E97E2D284C",
+        "element": "Dropdown",
+        "text": "Dropdown",
+        "required": false,
+        "key": "Dropdown",
+        "canHaveAnswer": true,
+        "name": "home_location",
+        "icon": "fa fa-caret-square-o-down",
+        "label": "Home Location",
+        "field_name": "dropdown_306D87A4-B7A0-469E-973D-2251D31C3246",
+        "optionsUrl": "/options.json",
+        "required": true
+    },
+    {
         "id": "E81D8B30-300D-43BC-8BF5-E9A99B5A41E7",
         "element": "TextInput",
         "text": "Text Input",

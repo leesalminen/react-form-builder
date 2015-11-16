@@ -23,14 +23,38 @@ export default React.createClass({
             {value: 'option1', label: 'Option 1', key: 'dropdown_option_' + ID.uuid()},
             {value: 'option2', label: 'Option 2', key: 'dropdown_option_' + ID.uuid()},
             {value: 'option3', label: 'Option 3', key: 'dropdown_option_' + ID.uuid()}
-          ]
+          ],
+          optionsUrl: ''
         };
       }
+  },
+  getOptions(input, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', encodeURI(this.props.data.optionsUrl));
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        callback(null,
+            {
+                options: JSON.parse(xhr.responseText),
+                complete: true
+            }
+        );
+      }
+      else {
+        callback('Error retrieving async options');
+      }
+    };
+    xhr.send();
   },
   render() {
     let props = {};
     props.name = this.props.data.name;
-    props.options = this.props.data.options;
+
+    if (this.props.data.optionsUrl) {
+      props.asyncOptions = this.getOptions;
+    } else{
+      props.options = this.props.data.options;
+    }
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;

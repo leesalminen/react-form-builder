@@ -141,7 +141,15 @@ export default class FormElementsEdit extends React.Component {
           </div>
         }
         { this.props.element.hasOwnProperty('options') &&
-          <DynamicOptionList showCorrectColumn={this.props.showCorrectColumn} data={this.props.preview.state.data} updateElement={this.props.updateElement} preview={this.props.preview} element={this.props.element} key={this.props.element.options.length} />
+          <div className="form-group">
+            <DynamicOptionList showCorrectColumn={this.props.showCorrectColumn} data={this.props.preview.state.data} updateElement={this.props.updateElement} preview={this.props.preview} element={this.props.element} key={this.props.element.options.length} />
+          </div>
+        }
+        { this.props.element.hasOwnProperty('optionsUrl') &&
+            <div className="form-group">
+              <label>Options URL</label>
+              <input type="text" className="form-control" defaultValue={this.props.element.optionsUrl} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'optionsUrl', 'value')} />
+            </div>
         }
       </div>
     );
