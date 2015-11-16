@@ -19,7 +19,7 @@ export default class DynamicOptionList extends React.Component {
   }
   editOption(option_index, e) {
     let this_element = this.state.element;
-    this_element.options[option_index].text = e.target.value;
+    this_element.options[option_index].label = e.target.value;
     this_element.options[option_index].value = this._setValue(e.target.value);
     this.setState({
       element: this_element,
@@ -46,7 +46,7 @@ export default class DynamicOptionList extends React.Component {
   }
   addOption(index) {
     let this_element = this.state.element;
-    this_element.options.splice(index+1,0,{value: '', text: '', key: ID.uuid()});
+    this_element.options.splice(index+1,0,{value: '', label: '', key: ID.uuid()});
     this.props.updateElement.call(this.props.preview, this_element);
   }
   removeOption(index) {
@@ -71,7 +71,7 @@ export default class DynamicOptionList extends React.Component {
                 <li className="clearfix" key={this_key}>
                   <div className="row">
                     <div className="col-sm-8">
-                      <input tabIndex={index+1} className="form-control" style={{width: '100%'}} type="text" name={'text_'+index} placeholder="Option text" value={option.text} onBlur={this.updateOption.bind(this)} onChange={this.editOption.bind(this, index)} />
+                      <input tabIndex={index+1} className="form-control" style={{width: '100%'}} type="text" name={'label_'+index} placeholder="Option Label" value={option.label} onBlur={this.updateOption.bind(this)} onChange={this.editOption.bind(this, index)} />
                     </div>
                     <div className="col-sm-1">
                       <input className="form-control" type="checkbox" value="1" onChange={this.editOptionCorrect.bind(this, index)} checked={option.hasOwnProperty("correct")} />

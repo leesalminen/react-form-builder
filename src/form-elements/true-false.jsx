@@ -19,8 +19,8 @@ export default React.createClass({
           label: 'True or False',
           field_name: 'truefalse_',
           options: [
-            {value: '1', text: 'Yes/On', key: 'truefalse_option_' + ID.uuid()},
-            {value: '0', text: 'No/Off', key: 'truefalse_option_' + ID.uuid()}
+            {value: '1', label: 'Yes/On', key: 'truefalse_option_' + ID.uuid()},
+            {value: '0', label: 'No/Off', key: 'truefalse_option_' + ID.uuid()}
           ]
         };
       }

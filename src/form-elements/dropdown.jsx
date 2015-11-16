@@ -1,4 +1,5 @@
 import React from 'react';
+import Select from 'react-select';
 import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
 import FormElementMixin from './util/form-element-mixin.jsx';
 
@@ -19,17 +20,17 @@ export default React.createClass({
           label: 'Placeholder Label',
           field_name: 'dropdown_',
           options: [
-            {value: '', text: '', key: 'dropdown_option_' + ID.uuid()},
-            {value: '', text: '', key: 'dropdown_option_' + ID.uuid()},
-            {value: '', text: '', key: 'dropdown_option_' + ID.uuid()}
+            {value: 'option1', label: 'Option 1', key: 'dropdown_option_' + ID.uuid()},
+            {value: 'option2', label: 'Option 2', key: 'dropdown_option_' + ID.uuid()},
+            {value: 'option3', label: 'Option 3', key: 'dropdown_option_' + ID.uuid()}
           ]
         };
       }
   },
   render() {
     let props = {};
-    props.className = "form-control";
     props.name = this.props.data.name;
+    props.options = this.props.data.options;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
@@ -42,11 +43,7 @@ export default React.createClass({
         }
         <div className="form-group">
           <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
-          <select {...props}>
-            {this.props.data.options.map(function (option, index) {
-              return <option value={option.value} key={props.name + '_' + index}>{option.label}</option>;
-            })}
-          </select>
+          <Select {...props} />
         </div>
       </div>
     );

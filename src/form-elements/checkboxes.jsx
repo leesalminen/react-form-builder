@@ -19,9 +19,9 @@ export default React.createClass({
           label: 'Placeholder Label',
           field_name: 'checkboxes_',
           options: [
-            {value: 'place_holder_option_1', text: 'Place holder option 1', key: 'checkboxes_option_' + ID.uuid()},
-            {value: 'place_holder_option_2', text: 'Place holder option 2', key: 'checkboxes_option_' + ID.uuid()},
-            {value: 'place_holder_option_3', text: 'Place holder option 3', key: 'checkboxes_option_' + ID.uuid()}
+            {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'checkboxes_option_' + ID.uuid()},
+            {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'checkboxes_option_' + ID.uuid()},
+            {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'checkboxes_option_' + ID.uuid()}
           ]
         };
       }
@@ -48,7 +48,7 @@ export default React.createClass({
             }
             return (
               <label className="checkbox-label" key={this_key}>
-                <input {...props} /> {option.text}
+                <input {...props} /> {option.label}
               </label>
             )
           })}

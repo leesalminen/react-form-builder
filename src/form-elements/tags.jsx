@@ -20,9 +20,9 @@ export default React.createClass({
           label: 'Placeholder Label',
           field_name: 'tags_',
           options: [
-            {value: 'place_holder_tag_1', text: 'Place holder tag 1', key: 'tags_option_' + ID.uuid()},
-            {value: 'place_holder_tag_2', text: 'Place holder tag 2', key: 'tags_option_' + ID.uuid()},
-            {value: 'place_holder_tag_3', text: 'Place holder tag 3', key: 'tags_option_' + ID.uuid()}
+            {value: 'place_holder_tag_1', label: 'Place holder tag 1', key: 'tags_option_' + ID.uuid()},
+            {value: 'place_holder_tag_2', label: 'Place holder tag 2', key: 'tags_option_' + ID.uuid()},
+            {value: 'place_holder_tag_3', label: 'Place holder tag 3', key: 'tags_option_' + ID.uuid()}
           ]
         };
       }
