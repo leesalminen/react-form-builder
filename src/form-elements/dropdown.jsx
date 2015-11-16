@@ -28,6 +28,16 @@ export default React.createClass({
         };
       }
   },
+  getInitialState() {
+    return {
+        value: null
+    }
+  },
+  handleChange(value) {
+      this.setState({
+          value: value
+      });
+  },
   getOptions(input, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', encodeURI(this.props.data.optionsUrl));
@@ -60,6 +70,7 @@ export default React.createClass({
       props.defaultValue = this.props.defaultValue;
       props.ref = "child_ref_" + this.props.data.field_name;
     }
+
     return this.renderWithSortable(
       <div className="rfb-item">
         { !this.props.mutable &&
@@ -67,7 +78,10 @@ export default React.createClass({
         }
         <div className="form-group">
           <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
-          <Select {...props} />
+          <Select
+            {...props}
+            value       = {this.state.value}
+            onChange    = {this.handleChange.bind(this)}/>
         </div>
       </div>
     );
