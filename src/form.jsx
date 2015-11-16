@@ -78,7 +78,7 @@ export default class ReactForm extends React.Component {
           if ($item.value === 0)
             invalid = true;
         } else {
-          if (item.element === "Tags") {
+          if (item.element === "Tags" || item.element === "Dropdown") {
             $item = {};
             $item.value = this.refs[item.field_name].refs["child_ref_"+item.field_name].state.value
           } else {
