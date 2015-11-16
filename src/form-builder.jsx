@@ -10,6 +10,8 @@ import FormGenerator from './form';
 
 let FormBuilders = {};
 
+require('../css/application.css.scss');
+
 class FormBuilder extends React.Component {
 
   constructor(props) {
