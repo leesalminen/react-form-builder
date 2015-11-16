@@ -9,8 +9,8 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Header',
-          name: 'Header Text',
+          element: 'Header',
+          displayName: 'Header Text',
           icon: 'fa fa-header',
           static: true,
           content: 'Placeholder Text...'

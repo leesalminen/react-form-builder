@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: {
     app:   ["webpack/hot/dev-server", "./app.js"],
@@ -24,5 +26,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.json', '.jsx', '.css', '.scss']
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+        _: 'lodash'
+    })
+  ]
 }

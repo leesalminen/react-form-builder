@@ -11,17 +11,16 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Signature',
-          name: 'Signature',
+          element: 'Signature',
+          displayName: 'Signature',
           icon: 'fa fa-pencil-square-o',
-          label: 'Signature',
-          field_name: 'signature_'
+          label: 'Signature'
         };
       }
   },
   componentDidMount() {
     if (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) {
-      let canvas = this.refs['canvas_'+this.props.data.field_name];
+      let canvas = this.refs['canvas_'+this.props.data.name];
       canvas.fromDataURL('data:image/png;base64,' + this.props.defaultValue);
     }
   },
@@ -32,13 +31,13 @@ export default React.createClass({
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
     }
     let pad_props = {};
     pad_props.clearButton = {true};
     if (this.props.mutable) {
       pad_props.defaultValue = this.props.defaultValue;
-      pad_props.ref = 'canvas_'+this.props.data.field_name;
+      pad_props.ref = 'canvas_'+this.props.data.name;
     }
     return this.renderWithSortable(
       <div className="rfb-item">

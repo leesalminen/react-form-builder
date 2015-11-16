@@ -6,7 +6,6 @@ import React from 'react';
 import ToolbarItem from './toolbar-item';
 import ID from './UUID';
 import ElementActions from './actions/ElementActions';
-import _ from 'lodash';
 
 import FormElements from './form-elements.jsx';
 
@@ -48,31 +47,14 @@ export default class Toolbar extends React.Component {
   }
 
   _onClick(item) {
-
-    var elementOptions = {
-      id:       ID.uuid(),
-      element:  item.key,
-      text:     item.name,
-      static:   item.static,
-      required: false
-    };
-
-    _.extend(elementOptions, item);
-
-    if (item.field_name) {
-      elementOptions['field_name'] = item.field_name + ID.uuid();
-    }
+    var elementData = _.cloneDeep(item);
+    elementData.id = ID.uuid(); // Assign a temporary ID here so the preview doesn't get messed up if we have 2 items with the same ID
 
     if (item.label) {
-      elementOptions['label'] = item.label;
-      elementOptions['name']  = _.snakeCase(item.label);
-    } else {
-        if (elementOptions['field_name']) {
-          elementOptions['name'] = elementOptions['field_name'];
-        }
+      elementData.name = _.snakeCase(item.label);
     }
 
-    ElementActions.createElement(elementOptions);
+    ElementActions.createElement(elementData);
   }
 
   render() {
@@ -83,7 +65,7 @@ export default class Toolbar extends React.Component {
           {
             this.state.items.map(item => {
               let data = item.toolbarEntry();
-              return <ToolbarItem data={data} key={data.key} onClick={this._onClick.bind(this, data) } />;
+              return <ToolbarItem data={data} key={data.element} onClick={this._onClick.bind(this, data) } />;
             })
           }
         </ul>

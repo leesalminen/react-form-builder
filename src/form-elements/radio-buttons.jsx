@@ -12,12 +12,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'RadioButtons',
-          canHaveAnswer: true,
-          name: 'Multiple Choice',
+          element: 'RadioButtons',
+          displayName: 'Multiple Choice',
           icon: 'fa fa-dot-circle-o',
           label: 'Placeholder Label',
-          field_name: 'radio_buttons_',
           options: [
             {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'radiobuttons_option_' + ID.uuid()},
             {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'radiobuttons_option_' + ID.uuid()},

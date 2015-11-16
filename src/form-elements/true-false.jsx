@@ -12,12 +12,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'TrueFalse',
-          canHaveAnswer: true,
-          name: 'True / False',
+          element: 'TrueFalse',
+          displayName: 'True / False',
           icon: 'fa fa-dot-circle-o',
           label: 'True or False',
-          field_name: 'truefalse_',
           options: [
             {value: '1', label: 'Yes/On', key: 'truefalse_option_' + ID.uuid()},
             {value: '0', label: 'No/Off', key: 'truefalse_option_' + ID.uuid()}

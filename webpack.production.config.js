@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: {
     app: ["./src/form-builder.jsx"]
@@ -37,5 +39,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.json', '.jsx', '.css', '.scss']
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+        _: 'lodash'
+    })
+  ]
 }

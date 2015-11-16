@@ -9,8 +9,8 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'HyperLink',
-          name: 'Web site',
+          element: 'HyperLink',
+          displayName: 'Web site',
           icon: 'fa fa-link',
           static: true,
           content: 'Placeholder Web site link ...',

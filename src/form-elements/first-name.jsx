@@ -10,12 +10,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'FirstName',
-          canHaveAnswer: true,
-          name: 'First Name',
+          element: 'FirstName',
+          displayName: 'First Name',
           label: 'First Name',
           icon: 'fa fa-male',
-          field_name: 'first_name_',
           isUnique: true
         };
       }
@@ -28,7 +26,7 @@ export default React.createClass({
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
     }
     return this.renderWithSortable(
       <div className="rfb-item">

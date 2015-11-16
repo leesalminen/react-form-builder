@@ -13,12 +13,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Dropdown',
-          canHaveAnswer: true,
-          name: 'Dropdown',
+          element: 'Dropdown',
+          displayName: 'Dropdown',
           icon: 'fa fa-caret-square-o-down',
           label: 'Placeholder Label',
-          field_name: 'dropdown_',
           options: [
             {value: 'option1', label: 'Option 1', key: 'dropdown_option_' + ID.uuid()},
             {value: 'option2', label: 'Option 2', key: 'dropdown_option_' + ID.uuid()},
@@ -66,7 +64,7 @@ export default React.createClass({
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
       props.value = this.state.value;
       props.onChange = this.handleChange;
     }

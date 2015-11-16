@@ -11,11 +11,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Range',
-          name: 'Range',
+          element: 'Range',
+          displayName: 'Range',
           icon: 'fa fa-sliders',
           label: 'Placeholder Label',
-          field_name: 'range_',
           step: 1,
           default_value: 3,
           min_value: 1,
@@ -29,7 +28,7 @@ export default React.createClass({
     let props = {};
     props.type = "range";
     props.name = this.props.data.name;
-    props.list = "tickmarks_" + this.props.data.field_name;
+    props.list = "tickmarks_" + this.props.data.name;
     props.min = this.props.data.min_value;
     props.max = this.props.data.max_value;
     props.step = this.props.data.step;
@@ -37,7 +36,7 @@ export default React.createClass({
     props.defaultValue = this.props.defaultValue !== undefined ? parseInt(this.props.defaultValue, 10) : parseInt(this.props.data.default_value, 10);
 
     if (this.props.mutable) {
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
     }
 
     let datalist = [];

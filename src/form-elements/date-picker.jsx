@@ -10,11 +10,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'DatePicker',
-          name: 'Date',
+          element: 'DatePicker',
+          displayName: 'Date',
           icon: 'fa fa-calendar',
-          label: 'Placeholder Label',
-          field_name: 'date_picker_'
+          label: 'Placeholder Label'
         };
       }
   },
@@ -26,7 +25,7 @@ export default React.createClass({
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
     }
     return this.renderWithSortable(
       <div className="rfb-item">

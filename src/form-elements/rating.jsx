@@ -11,12 +11,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Rating',
-          canHaveAnswer: true,
-          name: 'Rating',
+          element: 'Rating',
+          displayName: 'Rating',
           label: 'Placeholder Label',
-          icon: 'fa fa-star',
-          field_name: 'rating_'
+          icon: 'fa fa-star'
         };
       }
   },
@@ -28,7 +26,7 @@ export default React.createClass({
     if (this.props.mutable) {
       props.rating = (this.props.defaultValue !== undefined && this.props.defaultValue.length) ? parseFloat(this.props.defaultValue, 10) : 0;
       props.editing = true;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
     }
     return this.renderWithSortable(
       <div className="rfb-item">

@@ -13,12 +13,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Tags',
-          canHaveAnswer: true,
-          name: 'Tags',
+          element: 'Tags',
+          displayName: 'Tags',
           icon: 'fa fa-tags',
           label: 'Placeholder Label',
-          field_name: 'tags_',
           options: [
             {value: 'place_holder_tag_1', label: 'Place holder tag 1', key: 'tags_option_' + ID.uuid()},
             {value: 'place_holder_tag_2', label: 'Place holder tag 2', key: 'tags_option_' + ID.uuid()},
@@ -47,7 +45,7 @@ export default React.createClass({
     if (this.props.mutable) {
       props.value = this.state.value;
       props.onChange = this.handleChange;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
     }
     return this.renderWithSortable(
       <div className="rfb-item">

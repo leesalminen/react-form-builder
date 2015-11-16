@@ -49,11 +49,11 @@ export default class FormElementsEdit extends React.Component {
     }
   }
   render() {
-    let this_checked = this.props.element.hasOwnProperty('required') ? this.props.element.required : false;
-    let public_checked = this.props.element.hasOwnProperty('public') ? this.props.element.public   : false;
-    let this_files = this.props.files.length ? this.props.files : [];
-    if (this_files.length < 1 || this_files.length > 0 && this_files[0].id !== "")
-      this_files.unshift({id: '', file_name: ''});
+    let requiredChecked = _.get(this.props.element, 'required', false);
+    let publicChecked   = _.get(this.props.element, 'public', false);
+    let thisFiles = this.props.files.length ? this.props.files : [];
+    if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "")
+      thisFiles.unshift({id: '', file_name: ''});
     return (
       <div>
         <div className="clearfix">
@@ -70,7 +70,7 @@ export default class FormElementsEdit extends React.Component {
           <div className="form-group">
             <label>Choose file:</label>
             <select className="form-control" defaultValue={this.props.element.file_path} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'file_path', 'value')}>
-              {this_files.map(function (file) {
+              {thisFiles.map(function (file) {
                 let this_key = 'file_' + file.id;
                 return <option value={file.id} key={this_key}>{file.file_name}</option>;
               })}
@@ -92,11 +92,11 @@ export default class FormElementsEdit extends React.Component {
             <input type="text" className={classNames({'form-control': true, 'grayed-input': !this.state.name_changed})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
             <br/>
             <label>
-              <input type="checkbox" checked={this_checked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required
+              <input type="checkbox" checked={requiredChecked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required
             </label>
             <br />
             <label>
-              <input type="checkbox" checked={public_checked} value={true} onChange={this.editElementProp.bind(this, 'public', 'checked')} /> Public
+              <input type="checkbox" checked={publicChecked} value={true} onChange={this.editElementProp.bind(this, 'public', 'checked')} /> Public
             </label>
           </div>
         }
@@ -151,6 +151,7 @@ export default class FormElementsEdit extends React.Component {
               <input type="text" className="form-control" defaultValue={this.props.element.optionsUrl} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'optionsUrl', 'value')} />
             </div>
         }
+        <button className="pull-right btn btn-primary" onClick={this.props.manualEditModeOff}>Save</button>
       </div>
     );
   }

@@ -9,8 +9,8 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'LineBreak',
-          name: 'Line Break',
+          element: 'LineBreak',
+          displayName: 'Line Break',
           static: true,
           hasOptions: false,
           icon: 'fa fa-arrows-h'

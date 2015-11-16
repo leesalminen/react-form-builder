@@ -11,11 +11,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Camera',
-          name: 'Camera',
+          element: 'Camera',
+          displayName: 'Camera',
           icon: 'fa fa-camera',
-          label: 'Placeholder Label',
-          field_name: 'camera_'
+          label: 'Placeholder Label'
         };
       }
   },

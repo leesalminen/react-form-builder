@@ -10,12 +10,10 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'TextArea',
-          canHaveAnswer: true,
-          name: 'Multi-line Input',
+          element: 'TextArea',
+          displayName: 'Multi-line Input',
           label: 'Placeholder Label',
-          icon: 'fa fa-text-height',
-          field_name: 'text_area_'
+          icon: 'fa fa-text-height'
         };
       }
   },
@@ -26,7 +24,7 @@ export default React.createClass({
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
     }
     return this.renderWithSortable(
       <div className="rfb-item">

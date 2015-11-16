@@ -29,7 +29,7 @@ export default class ReactForm extends React.Component {
     if (item.canHaveAnswer) {
       if (item.element === "Checkboxes" || item.element === "RadioButtons") {
         item.options.forEach(option => {
-          let $option = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+option.key]);
+          let $option = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+option.key]);
           if ((option.hasOwnProperty("correct") && !$option.checked) || (!option.hasOwnProperty("correct") && $option.checked))
             incorrect = true;
         })
@@ -37,15 +37,15 @@ export default class ReactForm extends React.Component {
         let $item = null
         if (item.element === "Rating") {
           $item = {};
-          $item.value = this.refs[item.field_name].refs["child_ref_"+item.field_name].state.rating;
+          $item.value = this.refs[item.name].refs["child_ref_"+item.name].state.rating;
           if ($item.value.toString() !== item.correct)
             incorrect = true;
         } else {
           if (item.element === "Tags") {
             $item = {};
-            $item.value = this.refs[item.field_name].refs["child_ref_"+item.field_name].state.value
+            $item.value = this.refs[item.name].refs["child_ref_"+item.name].state.value
           } else {
-            $item = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
+            $item = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+item.name]);
             $item.value = $item.value.trim();
           }
 
@@ -63,7 +63,7 @@ export default class ReactForm extends React.Component {
       if (item.element === "Checkboxes" || item.element === "RadioButtons") {
         let checked_options = 0;
         item.options.forEach(option => {
-          let $option = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+option.key]);
+          let $option = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+option.key]);
           if ($option.checked)
             checked_options += 1;
         })
@@ -74,15 +74,15 @@ export default class ReactForm extends React.Component {
         let $item = null
         if (item.element === "Rating") {
           $item = {};
-          $item.value = this.refs[item.field_name].refs["child_ref_"+item.field_name].state.rating;
+          $item.value = this.refs[item.name].refs["child_ref_"+item.name].state.rating;
           if ($item.value === 0)
             invalid = true;
         } else {
           if (item.element === "Tags" || item.element === "Dropdown") {
             $item = {};
-            $item.value = this.refs[item.field_name].refs["child_ref_"+item.field_name].state.value
+            $item.value = this.refs[item.name].refs["child_ref_"+item.name].state.value
           } else {
-            $item = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
+            $item = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+item.name]);
             $item.value = $item.value.trim();
           }
 
@@ -95,10 +95,10 @@ export default class ReactForm extends React.Component {
   }
 
   _getSignatureImg(item) {
-    let $canvas_sig = this.refs[item.field_name].refs["canvas_"+item.field_name]
+    let $canvas_sig = this.refs[item.name].refs["canvas_"+item.name]
     let base64 = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
     let isEmpty = $canvas_sig.isEmpty();
-    let $input_sig = ReactDOM.findDOMNode(this.refs[item.field_name].refs["child_ref_"+item.field_name]);
+    let $input_sig = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+item.name]);
     if (isEmpty) {
       $input_sig.value = "";
     } else {
@@ -179,25 +179,25 @@ export default class ReactForm extends React.Component {
         case "LineBreak":
           return <LineBreak mutable={true} key={'form_'+item.id} data={item} />
         case "TextInput":
-          return <TextInput ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
-        case "FirstName":
-          return <FirstName ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <TextInput ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
+        case "FirstName":``
+          return <FirstName ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "TextArea":
-          return <TextArea ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <TextArea ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "Dropdown":
-          return <Dropdown ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <Dropdown ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "Checkboxes":
-          return <Checkboxes ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this._checkboxesDefaultValue(item)} />
+          return <Checkboxes ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this._checkboxesDefaultValue(item)} />
         case "DatePicker":
-          return <DatePicker ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <DatePicker ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "RadioButtons":
-          return <RadioButtons ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <RadioButtons ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "Rating":
-          return <Rating ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <Rating ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "Tags":
-          return <Tags ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <Tags ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "Signature":
-          return <Signature ref={item.field_name} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <Signature ref={item.name} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "HyperLink":
           return <HyperLink mutable={true} key={'form_'+item.id} data={item} />
         case "Download":
@@ -205,13 +205,13 @@ export default class ReactForm extends React.Component {
         case "Camera":
           return <Camera mutable={true} key={'form_'+item.id} data={item} />
         case "Range":
-          return <Range ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <Range ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "TrueFalse":
-          return <TrueFalse ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <TrueFalse ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "Email":
-          return <Email ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <Email ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         case "Telephone":
-          return <Telephone ref={item.field_name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.field_name]} />
+          return <Telephone ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.id} data={item} defaultValue={this.props.answer_data[item.name]} />
         default:
           console.error('Form element type ' + item.element + ' does not exist')
           return null

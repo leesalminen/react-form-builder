@@ -10,18 +10,16 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Telephone',
-          canHaveAnswer: true,
-          name: 'Telephone',
+          element: 'Telephone',
+          displayName: 'Telephone',
           label: 'Telephone',
-          icon: 'fa fa-phone',
-          field_name: 'telephone_'
+          icon: 'fa fa-phone'
         };
       }
   },
   componentDidMount() {
     if(this.props.prefs) {
-      $(this.refs['child_ref_' + this.props.data.field_name]).mask(this.props.prefs.telephone_format);
+      $(this.refs['child_ref_' + this.props.data.name]).mask(this.props.prefs.telephone_format);
     }
   },
   render() {
@@ -32,7 +30,7 @@ export default React.createClass({
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
     }
     return this.renderWithSortable(
       <div className="rfb-item">

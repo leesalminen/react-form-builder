@@ -9,8 +9,8 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Paragraph',
-          name: 'Paragraph',
+          element: 'Paragraph',
+          displayName: 'Paragraph',
           static: true,
           icon: 'fa fa-paragraph',
           content: 'Placeholder Text...'

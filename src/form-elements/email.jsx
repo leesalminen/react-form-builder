@@ -5,19 +5,15 @@ import FormElementMixin from './util/form-element-mixin.jsx';
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-import _ from 'lodash';
-
 export default React.createClass({
   mixins: [SortableItemMixin, FormElementMixin],
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Email',
-          canHaveAnswer: true,
-          name: 'Email',
+          element: 'Email',
+          displayName: 'Email',
           label: 'Email',
-          icon: 'fa fa-envelope',
-          field_name: 'email_'
+          icon: 'fa fa-envelope'
         };
       }
   },
@@ -30,7 +26,7 @@ export default React.createClass({
   },
   componentDidMount() {
     var self = this;
-    var ref  = self.refs['child_ref_' + self.props.data.field_name];
+    var ref  = self.refs['child_ref_' + self.props.data.name];
 
     if(!_.isUndefined(ref)) {
       $.getScript("https://demo.gingrapp.com/assets/js/mailgun_validator.js", function() {
@@ -103,7 +99,7 @@ export default React.createClass({
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.field_name;
+      props.ref = "child_ref_" + this.props.data.name;
 
       if(!_.isNull(this.state.email)) {
         props.value = this.state.value;

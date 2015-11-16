@@ -9,13 +9,12 @@ export default React.createClass({
   statics: {
       toolbarEntry: function() {
         return {
-          key: 'Download',
-          name: 'File Attachment',
+          element: 'Download',
+          displayName: 'File Attachment',
           icon: 'fa fa-file',
           static: true,
           content: 'Placeholder file name ...',
-          field_name: 'download_',
-          file_path: '',
+          filePath: '',
           _href: ''
         };
       }
@@ -27,7 +26,7 @@ export default React.createClass({
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <a href={this.props.download_path + '?id=' + this.props.data.file_path}>{this.props.data.content}</a>
+          <a href={this.props.download_path + '?id=' + this.props.data.filePath}>{this.props.data.content}</a>
         </div>
       </div>
     );
