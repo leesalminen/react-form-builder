@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: ["./src/form-builder.jsx"]
+    app: ["./src/app.jsx"]
   },
 
   output: {

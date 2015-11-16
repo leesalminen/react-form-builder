@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import {EventEmitter} from 'fbemitter';
 import FormValidator from './form-validator';
 import serializeForm from 'form-serialize';
-import {Header,Paragraph,LineBreak,TextInput,FirstName,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,TrueFalse,Rating,Tags,Signature,HyperLink,Download,Camera,Range,Email,Telephone} from './form-elements';
+import * as FormElements from './form-elements';
 
 export default class ReactForm extends React.Component {
 
@@ -171,50 +171,34 @@ export default class ReactForm extends React.Component {
 
   render() {
     let items = this.props.data.map( item => {
+      let props = {
+          mutable:          true,
+          key:              'form_'+item.name,
+          ref:              item.name,
+          data:             item,
+      }
+
+      // Use this.props.answerData if available, otherwise use the item's default value
+      let defaultValue = _.get(this.props, ['answerData', item.name], _.get(item, 'defaultValue', false));
+
+      if (defaultValue) {
+          props.defaultValue = defaultValue;
+      }
+
+      // Attach any additional props necessary here
       switch (item.element) {
-        case "Header":
-          return <Header mutable={true} key={'form_'+item.name} data={item} />
-        case "Paragraph":
-          return <Paragraph mutable={true} key={'form_'+item.name} data={item} />
-        case "LineBreak":
-          return <LineBreak mutable={true} key={'form_'+item.name} data={item} />
-        case "TextInput":
-          return <TextInput ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "FirstName":``
-          return <FirstName ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "TextArea":
-          return <TextArea ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "Dropdown":
-          return <Dropdown ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "Checkboxes":
-          return <Checkboxes ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this._checkboxesDefaultValue(item)} />
-        case "DatePicker":
-          return <DatePicker ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "RadioButtons":
-          return <RadioButtons ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "Rating":
-          return <Rating ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "Tags":
-          return <Tags ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "Signature":
-          return <Signature ref={item.name} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "HyperLink":
-          return <HyperLink mutable={true} key={'form_'+item.name} data={item} />
         case "Download":
-          return <Download download_path={this.props.download_path} mutable={true} key={'form_'+item.name} data={item} />
-        case "Camera":
-          return <Camera mutable={true} key={'form_'+item.name} data={item} />
-        case "Range":
-          return <Range ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "TrueFalse":
-          return <TrueFalse ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "Email":
-          return <Email ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        case "Telephone":
-          return <Telephone ref={item.name} handleChange={this.handleChange} mutable={true} key={'form_'+item.name} data={item} defaultValue={this.props.answer_data[item.name]} />
-        default:
-          console.error('Form element type ' + item.element + ' does not exist')
-          return null
+          props.downloadPath = this.props.downloadPath;
+          break;
+      }
+
+      if (FormElements[item.element] !== undefined) {
+          return React.createElement(
+              FormElements[item.element],
+              props
+          );
+      } else {
+          console.warn('Invalid element type ' + item.element);
       }
     })
 

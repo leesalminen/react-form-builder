@@ -3,16 +3,11 @@
   */
 
 import React from 'react';
-import Preview from './preview'
+import FormBuilderPreview from './form-builder-preview'
 import Toolbar from './toolbar'
 import ElementActions from './actions/ElementActions';
-import FormGenerator from './form';
 
-let FormBuilders = {};
-
-require('../css/application.css.scss');
-
-class FormBuilder extends React.Component {
+export default class FormBuilder extends React.Component {
 
   constructor(props) {
     super(props);
@@ -66,7 +61,7 @@ class FormBuilder extends React.Component {
         <div className="react-form-builder clearfix">
           <div>
             <div className="react-form-builder-preview pull-left">
-              <Preview files={this.props.files}
+              <FormBuilderPreview files={this.props.files}
                 manualEditModeOff={this.manualEditModeOff.bind(this)}
                 parent={this}
                 url={this.props.url}
@@ -86,8 +81,3 @@ class FormBuilder extends React.Component {
   }
 
 }
-
-FormBuilders.FormBuilder = FormBuilder;
-FormBuilders.FormGenerator = FormGenerator;
-
-module.exports = FormBuilders;

@@ -26,7 +26,7 @@ export default React.createClass({
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <a href={this.props.download_path + '?id=' + this.props.data.filePath}>{this.props.data.content}</a>
+          <a href={this.props.downloadPath + '?id=' + this.props.data.filePath}>{this.props.data.content}</a>
         </div>
       </div>
     );

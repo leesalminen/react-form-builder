@@ -1,13 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import DemoBar from './demobar';
-import FormBuilder from "./src/form-builder";
-
-// Add our stylesheets for the demo.
-require('./css/application.css.scss');
+import { FormBuilder } from "./src/app";
 
 ReactDOM.render(
-  <FormBuilder.FormBuilder />,
+  <FormBuilder />,
   document.getElementById('form-builder')
 )
 

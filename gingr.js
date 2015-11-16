@@ -1,10 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import DemoBar from './demobar';
-import Form from "./src/form";
-
-// Add our stylesheets for the demo.
-require('./css/application.css.scss');
+import { FormGenerator } from "./src/app";
 
 var formData = [
     {
@@ -234,7 +231,7 @@ var formData = [
 ];
 
 ReactDOM.render(
-  <Form
+  <FormGenerator
     data={formData} />,
   document.getElementById('form-builder')
 )

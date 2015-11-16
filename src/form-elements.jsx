@@ -19,27 +19,25 @@ import TextArea     from './form-elements/text-area.jsx';
 import TextInput    from './form-elements/text-input.jsx';
 import TrueFalse    from './form-elements/true-false.jsx';
 
-let FormElements = {};
-
-FormElements.Camera = Camera;
-FormElements.Checkboxes = Checkboxes;
-FormElements.DatePicker = DatePicker;
-FormElements.Download = Download;
-FormElements.Dropdown = Dropdown;
-FormElements.Email = Email;
-FormElements.FirstName = FirstName;
-FormElements.Header = Header;
-FormElements.HyperLink = HyperLink;
-FormElements.LineBreak = LineBreak;
-FormElements.Paragraph = Paragraph;
-FormElements.RadioButtons = RadioButtons;
-FormElements.Range = Range;
-FormElements.Rating = Rating;
-FormElements.Signature = Signature;
-FormElements.Tags = Tags;
-FormElements.Telephone = Telephone;
-FormElements.TextArea = TextArea;
-FormElements.TextInput = TextInput;
-FormElements.TrueFalse = TrueFalse;
-
-module.exports = FormElements;
+export {
+    Camera,
+    Checkboxes,
+    DatePicker,
+    Download,
+    Dropdown,
+    Email,
+    FirstName,
+    Header,
+    HyperLink,
+    LineBreak,
+    Paragraph,
+    RadioButtons,
+    Range,
+    Rating,
+    Signature,
+    Tags,
+    Telephone,
+    TextArea,
+    TextInput,
+    TrueFalse
+}

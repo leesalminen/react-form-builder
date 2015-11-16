@@ -7,7 +7,7 @@ import ToolbarItem from './toolbar-item';
 import ID from './UUID';
 import ElementActions from './actions/ElementActions';
 
-import FormElements from './form-elements.jsx';
+import * as FormElements from './form-elements';
 
 export default class Toolbar extends React.Component {
 
