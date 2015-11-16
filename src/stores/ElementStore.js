@@ -94,7 +94,7 @@ var ElementStore = Reflux.createStore({
                     }
                 })
             } else {
-                console.log(_data);
+                console.log(JSON.stringify(_data));
             }
         } else {
             this.trigger(

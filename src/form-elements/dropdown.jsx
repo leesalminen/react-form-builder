@@ -43,9 +43,8 @@ export default React.createClass({
         <div className="form-group">
           <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
           <select {...props}>
-            {this.props.data.options.map(function (option) {
-              let this_key = 'preview_' + option.key;
-              return <option value={option.value} key={this_key}>{option.text}</option>;
+            {this.props.data.options.map(function (option, index) {
+              return <option value={option.value} key={props.name + '_' + index}>{option.label}</option>;
             })}
           </select>
         </div>
