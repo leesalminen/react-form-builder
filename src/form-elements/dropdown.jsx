@@ -81,7 +81,7 @@ export default React.createClass({
           <Select
             {...props}
             value       = {this.state.value}
-            onChange    = {this.handleChange.bind(this)}/>
+            onChange    = {this.handleChange}/>
         </div>
       </div>
     );
