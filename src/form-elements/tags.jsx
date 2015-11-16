@@ -41,12 +41,12 @@ export default React.createClass({
     let props = {};
     props.multi = true;
     props.name = this.props.data.name;
-    props.onChange = this.handleChange;
 
     props.options = options;
     if (!this.props.mutable) {props.value = options[0].text} // to show a sample of what tags looks like
     if (this.props.mutable) {
       props.value = this.state.value;
+      props.onChange = this.handleChange;
       props.ref = "child_ref_" + this.props.data.field_name;
     }
     return this.renderWithSortable(

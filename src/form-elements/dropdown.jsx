@@ -29,9 +29,7 @@ export default React.createClass({
       }
   },
   getInitialState() {
-    return {
-        value: null
-    }
+    return {value: this.props.defaultValue !== undefined ? this.props.defaultValue.split(",") : []};
   },
   handleChange(value) {
       this.setState({
@@ -69,6 +67,8 @@ export default React.createClass({
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
       props.ref = "child_ref_" + this.props.data.field_name;
+      props.value = this.state.value;
+      props.onChange = this.handleChange;
     }
 
     return this.renderWithSortable(
@@ -79,9 +79,7 @@ export default React.createClass({
         <div className="form-group">
           <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
           <Select
-            {...props}
-            value       = {this.state.value}
-            onChange    = {this.handleChange}/>
+            {...props} />
         </div>
       </div>
     );
