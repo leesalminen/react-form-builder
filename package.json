@@ -45,6 +45,7 @@
     "babel": "",
     "babel-core": "^6.1.4",
     "babel-loader": "^6.1.0",
+    "babel-polyfill": "^6.1.19",
     "babel-preset-es2015": "^6.1.4",
     "babel-preset-react": "^6.1.4",
     "css-loader": "^0.16.0",
