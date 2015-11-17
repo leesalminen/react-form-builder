@@ -85,58 +85,88 @@ export default class ReactForm extends React.Component {
             $item = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+item.name]);
             $item.value = $item.value.trim();
           }
-
-          if ($item.value.length < 1)
+          if ($item.value.length < 1) {
             invalid = true;
+          }
         }
       }
     }
     return invalid;
   }
 
-  _getSignatureImg(item) {
-    let $canvas_sig = this.refs[item.name].refs["canvas_"+item.name]
-    let base64 = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
-    let isEmpty = $canvas_sig.isEmpty();
-    let $input_sig = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+item.name]);
-    if (isEmpty) {
-      $input_sig.value = "";
-    } else {
-      $input_sig.value = base64;
-    }
-    return true;
-  }
-
   /**
    * Validate the form and return errors
-   * @return {Array} An array of errors
+   * @return {Promise} Resolves to true if valid, an array of error strings if invalid
    */
   validate() {
-      let $form = ReactDOM.findDOMNode(this.refs.form);
+      let self = this;
+
+      let $form = ReactDOM.findDOMNode(self.refs.form);
       let errors = [];
-      this.props.data.forEach(item => {
-        if (item.element === "Signature")
-          this._getSignatureImg(item);
+      let promises = [];
 
-        if (this._isInvalid(item))
-          errors.push(item.label + " is required!");
+      self.props.data.forEach(item => {
+        let $item = self.refs[item.name];
 
-        if (this.props.validateForCorrectness && this._isIncorrect(item))
+        // Run default required validation, or a custom function if available
+        if (item.required === true) {
+            if (_.isFunction(item.validateRequired)) {
+                let isValid = item.validateRequired();
+
+                if (isValid !== true) {
+                    errors.push(isValid);
+                }
+            } else {
+              if (self._isInvalid(item)) {
+                errors.push(item.label + " is required!");
+              }
+            }
+        }
+
+        // Handle custom validation
+        if (_.isFunction($item.validate)) {
+            let isValid = $item.validate();
+
+            // Allow async validation.  Process all promises later if available.
+            if (isValid instanceof Promise) {
+                promises.push(isValid);
+            } else {
+                if (isValid !== true) {
+                    errors.push(isValid);
+                }
+            }
+        }
+
+        if (self.props.validateForCorrectness && self._isIncorrect(item)) {
           errors.push(item.label + " was answered incorrectly!");
+        }
       });
 
-      if (errors.length > 0) {
-          if (this.props.handleInvalid) {
-              this.props.handleInvalid(errors);
-          }
-      }
+      // Resolve all error promises
+      return new Promise(function(resolve, reject) {
+          Promise.all(promises).then(function(values) {
+              _.each(values, function(value) {
+                  if (value !== true) {
+                      errors.push(value);
+                  }
+              });
 
-      if (this.props.showErrors !== false) {
-          // publish errors, if any
-          this.emitter.emit('formValidation', errors);
-      }
+              if (errors.length > 0) {
+                  if (self.props.handleInvalid) {
+                      self.props.handleInvalid(errors);
+                  }
 
-      return errors;
+                  resolve(errors);
+              } else {
+                  resolve(true);
+              }
+
+              if (self.props.showErrors !== false) {
+                  // publish errors, if any
+                  self.emitter.emit('formValidation', errors);
+              }
+          });
+      });
   }
 
   /**
@@ -148,24 +178,29 @@ export default class ReactForm extends React.Component {
       return serializeForm($form, {hash: true})
   }
 
+  submitForm() {
+      if (this.props.handleSubmit) {
+          this.props.handleSubmit(this.serialize());
+      } else {
+          let $form = ReactDOM.findDOMNode(this.refs.form);
+          $form.submit();
+      }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
-    var errors  = [];
+    let self = this;
+    let errors  = [];
 
-    if (this.props.validate !== false) {
-        errors = this.validate();
-    }
-
-    var isValid = errors.length < 1;
-
-    if (isValid) {
-        if (this.props.handleSubmit) {
-            this.props.handleSubmit(this.serialize());
-        } else {
-            let $form = ReactDOM.findDOMNode(this.refs.form);
-            $form.submit();
-        }
+    if (self.props.validate !== false) {
+        self.validate().then(function(isValid) {
+            if (isValid === true) {
+                self.submitForm();
+            }
+        });
+    } else {
+        self.submitForm();
     }
   }
 

@@ -6,6 +6,12 @@ import { FormGenerator } from "./src/app";
 var formData = [
     {
         "id": "5A909057-A579-4AE4-A1BE-D8E97E2D284C",
+        "element": "CreditCard",
+        "label": "Credit Card",
+        "name": "credit_card"
+    },
+    {
+        "id": "5A909057-A579-4AE4-A1BE-D8E97E2D284C",
         "element": "Dropdown",
         "text": "Dropdown",
         "required": false,

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
 import FormElementMixin from './util/form-element-mixin.jsx';
 import SignaturePad from 'react-signature-pad';
@@ -17,6 +18,18 @@ export default React.createClass({
           label: 'Signature'
         };
       }
+  },
+  validate() {
+      let $canvas_sig = this.refs["canvas_"+item.name];
+      let base64 = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
+      let isEmpty = $canvas_sig.isEmpty();
+      let $input_sig = ReactDOM.findDOMNode(this.refs["child_ref_"+item.name]);
+      if (isEmpty) {
+        $input_sig.value = "";
+      } else {
+        $input_sig.value = base64;
+      }
+      return true;
   },
   componentDidMount() {
     if (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) {
