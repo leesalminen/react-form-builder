@@ -7,7 +7,7 @@ export default {
             onDestroy:  this.props._onDestroy,
             onEdit:     this.props.onEdit,
             static:     this.props.data.static,
-            required:   this.props.data.required 
+            required:   this.props.data.required
         }
     }
 }
