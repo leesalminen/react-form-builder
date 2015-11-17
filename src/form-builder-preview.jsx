@@ -55,13 +55,7 @@ export default class FormBuilderPreview extends React.Component {
         errors: errors
       });
     } else {
-
-      if (data.length > this.state.data.length) {
-        if (data[data.length - 1].hasOptions !== false) {
-          this.props.editModeOn.call(this.props.parent, data[data.length - 1]);
-        }
-      }
-
+        
       this.setState({
         data: _.cloneDeep(data)
       });
