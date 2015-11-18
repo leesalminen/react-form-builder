@@ -14,7 +14,8 @@ export default React.createClass({
           displayName: 'First Name',
           label: 'First Name',
           icon: 'fa fa-male',
-          isUnique: true
+          isUnique: true,
+          cannotRemove: true
         };
       }
   },

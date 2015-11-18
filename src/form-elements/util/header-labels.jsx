@@ -5,16 +5,19 @@ export default React.createClass({
     return (
       <label>
         {this.props.data.label}
-        { (!this.props.mutable && this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
+        { (!this.props.mutable && _.get(this.props.data, 'required', false) === true) &&
           <span className="label-required label label-danger">Required</span>
         }
 
-        { (this.props.mutable && this.props.data.hasOwnProperty('required') && this.props.data.required === true) &&
+        { (this.props.mutable && _.get(this.props.data, 'required', false) === true) &&
           <span className="text-red text-danger">*</span>
         }
 
-        { (!this.props.mutable && this.props.data.hasOwnProperty('public') && this.props.data.public === true) &&
+        { (!this.props.mutable && _.get(this.props.data, 'public', false) === true) &&
           <span className="label-required label label-success">Public</span>
+        }
+        { (!this.props.mutable && _.get(this.props.data, 'cannotRemove', false) === true) &&
+          <span className="label-required label label-warning">Cannot Remove</span>
         }
       </label>
     )
