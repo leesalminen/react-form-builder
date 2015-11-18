@@ -21,7 +21,7 @@ export default class Signature extends FormElement {
       let $canvas_sig = this.refs.canvas;
       let base64 = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
       let isEmpty = $canvas_sig.isEmpty();
-      
+
       let $input_sig = ReactDOM.findDOMNode(this.refs.input);
       if (isEmpty) {
         $input_sig.value = "";
@@ -39,9 +39,8 @@ export default class Signature extends FormElement {
   }
 
   render() {
-    let props = {};
+    let props = this.baseInputProps();
     props.type = "hidden";
-    props.name = this.props.data.name;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
@@ -59,7 +58,7 @@ export default class Signature extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           <SignaturePad {...pad_props} />
           <input {...props} />
         </div>

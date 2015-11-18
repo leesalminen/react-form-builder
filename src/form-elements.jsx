@@ -10,6 +10,7 @@ import Header       from './form-elements/header.jsx';
 import Hyperlink    from './form-elements/hyperlink.jsx';
 import LineBreak    from './form-elements/line-break.jsx';
 import Paragraph    from './form-elements/paragraph.jsx';
+import Password     from './form-elements/password.jsx';
 import RadioButtons from './form-elements/radio-buttons.jsx';
 import Range        from './form-elements/range.jsx';
 //import Rating       from './form-elements/rating.jsx';
@@ -33,6 +34,7 @@ export {
     Hyperlink,
     LineBreak,
     Paragraph,
+    Password,
     RadioButtons,
     Range,
     //Rating,

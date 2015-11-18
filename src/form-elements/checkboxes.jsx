@@ -14,9 +14,9 @@ export default class Checkboxes extends FormElement {
       icon: 'fa fa-check-square-o',
       label: 'Placeholder Label',
       options: [
-        {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'checkboxes_option_' + ID.uuid()},
-        {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'checkboxes_option_' + ID.uuid()},
-        {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'checkboxes_option_' + ID.uuid()}
+        {value: 'place_holder_option_1', label: 'Place holder option 1'},
+        {value: 'place_holder_option_2', label: 'Place holder option 2'},
+        {value: 'place_holder_option_3', label: 'Place holder option 3'}
       ]
     };
   }
@@ -43,18 +43,19 @@ export default class Checkboxes extends FormElement {
         <div className="form-group">
           <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
           {this.props.data.options.map(function (option) {
-            let props = {};
-            props.name = self.props.data.name; + '[]';
+            let props = this.baseInputProps();
+            props.name   = props.name + '[]';
+            props.htmlId = props.htmlId + '_' + option.value;
 
             props.type = "checkbox"
             props.value = option.value;
             if (self.props.mutable) {
               let defaultValue = _.get(self.props, 'defaultValue', []);
               props.defaultChecked = defaultValue.indexOf(option.value) > -1;
-              props.ref = "option_" + option.key;
+              props.ref = "option_" + option.value;
             }
             return (
-              <label className="checkbox-label" key={option.key}>
+              <label className="checkbox-label" key={option.value}>
                 <input {...props} /> {option.label}
               </label>
             )

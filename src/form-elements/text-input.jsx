@@ -16,9 +16,8 @@ export default class TextInput extends FormElement {
   }
 
   render() {
-    let props = {};
+    let props = this.baseInputProps();
     props.type = "text";
-    props.name = this.props.data.name;
     props.className = "form-control";
 
     if (this.props.mutable) {
@@ -31,7 +30,7 @@ export default class TextInput extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()}/>
           <input {...props} />
         </div>
       </div>

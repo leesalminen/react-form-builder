@@ -15,9 +15,8 @@ export default class TextArea extends FormElement {
   }
 
   render() {
-    let props = {};
+    let props = this.baseInputProps();
     props.className = "form-control";
-    props.name = this.props.data.name;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
@@ -29,7 +28,7 @@ export default class TextArea extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           <textarea {...props} />
         </div>
       </div>

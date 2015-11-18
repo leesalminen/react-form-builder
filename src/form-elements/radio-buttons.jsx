@@ -14,9 +14,9 @@ export default class RadioButtons extends FormElement {
       icon: 'fa fa-dot-circle-o',
       label: 'Placeholder Label',
       options: [
-        {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'radiobuttons_option_' + ID.uuid()},
-        {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'radiobuttons_option_' + ID.uuid()},
-        {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'radiobuttons_option_' + ID.uuid()}
+        {value: 'place_holder_option_1', label: 'Place holder option 1'},
+        {value: 'place_holder_option_2', label: 'Place holder option 2'},
+        {value: 'place_holder_option_3', label: 'Place holder option 3'}
       ]
     };
   }
@@ -41,11 +41,13 @@ export default class RadioButtons extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           {this.props.data.options.map(function (option) {
             let this_key = 'preview_' + option.key;
-            let props = {};
-            props.name = self.props.data.name;
+            let props = self.baseInputProps();
+
+            props.htmlId += '_' + option.key;
+            props.name   = self.props.data.name + '[]';
 
             props.type = "radio"
             props.value = option.value;

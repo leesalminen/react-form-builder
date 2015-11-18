@@ -2,6 +2,12 @@ import SortableItem from 'react-sortable-items/SortableItem';
 import ReactDOM from 'react-dom';
 
 export default class FormElement extends SortableItem {
+    constructor(props) {
+        super(props);
+
+        this.htmlId = _.uniqueId('react-form-builder_' + props.data.name + '_');
+    }
+
     static toolbarEntry() {
         console.error('toolbarEntry is required on all input classes');
     }
@@ -15,6 +21,21 @@ export default class FormElement extends SortableItem {
             onEdit:     this.props.onEdit,
             static:     this.props.data.static,
             required:   this.props.data.required
+        }
+    }
+
+    headerLabelProps() {
+        return {
+             data:      this.props.data,
+             htmlFor:   this.htmlId,
+             mutable:   this.props.mutable
+        }
+    }
+
+    baseInputProps() {
+        return {
+            id:   this.htmlId,
+            name: this.props.data.name
         }
     }
 

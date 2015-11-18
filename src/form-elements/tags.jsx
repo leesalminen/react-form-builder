@@ -44,10 +44,10 @@ export default class Tags extends FormElement {
     let options = this.props.data.options.map( option => {
       option.label = option.text;
       return option;
-    })
-    let props = {};
+    });
+
+    let props = this.baseInputProps;
     props.multi = true;
-    props.name = this.props.data.name;
 
     props.options = options;
     if (!this.props.mutable) {props.value = options[0].text} // to show a sample of what tags looks like
@@ -62,7 +62,7 @@ export default class Tags extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           <Select {...props} />
         </div>
       </div>

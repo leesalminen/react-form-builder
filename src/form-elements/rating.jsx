@@ -21,8 +21,7 @@ export default class Rating extends FormElement {
   }
 
   render() {
-    let props = {};
-    props.name = this.props.data.name;
+    let props = this.baseInputProps();
     props.ratingAmount = 5;
 
     if (this.props.mutable) {
@@ -36,7 +35,7 @@ export default class Rating extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           <StarRating {...props} />
         </div>
       </div>

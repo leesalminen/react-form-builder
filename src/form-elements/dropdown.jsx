@@ -64,8 +64,7 @@ export default class Dropdown extends FormElement {
   }
 
   render() {
-    let props = {};
-    props.name = this.props.data.name;
+    let props = this.baseInputProps();
 
     if (this.props.data.optionsUrl) {
       props.asyncOptions = this.getOptions;
@@ -86,7 +85,7 @@ export default class Dropdown extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           <Select
             {...props} />
         </div>

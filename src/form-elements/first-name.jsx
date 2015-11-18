@@ -16,10 +16,9 @@ export default class FirstName extends FormElement {
   }
 
   render() {
-    let props = {};
+    let props = this.baseInputProps();
     props.type = "text";
     props.className = "form-control";
-    props.name = this.props.data.name;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
@@ -31,7 +30,7 @@ export default class FirstName extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           <input {...props} />
         </div>
       </div>

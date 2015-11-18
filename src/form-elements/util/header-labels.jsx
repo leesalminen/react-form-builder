@@ -3,7 +3,7 @@ import React from 'react';
 export default React.createClass({
   render() {
     return (
-      <label>
+      <label htmlFor={this.props.htmlFor}>
         {this.props.data.label}
         { (!this.props.mutable && _.get(this.props.data, 'required', false) === true) &&
           <span className="label-required label label-danger">Required</span>

@@ -97,10 +97,9 @@ export default class Email extends FormElement {
   }
 
   render() {
-    let props = {};
+    let props = this.baseInputProps();
     props.type = "email";
     props.className = "form-control";
-    props.name = this.props.data.name;
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
@@ -118,7 +117,7 @@ export default class Email extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           <input {...props} />
           {(!_.isNull(this.state.validationMsg)) ?
             <p className="help-block" dangerouslySetInnerHTML={{__html: this.state.validationMsg}}></p>

@@ -23,9 +23,8 @@ export default class Range extends FormElement {
   }
 
   render() {
-    let props = {};
+    let props = this.baseInputProps();
     props.type = "range";
-    props.name = this.props.data.name;
     props.list = "tickmarks_" + this.props.data.name;
     props.min = this.props.data.minValue;
     props.max = this.props.data.maxValue;
@@ -66,7 +65,7 @@ export default class Range extends FormElement {
           <HeaderBar {...this.headerBarProps()} />
         }
         <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+          <HeaderLabels {...this.headerLabelProps()} />
           <div className="range">
             <div className="clearfix">
               <span className="pull-left">{this.props.data.min_label}</span>
