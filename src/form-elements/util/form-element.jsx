@@ -27,6 +27,7 @@ export default class FormElement extends SortableItem {
     headerLabelProps() {
         return {
              data:      this.props.data,
+             label:     this.props.data.label,
              htmlFor:   this.htmlId,
              mutable:   this.props.mutable
         }

@@ -5,6 +5,14 @@ import { FormGenerator } from "./src/app";
 
 var formData = [
     {
+        "element": "Password",
+        "displayName": "Password",
+        "label": "Password",
+        "id": "679A6F6A-0D6E-40C8-BAF2-6B71F901CD9F",
+        "name": "password",
+        "required": true
+    },
+    {
         "element": "RadioButtons",
         "displayName": "Checkboxes",
         "icon": "fa fa-check-square-o",
