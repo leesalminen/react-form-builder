@@ -1,29 +1,26 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
 import ID from '../UUID';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Checkboxes',
-          displayName: 'Checkboxes',
-          icon: 'fa fa-check-square-o',
-          label: 'Placeholder Label',
-          options: [
-            {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'checkboxes_option_' + ID.uuid()},
-            {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'checkboxes_option_' + ID.uuid()},
-            {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'checkboxes_option_' + ID.uuid()}
-          ]
-        };
-      }
-  },
+export default class Checkboxes extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'Checkboxes',
+      displayName: 'Checkboxes',
+      icon: 'fa fa-check-square-o',
+      label: 'Placeholder Label',
+      options: [
+        {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'checkboxes_option_' + ID.uuid()},
+        {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'checkboxes_option_' + ID.uuid()},
+        {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'checkboxes_option_' + ID.uuid()}
+      ]
+    };
+  }
+
   render() {
     let self = this;
     return this.renderWithSortable(
@@ -54,4 +51,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

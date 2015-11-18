@@ -1,22 +1,19 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'TextArea',
-          displayName: 'Multi-line Input',
-          label: 'Placeholder Label',
-          icon: 'fa fa-text-height'
-        };
-      }
-  },
+export default class TextArea extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'TextArea',
+      displayName: 'Multi-line Input',
+      label: 'Placeholder Label',
+      icon: 'fa fa-text-height'
+    };
+  }
+
   render() {
     let props = {};
     props.className = "form-control";
@@ -38,4 +35,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

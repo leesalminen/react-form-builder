@@ -1,29 +1,27 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
+
 import SliderNativeBootstrap from 'react-bootstrap-native-slider';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Range',
-          displayName: 'Range',
-          icon: 'fa fa-sliders',
-          label: 'Placeholder Label',
-          step: 1,
-          defaultValue: 3,
-          minValue: 1,
-          maxValue: 5,
-          min_label: 'Easy',
-          max_label: 'Difficult'
-        };
-      }
-  },
+export default class Range extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'Range',
+      displayName: 'Range',
+      icon: 'fa fa-sliders',
+      label: 'Placeholder Label',
+      step: 1,
+      defaultValue: 3,
+      minValue: 1,
+      maxValue: 5,
+      min_label: 'Easy',
+      max_label: 'Difficult'
+    };
+  }
+
   render() {
     let props = {};
     props.type = "range";
@@ -91,4 +89,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

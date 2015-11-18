@@ -7,7 +7,7 @@ import Dropdown     from './form-elements/dropdown.jsx';
 import Email        from './form-elements/email.jsx';
 import FirstName    from './form-elements/first-name.jsx';
 import Header       from './form-elements/header.jsx';
-import HyperLink    from './form-elements/hyperlink.jsx';
+import Hyperlink    from './form-elements/hyperlink.jsx';
 import LineBreak    from './form-elements/line-break.jsx';
 import Paragraph    from './form-elements/paragraph.jsx';
 import RadioButtons from './form-elements/radio-buttons.jsx';
@@ -30,7 +30,7 @@ export {
     Email,
     FirstName,
     Header,
-    HyperLink,
+    Hyperlink,
     LineBreak,
     Paragraph,
     RadioButtons,

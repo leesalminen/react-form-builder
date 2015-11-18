@@ -1,27 +1,25 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Telephone',
-          displayName: 'Telephone',
-          label: 'Telephone',
-          icon: 'fa fa-phone'
-        };
-      }
-  },
+export default class Telephone extends FormElement{
+  static toolbarEntry() {
+    return {
+      element: 'Telephone',
+      displayName: 'Telephone',
+      label: 'Telephone',
+      icon: 'fa fa-phone'
+    };
+  }
+
   componentDidMount() {
     if(this.props.prefs) {
       $(this.refs['child_ref_' + this.props.data.name]).mask(this.props.prefs.telephone_format);
     }
-  },
+  }
+
   render() {
     let props = {};
     props.type = "telephone";
@@ -44,4 +42,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

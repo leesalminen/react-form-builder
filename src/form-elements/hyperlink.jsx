@@ -1,23 +1,20 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'HyperLink',
-          displayName: 'Web site',
-          icon: 'fa fa-link',
-          static: true,
-          content: 'Placeholder Web site link ...',
-          href: 'http://www.example.com'
-        };
-      }
-  },
+export default class Hyperlink extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'HyperLink',
+      displayName: 'Web site',
+      icon: 'fa fa-link',
+      static: true,
+      content: 'Placeholder Web site link ...',
+      href: 'http://www.example.com'
+    };
+  }
+
   render() {
     return this.renderWithSortable(
       <div className="rfb-item">
@@ -30,4 +27,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

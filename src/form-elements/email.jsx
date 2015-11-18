@@ -1,29 +1,29 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Email',
-          displayName: 'Email',
-          label: 'Email',
-          icon: 'fa fa-envelope'
-        };
-      }
-  },
-  getInitialState() {
-    return {
+export default class Email extends FormElement {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       validationMsg: null,
       value: null,
       alternate: null,
-    }
-  },
+    };
+  }
+
+  static toolbarEntry() {
+    return {
+      element: 'Email',
+      displayName: 'Email',
+      label: 'Email',
+      icon: 'fa fa-envelope'
+    };
+  }
+
   componentDidMount() {
     var self = this;
     var ref  = self.refs['child_ref_' + self.props.data.name];
@@ -40,27 +40,32 @@ export default React.createClass({
         });
       });
     }
-  },
+  }
+
   validation_in_progress() {
 
-  },
+  }
+
   validation_success(data) {
     this.setState({
       validationMsg: this.get_suggestion_str(data['is_valid'], data['did_you_mean'])
     })
-  },
+  }
+
   validation_error(error_message) {
     this.setState({
       validationMsg: error_message
     })
-  },
+  }
+
   populate_email() {
     this.setState({
       value: this.state.alternate,
       validationMsg: null,
       alternate: null
     })
-  },
+  }
+
   get_suggestion_str(is_valid, alternate) {
     if (is_valid) {
       var result = '<span class="success">Address is valid.</span>';
@@ -90,7 +95,8 @@ export default React.createClass({
 
       return '<span class="error">Address is invalid.</span>';
     }
-  },
+  }
+
   render() {
     let props = {};
     props.type = "email";
@@ -125,4 +131,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

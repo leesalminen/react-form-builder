@@ -1,6 +1,5 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
@@ -10,30 +9,28 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import { Input, Row, Col, Well, Button, Alert } from 'react-bootstrap';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'CreditCard',
-          displayName: 'Credit Card',
-          label: 'Credit Card',
-          icon: 'fa fa-credit-card'
-        };
-      }
-  },
-  getInitialState() {
-      return {
+export default class CreditCard extends FormElement {
+  constructor(props) {
+      super(props);
+
+      this.handleMonthChange = this.handleMonthChange.bind(this);
+
+      this.state = {
           token: '',
           error: null,
           month: null
-      }
-  },
-  handleMonthChange(value) {
-      this.setState({
-          month: value
-      })
-  },
+      };
+  }
+
+  static toolbarEntry() {
+    return {
+      element: 'CreditCard',
+      displayName: 'Credit Card',
+      label: 'Credit Card',
+      icon: 'fa fa-credit-card'
+    };
+  }
+
   /**
    * Validate the credit card info and get a token from the credit card processor
    * @return {Promise} Resolves to true if valid, error string if invalid
@@ -97,7 +94,8 @@ export default React.createClass({
               }
           });
       });
-  },
+  }
+
   render() {
     let props = {};
     props.className = "form-control";
@@ -151,4 +149,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

@@ -1,24 +1,21 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Download',
-          displayName: 'File Attachment',
-          icon: 'fa fa-file',
-          static: true,
-          content: 'Placeholder file name ...',
-          filePath: '',
-          _href: ''
-        };
-      }
-  },
+export default class Download extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'Download',
+      displayName: 'File Attachment',
+      icon: 'fa fa-file',
+      static: true,
+      content: 'Placeholder file name ...',
+      filePath: '',
+      _href: ''
+    };
+  }
+
   render() {
     return this.renderWithSortable(
       <div className="rfb-item">
@@ -31,4 +28,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

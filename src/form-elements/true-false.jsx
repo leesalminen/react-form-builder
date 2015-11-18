@@ -1,28 +1,25 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
 import ID from '../UUID';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'TrueFalse',
-          displayName: 'True / False',
-          icon: 'fa fa-dot-circle-o',
-          label: 'True or False',
-          options: [
-            {value: '1', label: 'Yes/On', key: 'truefalse_option_' + ID.uuid()},
-            {value: '0', label: 'No/Off', key: 'truefalse_option_' + ID.uuid()}
-          ]
-        };
-      }
-  },
+export default class TrueFalse {
+  static toolbarEntry() {
+    return {
+      element: 'TrueFalse',
+      displayName: 'True / False',
+      icon: 'fa fa-dot-circle-o',
+      label: 'True or False',
+      options: [
+        {value: '1', label: 'Yes/On', key: 'truefalse_option_' + ID.uuid()},
+        {value: '0', label: 'No/Off', key: 'truefalse_option_' + ID.uuid()}
+      ]
+    };
+  }
+
   render() {
     let self    = this;
     return this.renderWithSortable(
@@ -53,4 +50,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

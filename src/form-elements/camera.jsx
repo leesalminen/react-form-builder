@@ -1,27 +1,29 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
+export default class Camera extends FormElement {
+  constructor(props) {
+      super(props);
 
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Camera',
-          displayName: 'Camera',
-          icon: 'fa fa-camera',
-          label: 'Placeholder Label'
-        };
-      }
-  },
+      this.displayImage = this.displayImage.bind(this);
+      this.clearImage   = this.clearImage.bind(this);
 
-  getInitialState() {
-    return {img: null};
-  },
+      this.state = {
+          img: null
+      };
+  }
+
+  static toolbarEntry() {
+    return {
+      element: 'Camera',
+      displayName: 'Camera',
+      icon: 'fa fa-camera',
+      label: 'Placeholder Label'
+    };
+  }
 
   displayImage(e) {
     var self = this;
@@ -39,13 +41,13 @@ export default React.createClass({
         });
       }
     }
-  },
+  }
 
   clearImage() {
     this.setState({
       img: null
     })
-  },
+  }
 
   render() {
     return this.renderWithSortable(
@@ -81,4 +83,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

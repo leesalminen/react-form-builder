@@ -1,22 +1,19 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'LineBreak',
-          displayName: 'Line Break',
-          static: true,
-          hasOptions: false,
-          icon: 'fa fa-arrows-h'
-        }
-      }
-  },
+export default class LineBreak extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'LineBreak',
+      displayName: 'Line Break',
+      static: true,
+      hasOptions: false,
+      icon: 'fa fa-arrows-h'
+    }
+  }
+
   render() {
     return this.renderWithSortable(
       <div className="rfb-item">
@@ -27,4 +24,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

@@ -1,39 +1,44 @@
 import React from 'react';
 import Select from 'react-select';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
 import ID from '../UUID';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Dropdown',
-          displayName: 'Dropdown',
-          icon: 'fa fa-caret-square-o-down',
-          label: 'Placeholder Label',
-          options: [
-            {value: 'option1', label: 'Option 1', key: 'dropdown_option_' + ID.uuid()},
-            {value: 'option2', label: 'Option 2', key: 'dropdown_option_' + ID.uuid()},
-            {value: 'option3', label: 'Option 3', key: 'dropdown_option_' + ID.uuid()}
-          ],
-          optionsUrl: ''
-        };
-      }
-  },
-  getInitialState() {
-    return {value: this.props.defaultValue !== undefined ? this.props.defaultValue.split(",") : []};
-  },
+export default class Dropdown extends FormElement {
+  constructor(props) {
+      super(props);
+
+      this.handleChange = this.handleChange.bind(this);
+
+      this.state = {
+          value: this.props.defaultValue !== undefined ? this.props.defaultValue.split(",") : []
+      };
+  }
+
+  static toolbarEntry() {
+    return {
+      element: 'Dropdown',
+      displayName: 'Dropdown',
+      icon: 'fa fa-caret-square-o-down',
+      label: 'Placeholder Label',
+      options: [
+        {value: 'option1', label: 'Option 1', key: 'dropdown_option_' + ID.uuid()},
+        {value: 'option2', label: 'Option 2', key: 'dropdown_option_' + ID.uuid()},
+        {value: 'option3', label: 'Option 3', key: 'dropdown_option_' + ID.uuid()}
+      ],
+      optionsUrl: ''
+    };
+  }
+
   handleChange(value) {
       this.setState({
           value: value
       });
-  },
+  }
+
   getOptions(input, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', encodeURI(this.props.data.optionsUrl));
@@ -51,7 +56,8 @@ export default React.createClass({
       }
     };
     xhr.send();
-  },
+  }
+
   render() {
     let props = {};
     props.name = this.props.data.name;
@@ -82,4 +88,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

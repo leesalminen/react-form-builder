@@ -1,24 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
+
 import SignaturePad from 'react-signature-pad';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Signature',
-          displayName: 'Signature',
-          icon: 'fa fa-pencil-square-o',
-          label: 'Signature'
-        };
-      }
-  },
+export default class Signature extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'Signature',
+      displayName: 'Signature',
+      icon: 'fa fa-pencil-square-o',
+      label: 'Signature'
+    };
+  }
+
   validate() {
       let $canvas_sig = this.refs["canvas_"+item.name];
       let base64 = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
@@ -30,13 +28,15 @@ export default React.createClass({
         $input_sig.value = base64;
       }
       return true;
-  },
+  }
+
   componentDidMount() {
     if (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) {
       let canvas = this.refs['canvas_'+this.props.data.name];
       canvas.fromDataURL('data:image/png;base64,' + this.props.defaultValue);
     }
-  },
+  }
+
   render() {
     let props = {};
     props.type = "hidden";
@@ -65,4 +65,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

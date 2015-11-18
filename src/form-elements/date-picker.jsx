@@ -1,22 +1,19 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'DatePicker',
-          displayName: 'Date',
-          icon: 'fa fa-calendar',
-          label: 'Placeholder Label'
-        };
-      }
-  },
+export default class DatePicker extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'DatePicker',
+      displayName: 'Date',
+      icon: 'fa fa-calendar',
+      label: 'Placeholder Label'
+    };
+  }
+
   render() {
     let props = {};
     props.type = "date";
@@ -39,4 +36,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

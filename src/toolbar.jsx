@@ -31,7 +31,7 @@ export default class Toolbar extends React.Component {
         FormElements.FirstName,
         FormElements.Email,
         FormElements.Telephone,
-        FormElements.HyperLink,
+        FormElements.Hyperlink,
         FormElements.Dropdown,
         FormElements.Checkboxes,
         FormElements.RadioButtons,

@@ -1,22 +1,19 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Header',
-          displayName: 'Header Text',
-          icon: 'fa fa-header',
-          static: true,
-          content: 'Placeholder Text...'
-        };
-      }
-  },
+export default class Header extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'Header',
+      displayName: 'Header Text',
+      icon: 'fa fa-header',
+      static: true,
+      content: 'Placeholder Text...'
+    };
+  }
+
   render() {
     let headerClasses = 'dynamic-input ' + this.props.data.element + '-input';
     return this.renderWithSortable(
@@ -28,4 +25,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}

@@ -1,23 +1,21 @@
 import React from 'react';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
-import FormElementMixin from './util/form-element-mixin.jsx';
+import FormElement from './util/form-element.jsx';
+
 import StarRating from 'react-star-rating';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
-export default React.createClass({
-  mixins: [SortableItemMixin, FormElementMixin],
-  statics: {
-      toolbarEntry: function() {
-        return {
-          element: 'Rating',
-          displayName: 'Rating',
-          label: 'Placeholder Label',
-          icon: 'fa fa-star'
-        };
-      }
-  },
+export default class Rating extends FormElement {
+  static toolbarEntry() {
+    return {
+      element: 'Rating',
+      displayName: 'Rating',
+      label: 'Placeholder Label',
+      icon: 'fa fa-star'
+    };
+  }
+
   render() {
     let props = {};
     props.name = this.props.data.name;
@@ -40,4 +38,4 @@ export default React.createClass({
       </div>
     );
   }
-})
+}
