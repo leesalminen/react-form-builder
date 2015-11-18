@@ -9,42 +9,41 @@ export default class FormElementsEdit extends React.Component {
     this.state = {
       element: this.props.element,
       data: this.props.data,
-      dirty: false,
-      name_changed: false
+      dirty: false
     }
   }
   toggleRequired() {
-    let this_element = this.state.element;
+    let thisElement = this.state.element;
   }
   editElementProp(elemProperty, targProperty, e) {
     // elemProperty could be content or label
     // targProperty could be value or checked
-    let this_element = this.state.element;
-    this_element[elemProperty] = e.target[targProperty];
+    let thisElement = this.state.element;
+
+    // Auto update the name field if the user hasn't manually updated it yet
+    let nameChanged = _.snakeCase(thisElement.label) !== thisElement.name;
+
+    console.log(nameChanged);
+
+    thisElement[elemProperty] = e.target[targProperty];
 
     // Change field name automatically
-    if (elemProperty === 'label' && !this.state.name_changed) {
-      this_element.name = _.snakeCase(e.target[targProperty]);
-    }
-
-    if (elemProperty === 'name') {
-      this.setState({
-        name_changed: true
-      });
+    if (elemProperty === 'label' && !nameChanged) {
+      thisElement.name = _.snakeCase(e.target[targProperty]);
     }
 
     this.setState({
-      element: this_element,
+      element: thisElement,
       dirty: true
     }, () => {
       if (targProperty === 'checked') {this.updateElement();};
     });
   }
   updateElement() {
-    let this_element = this.state.element;
+    let thisElement = this.state.element;
     // to prevent ajax calls with no change
     if (this.state.dirty) {
-      this.props.updateElement.call(this.props.preview, this_element);
+      this.props.updateElement.call(this.props.preview, thisElement);
       this.setState({dirty: false});
     }
   }
@@ -90,7 +89,7 @@ export default class FormElementsEdit extends React.Component {
             <input type="text" className="form-control" defaultValue={this.props.element.label} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'label', 'value')} />
             <br />
             <label>Field Name</label>
-            <input type="text" className={classNames({'form-control': true, 'grayed-input': !this.state.name_changed})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
+            <input type="text" className={classNames({'form-control': true, 'grayed-input': _.snakeCase(this.props.element.label) === this.props.element.name})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
             <br/>
             <label>
               <input type="checkbox" checked={requiredChecked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required
