@@ -208,7 +208,7 @@ export default class ReactForm extends React.Component {
     let items = this.props.data.map( item => {
       let props = {
           mutable:          true,
-          key:              'form_'+item.name,
+          key:              item.id ? item.id : 'form_'+item.name,
           ref:              item.name,
           data:             item,
       }

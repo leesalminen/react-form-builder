@@ -13,7 +13,8 @@ export default React.createClass({
           element: 'TextInput',
           displayName: 'Text Input',
           label: 'Placeholder Label',
-          icon: 'fa fa-font'
+          icon: 'fa fa-font',
+          defaultValue: ''
         };
       }
   },
