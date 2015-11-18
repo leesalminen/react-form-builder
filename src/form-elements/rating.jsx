@@ -16,6 +16,10 @@ export default class Rating extends FormElement {
     };
   }
 
+  validateRequired() {
+    return this.refs.input.state.rating !== 0;
+  }
+
   render() {
     let props = {};
     props.name = this.props.data.name;
@@ -24,7 +28,7 @@ export default class Rating extends FormElement {
     if (this.props.mutable) {
       props.rating = (this.props.defaultValue !== undefined && this.props.defaultValue.length) ? parseFloat(this.props.defaultValue, 10) : 0;
       props.editing = true;
-      props.ref = "child_ref_" + this.props.data.name;
+      props.ref = 'input';
     }
     return this.renderWithSortable(
       <div className="rfb-item">

@@ -57,43 +57,6 @@ export default class ReactForm extends React.Component {
     return incorrect;
   }
 
-  _isInvalid(item) {
-    let invalid = false;
-    if (item.required === true) {
-      if (item.element === "Checkboxes" || item.element === "RadioButtons") {
-        let checked_options = 0;
-        item.options.forEach(option => {
-          let $option = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+option.key]);
-          if ($option.checked)
-            checked_options += 1;
-        })
-        if (checked_options < 1)
-          // errors.push(item.label + " is required!");
-          invalid = true;
-      } else {
-        let $item = null
-        if (item.element === "Rating") {
-          $item = {};
-          $item.value = this.refs[item.name].refs["child_ref_"+item.name].state.rating;
-          if ($item.value === 0)
-            invalid = true;
-        } else {
-          if (item.element === "Tags" || item.element === "Dropdown") {
-            $item = {};
-            $item.value = this.refs[item.name].refs["child_ref_"+item.name].state.value
-          } else {
-            $item = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+item.name]);
-            $item.value = $item.value.trim();
-          }
-          if ($item.value.length < 1) {
-            invalid = true;
-          }
-        }
-      }
-    }
-    return invalid;
-  }
-
   /**
    * Validate the form and return errors
    * @return {Promise} Resolves to true if valid, an array of error strings if invalid
@@ -109,17 +72,13 @@ export default class ReactForm extends React.Component {
         let $item = self.refs[item.name];
 
         // Run default required validation, or a custom function if available
-        if (item.required === true) {
-            if (_.isFunction(item.validateRequired)) {
-                let isValid = item.validateRequired();
+        if ($item.props.data.required === true) {
+            if (_.isFunction($item.validateRequired)) {
+                let isValid = $item.validateRequired();
 
                 if (isValid !== true) {
-                    errors.push(isValid);
+                    errors.push($item.props.data.label + ' is required!');
                 }
-            } else {
-              if (self._isInvalid(item)) {
-                errors.push(item.label + " is required!");
-              }
             }
         }
 
@@ -144,28 +103,33 @@ export default class ReactForm extends React.Component {
 
       // Resolve all error promises
       return new Promise(function(resolve, reject) {
-          Promise.all(promises).then(function(values) {
-              _.each(values, function(value) {
-                  if (value !== true) {
-                      errors.push(value);
+          Promise.all(promises).then(
+              function(values) {
+                  _.each(values, function(value) {
+                      if (value !== true) {
+                          errors.push(value);
+                      }
+                  });
+
+                  if (errors.length > 0) {
+                      if (self.props.handleInvalid) {
+                          self.props.handleInvalid(errors);
+                      }
+
+                      resolve(errors);
+                  } else {
+                      resolve(true);
                   }
-              });
 
-              if (errors.length > 0) {
-                  if (self.props.handleInvalid) {
-                      self.props.handleInvalid(errors);
+                  if (self.props.showErrors !== false) {
+                      // publish errors, if any
+                      self.emitter.emit('formValidation', errors);
                   }
-
-                  resolve(errors);
-              } else {
-                  resolve(true);
+              },
+              function(error) {
+                  console.error(error);
               }
-
-              if (self.props.showErrors !== false) {
-                  // publish errors, if any
-                  self.emitter.emit('formValidation', errors);
-              }
-          });
+          );
       });
   }
 

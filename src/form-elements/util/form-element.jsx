@@ -1,4 +1,5 @@
 import SortableItem from 'react-sortable-items/SortableItem';
+import ReactDOM from 'react-dom';
 
 export default class FormElement extends SortableItem {
     static toolbarEntry() {
@@ -15,5 +16,18 @@ export default class FormElement extends SortableItem {
             static:     this.props.data.static,
             required:   this.props.data.required
         }
+    }
+
+    /**
+     * Default required validation that just checks if there's input in the element
+     * Override if needed
+     * @return {boolean}} True if this element has a value, false if not
+     */
+    validateRequired() {
+      if (this.refs.input !== undefined) {
+          let item = ReactDOM.findDOMNode(this.refs.input);
+
+          return item.value.trim().length > 0;
+      }
     }
 }

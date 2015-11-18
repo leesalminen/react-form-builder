@@ -18,10 +18,11 @@ export default class Signature extends FormElement {
   }
 
   validate() {
-      let $canvas_sig = this.refs["canvas_"+item.name];
+      let $canvas_sig = this.refs.canvas;
       let base64 = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
       let isEmpty = $canvas_sig.isEmpty();
-      let $input_sig = ReactDOM.findDOMNode(this.refs["child_ref_"+item.name]);
+      
+      let $input_sig = ReactDOM.findDOMNode(this.refs.input);
       if (isEmpty) {
         $input_sig.value = "";
       } else {
@@ -32,7 +33,7 @@ export default class Signature extends FormElement {
 
   componentDidMount() {
     if (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) {
-      let canvas = this.refs['canvas_'+this.props.data.name];
+      let canvas = this.refs.canvas;
       canvas.fromDataURL('data:image/png;base64,' + this.props.defaultValue);
     }
   }
@@ -44,13 +45,13 @@ export default class Signature extends FormElement {
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.name;
+      props.ref = 'input';
     }
     let pad_props = {};
     pad_props.clearButton = {true};
     if (this.props.mutable) {
       pad_props.defaultValue = this.props.defaultValue;
-      pad_props.ref = 'canvas_'+this.props.data.name;
+      pad_props.ref = 'canvas';
     }
     return this.renderWithSortable(
       <div className="rfb-item">

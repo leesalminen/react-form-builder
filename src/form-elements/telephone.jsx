@@ -16,7 +16,7 @@ export default class Telephone extends FormElement{
 
   componentDidMount() {
     if(this.props.prefs) {
-      $(this.refs['child_ref_' + this.props.data.name]).mask(this.props.prefs.telephone_format);
+      $(this.refs.input).mask(this.props.prefs.telephone_format);
     }
   }
 
@@ -28,7 +28,7 @@ export default class Telephone extends FormElement{
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.name;
+      props.ref = 'input';
     }
     return this.renderWithSortable(
       <div className="rfb-item">

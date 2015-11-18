@@ -5,7 +5,33 @@ import { FormGenerator } from "./src/app";
 
 var formData = [
     {
-        "id": "5A909057-A579-4AE4-A1BE-D8E97E2D284C",
+        "element": "RadioButtons",
+        "displayName": "Checkboxes",
+        "icon": "fa fa-check-square-o",
+        "label": "Checkbox",
+        "options": [
+            {
+                "value": "place_holder_option_1",
+                "label": "Place holder option 1",
+                "key": "checkboxes_option_2585F39A-E165-44FE-819E-903FDBCA2666"
+            },
+            {
+                "value": "place_holder_option_2",
+                "label": "Place holder option 2",
+                "key": "checkboxes_option_3A16AB58-5CD4-47A8-BB92-5553AE46F710"
+            },
+            {
+                "value": "place_holder_option_3",
+                "label": "Place holder option 3",
+                "key": "checkboxes_option_C50C8B59-432F-4751-A58A-379F5C744CD8"
+            }
+        ],
+        "id": "679A6F6A-0D6E-40C8-BAF2-6B71F901CD9C",
+        "name": "placeholder_label",
+        "required": true
+    },
+    {
+        "id": "5A909057-A579-4AE4-A1BE-D8E97E2D284D",
         "element": "CreditCard",
         "label": "Credit Card",
         "name": "credit_card"
@@ -28,7 +54,7 @@ var formData = [
         "id": "E81D8B30-300D-43BC-8BF5-E9A99B5A41E7",
         "element": "TextInput",
         "text": "Text Input",
-        "required": false,
+        "required": true,
         "canHaveAnswer": true,
         "field_name": "o_first_FBADB136-78B6-419E-9EC9-6B0105498525",
         "label": "First Name",

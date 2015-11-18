@@ -18,7 +18,7 @@ export default class CreditCard extends FormElement {
       this.state = {
           token: '',
           error: null,
-          month: null
+          month: ''
       };
   }
 
@@ -31,6 +31,14 @@ export default class CreditCard extends FormElement {
     };
   }
 
+  validateRequired() {
+      var data  = self.refs.number.getValue();
+      var exp_m = self.state.month;
+      var exp_y = self.refs.year.getValue();
+
+      return data.length > 0 && exp_m > 0 && exp_y.length > 0;
+  }
+
   /**
    * Validate the credit card info and get a token from the credit card processor
    * @return {Promise} Resolves to true if valid, error string if invalid
@@ -39,7 +47,7 @@ export default class CreditCard extends FormElement {
       var self = this;
 
       return new Promise(function(resolve, reject) {
-          var data = self.refs.number.getValue();
+          var data  = self.refs.number.getValue();
           var exp_m = self.state.month;
           var exp_y = self.refs.year.getValue();
           var type = 'json';
@@ -96,15 +104,13 @@ export default class CreditCard extends FormElement {
       });
   }
 
+  handleMonthChange(value) {
+      this.setState({
+          month: value
+      });
+  }
+
   render() {
-    let props = {};
-    props.className = "form-control";
-
-    if (this.props.mutable) {
-      props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.name;
-    }
-
     return this.renderWithSortable(
       <div className="rfb-item">
         { !this.props.mutable &&

@@ -21,6 +21,18 @@ export default class Checkboxes extends FormElement {
     };
   }
 
+  validateRequired() {
+    for (let refName in this.refs) {
+      if (refName.indexOf('option_') === 0) {
+          if (this.refs[refName].checked) {
+              return true;
+          }
+      }
+    }
+
+    return false;
+  }
+
   render() {
     let self = this;
     return this.renderWithSortable(
@@ -31,18 +43,18 @@ export default class Checkboxes extends FormElement {
         <div className="form-group">
           <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
           {this.props.data.options.map(function (option) {
-            let this_key = 'preview_' + option.key;
             let props = {};
-            props.name = self.props.data.name; + option.key;
+            props.name = self.props.data.name; + '[]';
 
             props.type = "checkbox"
             props.value = option.value;
             if (self.props.mutable) {
-              props.defaultChecked = self.props.defaultValue.indexOf(option.value) > -1 ? true : false;
-              props.ref = "child_ref_" + option.key;
+              let defaultValue = _.get(self.props, 'defaultValue', []);
+              props.defaultChecked = defaultValue.indexOf(option.value) > -1;
+              props.ref = "option_" + option.key;
             }
             return (
-              <label className="checkbox-label" key={this_key}>
+              <label className="checkbox-label" key={option.key}>
                 <input {...props} /> {option.label}
               </label>
             )

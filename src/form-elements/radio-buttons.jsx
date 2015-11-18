@@ -21,6 +21,18 @@ export default class RadioButtons extends FormElement {
     };
   }
 
+  validateRequired() {
+    for (let refName in this.refs) {
+      if (refName.indexOf('option_') === 0) {
+          if (this.refs[refName].checked) {
+              return true;
+          }
+      }
+    }
+
+    return false;
+  }
+
   render() {
     let self = this;
     return this.renderWithSortable(
@@ -38,8 +50,9 @@ export default class RadioButtons extends FormElement {
             props.type = "radio"
             props.value = option.value;
             if (self.props.mutable) {
-              props.defaultChecked = (self.props.defaultValue !== undefined && self.props.defaultValue.indexOf(option.value) > -1) ? true : false;
-              props.ref = "child_ref_" + option.key;
+              let defaultValue = _.get(self.props, 'defaultValue', []);
+              props.defaultChecked = defaultValue.indexOf(option.value) > -1;
+              props.ref = "option_" + option.key;
             }
             return (
               <label className="radio-label" key={this_key}>

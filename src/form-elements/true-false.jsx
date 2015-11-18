@@ -6,7 +6,7 @@ import HeaderLabels from './util/header-labels.jsx';
 
 import ID from '../UUID';
 
-export default class TrueFalse {
+export default class TrueFalse extends FormElement {
   static toolbarEntry() {
     return {
       element: 'TrueFalse',
@@ -38,7 +38,7 @@ export default class TrueFalse {
             props.value = option.value;
             if (self.props.mutable) {
               props.defaultChecked = (self.props.defaultValue !== undefined && self.props.defaultValue.indexOf(option.value) > -1) ? true : false;
-              props.ref = "child_ref_" + option.key;
+              props.ref = "option_" + option.key;
             }
             return (
               <label className="radio-label" key={this_key}>

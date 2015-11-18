@@ -12,6 +12,7 @@ export default class Dropdown extends FormElement {
       super(props);
 
       this.handleChange = this.handleChange.bind(this);
+      this.getOptions   = this.getOptions.bind(this);
 
       this.state = {
           value: this.props.defaultValue !== undefined ? this.props.defaultValue.split(",") : []
@@ -37,6 +38,10 @@ export default class Dropdown extends FormElement {
       this.setState({
           value: value
       });
+  }
+
+  validateRequired() {
+      return (this.refs.input.state.value.length > 0);
   }
 
   getOptions(input, callback) {
@@ -70,7 +75,7 @@ export default class Dropdown extends FormElement {
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.name;
+      props.ref = 'input';
       props.value = this.state.value;
       props.onChange = this.handleChange;
     }

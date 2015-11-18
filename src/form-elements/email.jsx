@@ -26,11 +26,10 @@ export default class Email extends FormElement {
 
   componentDidMount() {
     var self = this;
-    var ref  = self.refs['child_ref_' + self.props.data.name];
+    var ref  = self.refs.input;
 
     if(!_.isUndefined(ref)) {
       $.getScript("https://demo.gingrapp.com/assets/js/mailgun_validator.js", function() {
-        // console.log(self.refs['child_ref_' + self.props.data.field_name].getDOMNode());
         // attach jquery plugin to validate address
         $(ref).mailgun_validator({
           api_key: 'pubkey-5ymei-eyi6yy91c2hp87npj9e61e5cv1', // replace this with your Mailgun public API key
@@ -105,7 +104,7 @@ export default class Email extends FormElement {
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.name;
+      props.ref = 'input';
 
       if(!_.isNull(this.state.email)) {
         props.value = this.state.value;

@@ -22,7 +22,7 @@ export default class DatePicker extends FormElement {
 
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
-      props.ref = "child_ref_" + this.props.data.name;
+      props.ref = 'input';
     }
     return this.renderWithSortable(
       <div className="rfb-item">

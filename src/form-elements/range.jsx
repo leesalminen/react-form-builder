@@ -34,7 +34,7 @@ export default class Range extends FormElement {
     props.defaultValue = this.props.defaultValue !== undefined ? parseInt(this.props.defaultValue, 10) : parseInt(this.props.data.defaultValue, 10);
 
     if (this.props.mutable) {
-      props.ref = "child_ref_" + this.props.data.name;
+      props.ref = 'input';
     }
 
     let datalist = [];

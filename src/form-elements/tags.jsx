@@ -36,6 +36,10 @@ export default class Tags extends FormElement {
     this.setState({value: e});
   }
 
+  validateRequired() {
+      return (this.refs.input.state.value.length > 0);
+  }
+
   render() {
     let options = this.props.data.options.map( option => {
       option.label = option.text;
@@ -50,7 +54,7 @@ export default class Tags extends FormElement {
     if (this.props.mutable) {
       props.value = this.state.value;
       props.onChange = this.handleChange;
-      props.ref = "child_ref_" + this.props.data.name;
+      props.ref = 'input';
     }
     return this.renderWithSortable(
       <div className="rfb-item">
