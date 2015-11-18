@@ -49,8 +49,9 @@ export default class FormElementsEdit extends React.Component {
     }
   }
   render() {
-    let requiredChecked = _.get(this.props.element, 'required', false);
-    let publicChecked   = _.get(this.props.element, 'public', false);
+    let requiredChecked     = _.get(this.props.element, 'required', false);
+    let publicChecked       = _.get(this.props.element, 'public', false);
+    let cannotRemoveChecked = _.get(this.props.element, 'cannotRemove', false);
     let thisFiles = this.props.files.length ? this.props.files : [];
     if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "")
       thisFiles.unshift({id: '', file_name: ''});
@@ -66,10 +67,10 @@ export default class FormElementsEdit extends React.Component {
             <TextAreaAutosize type="text" className="form-control" defaultValue={this.props.element.content} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'content', 'value')} />
           </div>
         }
-        { this.props.element.hasOwnProperty('file_path') &&
+        { this.props.element.hasOwnProperty('filePath') &&
           <div className="form-group">
             <label>Choose file:</label>
-            <select className="form-control" defaultValue={this.props.element.file_path} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'file_path', 'value')}>
+            <select className="form-control" defaultValue={this.props.element.filePath} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'filePath', 'value')}>
               {thisFiles.map(function (file) {
                 let this_key = 'file_' + file.id;
                 return <option value={file.id} key={this_key}>{file.file_name}</option>;
@@ -100,6 +101,13 @@ export default class FormElementsEdit extends React.Component {
             </label>
           </div>
         }
+        {
+            <div className="form-group">
+                <label>
+                  <input type="checkbox" checked={cannotRemoveChecked} value={true} onChange={this.editElementProp.bind(this, 'cannotRemove', 'checked')} /> Cannot Remove
+                </label>
+            </div>
+        }
         { this.props.element.hasOwnProperty('step') &&
           <div className="form-group">
             <div className="form-group-range">
@@ -108,29 +116,29 @@ export default class FormElementsEdit extends React.Component {
             </div>
           </div>
         }
-        { this.props.element.hasOwnProperty('min_value') &&
+        { this.props.element.hasOwnProperty('minValue') &&
           <div className="form-group">
             <div className="form-group-range">
               <label>Min</label>
-              <input type="number" className="form-control" defaultValue={this.props.element.min_value} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'min_value', 'value')} />
+              <input type="number" className="form-control" defaultValue={this.props.element.minValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'minValue', 'value')} />
               <input type="text" className="form-control" defaultValue={this.props.element.min_label} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'min_label', 'value')} />
             </div>
           </div>
         }
-        { this.props.element.hasOwnProperty('max_value') &&
+        { this.props.element.hasOwnProperty('maxValue') &&
           <div className="form-group">
             <div className="form-group-range">
               <label>Max</label>
-              <input type="number" className="form-control" defaultValue={this.props.element.max_value} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'max_value', 'value')} />
+              <input type="number" className="form-control" defaultValue={this.props.element.maxValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'maxValue', 'value')} />
               <input type="text" className="form-control" defaultValue={this.props.element.max_label} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'max_label', 'value')} />
             </div>
           </div>
         }
-        { this.props.element.hasOwnProperty('default_value') &&
+        { this.props.element.hasOwnProperty('defaultValue') &&
           <div className="form-group">
             <div className="form-group-range">
               <label>Default Selected</label>
-              <input type="number" className="form-control" defaultValue={this.props.element.default_value} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'default_value', 'value')} />
+              <input type="number" className="form-control" defaultValue={this.props.element.defaultValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'defaultValue', 'value')} />
             </div>
           </div>
         }

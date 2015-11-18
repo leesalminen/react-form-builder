@@ -16,9 +16,9 @@ export default React.createClass({
           icon: 'fa fa-sliders',
           label: 'Placeholder Label',
           step: 1,
-          default_value: 3,
-          min_value: 1,
-          max_value: 5,
+          defaultValue: 3,
+          minValue: 1,
+          maxValue: 5,
           min_label: 'Easy',
           max_label: 'Difficult'
         };
@@ -29,18 +29,18 @@ export default React.createClass({
     props.type = "range";
     props.name = this.props.data.name;
     props.list = "tickmarks_" + this.props.data.name;
-    props.min = this.props.data.min_value;
-    props.max = this.props.data.max_value;
+    props.min = this.props.data.minValue;
+    props.max = this.props.data.maxValue;
     props.step = this.props.data.step;
 
-    props.defaultValue = this.props.defaultValue !== undefined ? parseInt(this.props.defaultValue, 10) : parseInt(this.props.data.default_value, 10);
+    props.defaultValue = this.props.defaultValue !== undefined ? parseInt(this.props.defaultValue, 10) : parseInt(this.props.data.defaultValue, 10);
 
     if (this.props.mutable) {
       props.ref = "child_ref_" + this.props.data.name;
     }
 
     let datalist = [];
-    for (var i=parseInt(this.props.data.min_value, 10); i <= parseInt(this.props.data.max_value, 10); i += parseInt(this.props.data.step, 10)) {
+    for (var i=parseInt(this.props.data.minValue, 10); i <= parseInt(this.props.data.maxValue, 10); i += parseInt(this.props.data.step, 10)) {
       datalist.push(i);
     }
 
@@ -78,8 +78,8 @@ export default React.createClass({
               name={props.name}
               value={props.defaultValue}
               step={this.props.data.step}
-              max={this.props.data.max_value}
-              min={this.props.data.min_value} />
+              max={this.props.data.maxValue}
+              min={this.props.data.minValue} />
           </div>
           <div className="visible_marks">
             {visible_marks}
