@@ -37,7 +37,7 @@ export default class ReactForm extends React.Component {
   _checkboxesDefaultValue(item) {
     let defaultChecked = [];
     item.options.forEach(option => {
-      defaultChecked.push(this.props.answer_data['option_'+option.key])
+      defaultChecked.push(this.props.answerData['option_'+option.key])
     })
     return defaultChecked;
   }
@@ -261,7 +261,7 @@ export default class ReactForm extends React.Component {
 }
 
 ReactForm.defaultProps = {
-    answer_data:            {},
+    answerData:            {},
     validate:               true,
     showErrors:             true,
     validateForCorrectness: false,
