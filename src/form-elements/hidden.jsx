@@ -23,17 +23,20 @@ export default class Hidden extends FormElement {
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
       props.ref = 'input';
-    }
+
+      return (<input {...props} />);
+    } else {
     return this.renderWithSortable(
-      <div className="rfb-item">
-        { !this.props.mutable &&
-          <HeaderBar {...this.headerBarProps()} />
-        }
-        <div className="form-group">
-          <HeaderLabels {...this.headerLabelProps()}/>
-          <input {...props} />
-        </div>
-      </div>
-    );
+          <div className="rfb-item">
+            { !this.props.mutable &&
+              <HeaderBar {...this.headerBarProps()} />
+            }
+            <div className="form-group">
+              <HeaderLabels {...this.headerLabelProps()}/>
+              <input {...props} />
+            </div>
+          </div>
+        );
+    }
   }
 }
