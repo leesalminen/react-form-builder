@@ -14,6 +14,24 @@ export default class ReactForm extends React.Component {
   constructor(props) {
     super(props);
     this.emitter = new EventEmitter();
+
+    this.state = {
+        _data: _.get(props, 'data', [])
+    }
+  }
+
+  componentDidMount() {
+      if (this.props.url !== undefined) {
+          $.get(
+              this.props.url,
+              function(response) {
+                  this.setState({
+                      _data: response
+                  });
+              }.bind(this),
+              'json'
+          );
+      }
   }
 
   _checkboxesDefaultValue(item) {
@@ -68,7 +86,7 @@ export default class ReactForm extends React.Component {
       let errors = [];
       let promises = [];
 
-      self.props.data.forEach(item => {
+      self.state._data.forEach(item => {
         let $item = self.refs[item.name];
 
         // Run default required validation, or a custom function if available
@@ -169,7 +187,7 @@ export default class ReactForm extends React.Component {
   }
 
   render() {
-    let items = this.props.data.map( item => {
+    let items = this.state._data.map( item => {
       let props = {
           mutable:          true,
           key:              item.id ? item.id : 'form_'+item.name,

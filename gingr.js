@@ -272,6 +272,6 @@ var formData = [
 
 ReactDOM.render(
   <FormGenerator
-    data={formData} />,
+    url="/ownerForm.json" />,
   document.getElementById('form-builder')
 )
