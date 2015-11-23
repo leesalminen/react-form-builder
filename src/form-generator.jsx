@@ -77,7 +77,7 @@ export default class ReactForm extends React.Component {
 
   /**
    * Validate the form and return errors
-   * @return {Promise} Resolves to true if valid, an array of error strings if invalid
+   * @return {Promise} Resolves an array of error strings.  The array is empty if the form is valid
    */
   validate() {
       let self = this;
@@ -133,11 +133,10 @@ export default class ReactForm extends React.Component {
                       if (self.props.handleInvalid) {
                           self.props.handleInvalid(errors);
                       }
-
-                      resolve(errors);
-                  } else {
-                      resolve(true);
                   }
+
+                  // Resolve errors - send back the empty array if no errors
+                  resolve(errors);
 
                   if (self.props.showErrors !== false) {
                       // publish errors, if any
@@ -176,8 +175,8 @@ export default class ReactForm extends React.Component {
     let errors  = [];
 
     if (self.props.validate !== false) {
-        self.validate().then(function(isValid) {
-            if (isValid === true) {
+        self.validate().then(function(errors) {
+            if (errors.length === 0) {
                 self.submitForm();
             }
         });
