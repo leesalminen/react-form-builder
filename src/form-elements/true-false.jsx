@@ -13,8 +13,8 @@ export default class TrueFalse extends FormElement {
       icon: 'fa fa-dot-circle-o',
       label: 'True or False',
       options: [
-        {value: '1', label: 'Yes/On', key: 'truefalse_option_' + ID.uuid()},
-        {value: '0', label: 'No/Off', key: 'truefalse_option_' + ID.uuid()}
+        {value: '1', label: 'Yes/On', key: 'option_' + ID.uuid()},
+        {value: '0', label: 'No/Off', key: 'option_' + ID.uuid()}
       ]
     };
   }
