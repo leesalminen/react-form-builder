@@ -13,6 +13,11 @@ export default class Email extends FormElement {
       value: null,
       alternate: null,
     };
+
+    this.validation_in_progress = this.validation_in_progress.bind(this);
+    this.validation_success     = this.validation_success.bind(this);
+    this.validation_error       = this.validation_error.bind(this);
+    this.get_suggestion_str     = this.get_suggestion_str.bind(this);
   }
 
   static toolbarEntry() {
