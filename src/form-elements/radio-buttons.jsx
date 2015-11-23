@@ -47,7 +47,7 @@ export default class RadioButtons extends FormElement {
             let props = self.baseInputProps();
 
             props.htmlId += '_' + option.key;
-            props.name   = self.props.data.name + '[]';
+            props.name   = self.props.data.name;
 
             props.type = "radio"
             props.value = option.value;
