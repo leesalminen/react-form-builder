@@ -50,8 +50,9 @@ export default class Toolbar extends React.Component {
   }
 
   _onClick(item) {
-    var elementData = _.cloneDeep(item);
-    elementData.id = ID.uuid(); // Assign a temporary ID here so the preview doesn't get messed up if we have 2 items with the same ID
+    var elementData = item.defaultOptions();
+    elementData.id      = ID.uuid(); // Assign a temporary ID here so the preview doesn't get messed up if we have 2 items with the same ID
+    elementData.element = item.toolbarEntry().element;
 
     if (item.label) {
       elementData.name = _.snakeCase(item.label);
@@ -68,9 +69,8 @@ export default class Toolbar extends React.Component {
           {
             this.state.items.map(item => {
               let data = item.toolbarEntry();
-              let defaultOptions = item.defaultOptions();
 
-              return <ToolbarItem data={data} key={data.element} onClick={this._onClick.bind(this, _.extend(data, defaultOptions)) } />;
+              return <ToolbarItem data={data} key={data.element} onClick={this._onClick.bind(this, item) } />;
             })
           }
         </ul>

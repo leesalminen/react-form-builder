@@ -101,14 +101,14 @@ export default class FormBuilderPreview extends React.Component {
             _onDestroy:     this._onDestroy
         };
 
-        if (FormElements[item.element] !== undefined) {
+        if (this.props.customElements[item.element] !== undefined) {
             return React.createElement(
-                FormElements[item.element],
+                this.props.customElements[item.element],
                 props
             );
-        } else if (window[item.element] !== undefined) {
+        } else if (FormElements[item.element] !== undefined) {
             return React.createElement(
-                window[item.element],
+                FormElements[item.element],
                 props
             );
         } else {
@@ -144,4 +144,4 @@ export default class FormBuilderPreview extends React.Component {
   }
 }
 
-FormBuilderPreview.defaultProps = { showCorrectColumn: false, files: [], editMode: false, editElement: null, className: ''}
+FormBuilderPreview.defaultProps = { showCorrectColumn: false, files: [], editMode: false, editElement: null, className: '', customElements: []}

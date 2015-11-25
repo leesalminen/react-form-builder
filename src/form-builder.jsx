@@ -61,14 +61,16 @@ export default class FormBuilder extends React.Component {
         <div className="react-form-builder clearfix">
           <div>
             <div className="react-form-builder-preview pull-left">
-              <FormBuilderPreview files={this.props.files}
-                manualEditModeOff={this.manualEditModeOff.bind(this)}
-                parent={this}
-                url={this.props.url}
-                saveUrl={this.props.saveUrl}
-                editModeOn={this.editModeOn}
-                editMode={this.state.editMode}
-                editElement={this.state.editElement} />
+              <FormBuilderPreview
+                  files             = {this.props.files}
+                  manualEditModeOff = {this.manualEditModeOff.bind(this)}
+                  parent            = {this}
+                  url               = {this.props.url}
+                  saveUrl           = {this.props.saveUrl}
+                  customElements    = {this.props.customElements}
+                  editModeOn        = {this.editModeOn}
+                  editMode          = {this.state.editMode}
+                  editElement       = {this.state.editElement} />
               <div className="text-right">
                 <button className="btn btn-primary btn-big btn-agree" onClick={ElementActions.save}>Save</button>
               </div>
@@ -81,3 +83,5 @@ export default class FormBuilder extends React.Component {
   }
 
 }
+
+FormBuilder.defaultProps = {customElements: []}
