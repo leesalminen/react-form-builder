@@ -101,18 +101,18 @@ export default class FormBuilderPreview extends React.Component {
             _onDestroy:     this._onDestroy
         };
 
-        if (this.props.customElements[item.element] !== undefined) {
+        // Use the element in custom elements if it's found in there, otherwise use the one in the default FormElements
+        let element = _.find(this.props.customElements, (element) => {
+            return element.toolbarEntry().element === item.element;
+        }) || FormElements[item.element];
+
+        if (element) {
             return React.createElement(
-                this.props.customElements[item.element],
-                props
-            );
-        } else if (FormElements[item.element] !== undefined) {
-            return React.createElement(
-                FormElements[item.element],
+                element,
                 props
             );
         } else {
-            console.warn('Invalid element type ' + item.element);
+          console.warn('Invalid element type ' + item.element);
         }
     });
 
