@@ -23,8 +23,6 @@ export default class FormElementsEdit extends React.Component {
     // Auto update the name field if the user hasn't manually updated it yet
     let nameChanged = _.snakeCase(thisElement.label) !== thisElement.name;
 
-    console.log(nameChanged);
-
     thisElement[elemProperty] = e.target[targProperty];
 
     // Change field name automatically
@@ -101,6 +99,7 @@ export default class FormElementsEdit extends React.Component {
           </div>
         }
         {
+            this.props.isSuperUser &&
             <div className="form-group">
                 <label>
                   <input type="checkbox" checked={cannotRemoveChecked} value={true} onChange={this.editElementProp.bind(this, 'cannotRemove', 'checked')} /> Cannot Remove
@@ -161,4 +160,7 @@ export default class FormElementsEdit extends React.Component {
     );
   }
 }
-FormElementsEdit.defaultProps = {className: 'edit-element-fields'}
+FormElementsEdit.defaultProps = {
+    className: 'edit-element-fields',
+    isSuperUser: false
+}

@@ -14,9 +14,16 @@ export default class FormBuilder extends React.Component {
 
     this.state = {
       editMode: false,
-      editElement: null
+      editElement: null,
+      isSuperUser: props.isSuperUser
     }
     document.addEventListener("click", this.editModeOff.bind(this));
+  }
+
+  __secretSuperUserModeOn() {
+    this.setState({
+        isSuperUser: true
+    });
   }
 
   editModeOn(data, e) {
@@ -70,7 +77,8 @@ export default class FormBuilder extends React.Component {
                   customElements    = {this.props.customElements}
                   editModeOn        = {this.editModeOn}
                   editMode          = {this.state.editMode}
-                  editElement       = {this.state.editElement} />
+                  editElement       = {this.state.editElement}
+                  isSuperUser       = {this.state.isSuperUser} />
               <div className="text-right">
                 <button className="btn btn-primary btn-big btn-agree" onClick={ElementActions.save}>Save</button>
               </div>
@@ -84,4 +92,7 @@ export default class FormBuilder extends React.Component {
 
 }
 
-FormBuilder.defaultProps = {customElements: []}
+FormBuilder.defaultProps = {
+    customElements: [],
+    isSuperUser: false
+}

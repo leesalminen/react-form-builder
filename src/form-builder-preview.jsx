@@ -133,7 +133,14 @@ export default class FormBuilderPreview extends React.Component {
         }
         <div className="edit-form">
           { this.props.editElement !== null &&
-            <FormElementsEdit showCorrectColumn={this.props.showCorrectColumn} files={this.props.files} manualEditModeOff={this.props.manualEditModeOff} preview={this} element={this.props.editElement} updateElement={this.updateElement} />
+            <FormElementsEdit
+                showCorrectColumn   = {this.props.showCorrectColumn}
+                files               = {this.props.files}
+                manualEditModeOff   = {this.props.manualEditModeOff}
+                preview             = {this}
+                element             = {this.props.editElement}
+                updateElement       = {this.updateElement}
+                isSuperUser         = {this.props.isSuperUser} />
           }
         </div>
         <Sortable sensitivity={0} key={this.state.data.length} onSort={this.handleSort.bind(this)}>
@@ -144,4 +151,11 @@ export default class FormBuilderPreview extends React.Component {
   }
 }
 
-FormBuilderPreview.defaultProps = { showCorrectColumn: false, files: [], editMode: false, editElement: null, className: '', customElements: []}
+FormBuilderPreview.defaultProps = {
+    showCorrectColumn: false,
+    files: [],
+    editMode: false,
+    editElement: null,
+    className: '',
+    customElements: []
+}
