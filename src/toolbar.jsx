@@ -54,8 +54,8 @@ export default class Toolbar extends React.Component {
     elementData.id      = ID.uuid(); // Assign a temporary ID here so the preview doesn't get messed up if we have 2 items with the same ID
     elementData.element = item.toolbarEntry().element;
 
-    if (item.label) {
-      elementData.name = _.snakeCase(item.label);
+    if (elementData.label) {
+      elementData.name = _.snakeCase(elementData.label);
     }
 
     ElementActions.createElement(elementData);

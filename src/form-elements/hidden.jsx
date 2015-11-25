@@ -9,13 +9,13 @@ export default class Hidden extends FormElement {
     return {
       element: 'Hidden',
       displayName: 'Hidden Input',
-      label: 'Placeholder Label',
       icon: 'fa fa-eye-slash'
     };
   }
 
   static defaultOptions() {
       return {
+          label: 'Placeholder Label',
           defaultValue: ''
       }
   }
