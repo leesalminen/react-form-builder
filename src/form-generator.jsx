@@ -213,6 +213,11 @@ export default class ReactForm extends React.Component {
               FormElements[item.element],
               props
           );
+      } else if (window[item.element] !== undefined) {
+          return React.createElement(
+              window[item.element],
+              props
+          );
       } else {
           console.warn('Invalid element type ' + item.element);
       }
