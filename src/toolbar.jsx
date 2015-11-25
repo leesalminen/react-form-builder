@@ -68,7 +68,9 @@ export default class Toolbar extends React.Component {
           {
             this.state.items.map(item => {
               let data = item.toolbarEntry();
-              return <ToolbarItem data={data} key={data.element} onClick={this._onClick.bind(this, data) } />;
+              let defaultOptions = item.defaultOptions();
+
+              return <ToolbarItem data={data} key={data.element} onClick={this._onClick.bind(this, _.extend(data, defaultOptions)) } />;
             })
           }
         </ul>

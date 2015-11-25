@@ -25,6 +25,12 @@ export default class Camera extends FormElement {
     };
   }
 
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label'
+      }
+  }
+
   displayImage(e) {
     var self = this;
     var target = e.target;

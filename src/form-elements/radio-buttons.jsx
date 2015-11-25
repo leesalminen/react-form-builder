@@ -11,14 +11,19 @@ export default class RadioButtons extends FormElement {
     return {
       element: 'RadioButtons',
       displayName: 'Multiple Choice',
-      icon: 'fa fa-dot-circle-o',
-      label: 'Placeholder Label',
-      options: [
-        {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'option_' + ID.uuid()},
-        {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'option_' + ID.uuid()},
-        {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'option_' + ID.uuid()}
-      ]
+      icon: 'fa fa-dot-circle-o'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label',
+          options: [
+            {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'option_' + ID.uuid()},
+            {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'option_' + ID.uuid()},
+            {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'option_' + ID.uuid()}
+          ]
+      }
   }
 
   validateRequired() {

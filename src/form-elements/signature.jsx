@@ -12,9 +12,14 @@ export default class Signature extends FormElement {
     return {
       element: 'Signature',
       displayName: 'Signature',
-      icon: 'fa fa-pencil-square-o',
-      label: 'Signature'
+      icon: 'fa fa-pencil-square-o'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Signature'
+      }
   }
 
   validate() {

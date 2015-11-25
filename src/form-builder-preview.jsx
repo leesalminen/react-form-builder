@@ -55,7 +55,7 @@ export default class FormBuilderPreview extends React.Component {
         errors: errors
       });
     } else {
-        
+
       this.setState({
         data: _.cloneDeep(data)
       });

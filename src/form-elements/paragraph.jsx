@@ -8,10 +8,15 @@ export default class Paragraph extends FormElement {
     return {
       element: 'Paragraph',
       displayName: 'Paragraph',
-      static: true,
       icon: 'fa fa-paragraph',
-      content: 'Placeholder Text...'
+      static: true
     };
+  }
+
+  static defaultOptions() {
+      return {
+          content: 'Placeholder Text...'
+      }
   }
 
   render() {

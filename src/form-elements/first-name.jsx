@@ -9,10 +9,15 @@ export default class FirstName extends FormElement {
     return {
       element: 'FirstName',
       displayName: 'First Name',
-      label: 'First Name',
       icon: 'fa fa-male',
       isUnique: true
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'First Name'
+      }
   }
 
   render() {

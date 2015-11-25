@@ -9,9 +9,14 @@ export default class TextArea extends FormElement {
     return {
       element: 'TextArea',
       displayName: 'Multi-line Input',
-      label: 'Placeholder Label',
       icon: 'fa fa-text-height'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label'
+      }
   }
 
   render() {

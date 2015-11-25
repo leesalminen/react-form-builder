@@ -9,12 +9,16 @@ export default class TextInput extends FormElement {
     return {
       element: 'TextInput',
       displayName: 'Text Input',
-      label: 'Placeholder Label',
-      icon: 'fa fa-font',
-      defaultValue: ''
+      icon: 'fa fa-font'
     };
   }
 
+  static defaultOptions() {
+    return {
+        label: 'Placeholder Label',
+        defaultValue: ''
+    };
+  }
   render() {
     let props = this.baseInputProps();
     props.type = "text";

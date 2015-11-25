@@ -14,6 +14,12 @@ export default class DatePicker extends FormElement {
     };
   }
 
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label'
+      }
+  }
+
   render() {
     let props = this.baseInputProps();
     props.type = "date";

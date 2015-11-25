@@ -9,11 +9,16 @@ export default class Download extends FormElement {
       element: 'Download',
       displayName: 'File Attachment',
       icon: 'fa fa-file',
-      static: true,
-      content: 'Placeholder file name ...',
-      filePath: '',
-      _href: ''
+      static: true
     };
+  }
+
+  static defaultOptions() {
+      return {
+          content: 'Placeholder file name ...',
+          filePath: '',
+          _href: ''
+      }
   }
 
   render() {

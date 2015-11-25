@@ -4,7 +4,8 @@ import DemoBar from './demobar';
 import { FormBuilder } from "./src/app";
 
 ReactDOM.render(
-  <FormBuilder />,
+  <FormBuilder
+      url="/ownerForm.json"/>,
   document.getElementById('form-builder')
 )
 

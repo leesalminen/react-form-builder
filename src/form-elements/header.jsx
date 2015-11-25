@@ -9,9 +9,12 @@ export default class Header extends FormElement {
       element: 'Header',
       displayName: 'Header Text',
       icon: 'fa fa-header',
-      static: true,
-      content: 'Placeholder Text...'
+      static: true
     };
+  }
+
+  static defaultOptions() {
+      content: 'Placeholder Text...'
   }
 
   render() {

@@ -11,15 +11,20 @@ export default class Range extends FormElement {
     return {
       element: 'Range',
       displayName: 'Range',
-      icon: 'fa fa-sliders',
-      label: 'Placeholder Label',
-      step: 1,
-      defaultValue: 3,
-      minValue: 1,
-      maxValue: 5,
-      min_label: 'Easy',
-      max_label: 'Difficult'
+      icon: 'fa fa-sliders'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label',
+          step: 1,
+          defaultValue: 3,
+          minValue: 1,
+          maxValue: 5,
+          minLabel: 'Easy',
+          maxLabel: 'Difficult'
+      }
   }
 
   render() {
@@ -68,8 +73,8 @@ export default class Range extends FormElement {
           <HeaderLabels {...this.headerLabelProps()} />
           <div className="range">
             <div className="clearfix">
-              <span className="pull-left">{this.props.data.min_label}</span>
-              <span className="pull-right">{this.props.data.max_label}</span>
+              <span className="pull-left">{this.props.data.minLabel}</span>
+              <span className="pull-right">{this.props.data.maxLabel}</span>
             </div>
             <SliderNativeBootstrap
               name={props.name}

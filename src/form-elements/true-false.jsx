@@ -10,7 +10,12 @@ export default class TrueFalse extends RadioButtons {
     return {
       element: 'TrueFalse',
       displayName: 'True / False',
-      icon: 'fa fa-dot-circle-o',
+      icon: 'fa fa-dot-circle-o'
+    };
+  }
+
+  static defaultOptions() {
+    return {
       label: 'True or False',
       options: [
         {value: '1', label: 'Yes', key: 'option_' + ID.uuid()},

@@ -23,15 +23,20 @@ export default class Dropdown extends FormElement {
     return {
       element: 'Dropdown',
       displayName: 'Dropdown',
-      icon: 'fa fa-caret-square-o-down',
-      label: 'Placeholder Label',
-      options: [
-        {value: 'option1', label: 'Option 1', key: 'option_' + ID.uuid()},
-        {value: 'option2', label: 'Option 2', key: 'option_' + ID.uuid()},
-        {value: 'option3', label: 'Option 3', key: 'option_' + ID.uuid()}
-      ],
-      optionsUrl: ''
+      icon: 'fa fa-caret-square-o-down'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label',
+          options: [
+            {value: 'option1', label: 'Option 1', key: 'option_' + ID.uuid()},
+            {value: 'option2', label: 'Option 2', key: 'option_' + ID.uuid()},
+            {value: 'option3', label: 'Option 3', key: 'option_' + ID.uuid()}
+          ],
+          optionsUrl: ''
+      }
   }
 
   handleChange(value) {

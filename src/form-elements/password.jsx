@@ -9,9 +9,14 @@ export default class Password extends FormElement {
     return {
       element: 'Password',
       displayName: 'Password',
-      label: 'Password',
       icon: 'fa fa-key'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Password',
+      }
   }
 
   validate() {

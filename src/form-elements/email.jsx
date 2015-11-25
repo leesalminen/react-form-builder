@@ -24,9 +24,14 @@ export default class Email extends FormElement {
     return {
       element: 'Email',
       displayName: 'Email',
-      label: 'Email',
       icon: 'fa fa-envelope'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Email'
+      }
   }
 
   componentDidMount() {

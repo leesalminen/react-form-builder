@@ -14,6 +14,12 @@ export default class LineBreak extends FormElement {
     }
   }
 
+  static defaultOptions() {
+      return {
+          
+      }
+  }
+
   render() {
     return this.renderWithSortable(
       <div className="rfb-item">

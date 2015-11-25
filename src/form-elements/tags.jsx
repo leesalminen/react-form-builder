@@ -22,14 +22,19 @@ export default class Tags extends FormElement {
     return {
       element: 'Tags',
       displayName: 'Tags',
-      icon: 'fa fa-tags',
-      label: 'Placeholder Label',
-      options: [
-        {value: 'place_holder_tag_1', label: 'Place holder tag 1', key: 'tags_option_' + ID.uuid()},
-        {value: 'place_holder_tag_2', label: 'Place holder tag 2', key: 'tags_option_' + ID.uuid()},
-        {value: 'place_holder_tag_3', label: 'Place holder tag 3', key: 'tags_option_' + ID.uuid()}
-      ]
+      icon: 'fa fa-tags'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label',
+          options: [
+            {value: 'place_holder_tag_1', label: 'Place holder tag 1', key: 'tags_option_' + ID.uuid()},
+            {value: 'place_holder_tag_2', label: 'Place holder tag 2', key: 'tags_option_' + ID.uuid()},
+            {value: 'place_holder_tag_3', label: 'Place holder tag 3', key: 'tags_option_' + ID.uuid()}
+          ]
+      }
   }
 
   handleChange(e) {

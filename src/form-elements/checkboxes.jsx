@@ -11,14 +11,19 @@ export default class Checkboxes extends FormElement {
     return {
       element: 'Checkboxes',
       displayName: 'Checkboxes',
-      icon: 'fa fa-check-square-o',
-      label: 'Placeholder Label',
-      options: [
-        {value: 'place_holder_option_1', label: 'Place holder option 1'},
-        {value: 'place_holder_option_2', label: 'Place holder option 2'},
-        {value: 'place_holder_option_3', label: 'Place holder option 3'}
-      ]
+      icon: 'fa fa-check-square-o'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label',
+          options: [
+            {value: 'place_holder_option_1', label: 'Place holder option 1'},
+            {value: 'place_holder_option_2', label: 'Place holder option 2'},
+            {value: 'place_holder_option_3', label: 'Place holder option 3'}
+          ]
+      }
   }
 
   validateRequired() {

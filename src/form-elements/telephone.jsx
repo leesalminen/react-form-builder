@@ -10,9 +10,14 @@ export default class Telephone extends FormElement {
     return {
       element: 'Telephone',
       displayName: 'Telephone',
-      label: 'Telephone',
       icon: 'fa fa-phone'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Telephone'
+      }
   }
 
   render() {

@@ -11,9 +11,14 @@ export default class Rating extends FormElement {
     return {
       element: 'Rating',
       displayName: 'Rating',
-      label: 'Placeholder Label',
       icon: 'fa fa-star'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Placeholder Label'
+      }
   }
 
   validateRequired() {

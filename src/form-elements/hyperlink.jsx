@@ -9,10 +9,15 @@ export default class Hyperlink extends FormElement {
       element: 'HyperLink',
       displayName: 'Web site',
       icon: 'fa fa-link',
-      static: true,
-      content: 'Placeholder Web site link ...',
-      href: 'http://www.example.com'
+      static: true
     };
+  }
+
+  static defaultOptions() {
+      return {
+          content: 'Placeholder Web site link ...',
+          href: 'http://www.example.com'
+      }
   }
 
   render() {

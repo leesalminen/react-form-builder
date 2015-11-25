@@ -26,9 +26,14 @@ export default class CreditCard extends FormElement {
     return {
       element: 'CreditCard',
       displayName: 'Credit Card',
-      label: 'Credit Card',
       icon: 'fa fa-credit-card'
     };
+  }
+
+  static defaultOptions() {
+      return {
+          label: 'Credit Card'
+      }
   }
 
   validateRequired() {
