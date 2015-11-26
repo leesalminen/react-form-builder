@@ -50,11 +50,12 @@ export default class FormElementsEdit extends React.Component {
     }
   }
   render() {
-    let requiredChecked     = _.get(this.props.element, 'required', false);
-    let adminOnlyChecked    = _.get(this.props.element, 'adminOnly', false);
-    let cannotRemoveChecked = _.get(this.props.element, 'cannotRemove', false);
-    let systemFieldChecked  = _.get(this.props.element, 'systemField', false);
-    let hiddenChecked       = _.get(this.props.element, 'hidden', false);
+    let requiredPublicChecked   = _.get(this.props.element, 'requiredPublic', false);
+    let requiredAdminChecked    = _.get(this.props.element, 'requiredAdmin', false);
+    let adminOnlyChecked        = _.get(this.props.element, 'adminOnly', false);
+    let cannotRemoveChecked     = _.get(this.props.element, 'cannotRemove', false);
+    let systemFieldChecked      = _.get(this.props.element, 'systemField', false);
+    let hiddenChecked           = _.get(this.props.element, 'hidden', false);
 
     let thisFiles = this.props.files.length ? this.props.files : [];
     if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
@@ -99,7 +100,11 @@ export default class FormElementsEdit extends React.Component {
             <input type="text" disabled={systemFieldChecked && !this.props.isSuperUser} className={classNames({'form-control': true, 'grayed-input': _.snakeCase(this.props.element.label) === this.props.element.name})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
             <br/>
             <label>
-              <input type="checkbox" checked={requiredChecked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required
+              <input type="checkbox" checked={requiredPublicChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredPublic', 'checked')} /> Required for Public Forms
+            </label>
+            <br />
+            <label>
+              <input type="checkbox" checked={requiredAdminChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredAdmin', 'checked')} /> Required for Admin Forms
             </label>
             <br />
             <label>
