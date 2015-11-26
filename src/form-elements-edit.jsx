@@ -26,7 +26,11 @@ export default class FormElementsEdit extends React.Component {
     thisElement[elemProperty] = e.target[targProperty];
 
     // Change field name automatically
-    if (elemProperty === 'label' && !nameChanged) {
+    if (
+        elemProperty === 'label'
+        && !nameChanged
+        && !_.get(this.props.element, 'systemField', false)
+    ) {
       thisElement.name = _.snakeCase(e.target[targProperty]);
     }
 
@@ -49,9 +53,13 @@ export default class FormElementsEdit extends React.Component {
     let requiredChecked     = _.get(this.props.element, 'required', false);
     let publicChecked       = _.get(this.props.element, 'public', false);
     let cannotRemoveChecked = _.get(this.props.element, 'cannotRemove', false);
+    let systemFieldChecked  = _.get(this.props.element, 'systemField', false);
+
     let thisFiles = this.props.files.length ? this.props.files : [];
-    if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "")
+    if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
       thisFiles.unshift({id: '', file_name: ''});
+    }
+
     return (
       <div>
         <div className="clearfix">
@@ -87,7 +95,7 @@ export default class FormElementsEdit extends React.Component {
             <input type="text" className="form-control" defaultValue={this.props.element.label} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'label', 'value')} />
             <br />
             <label>Field Name</label>
-            <input type="text" className={classNames({'form-control': true, 'grayed-input': _.snakeCase(this.props.element.label) === this.props.element.name})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
+            <input type="text" disabled={systemFieldChecked && !this.props.isSuperUser} className={classNames({'form-control': true, 'grayed-input': _.snakeCase(this.props.element.label) === this.props.element.name})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
             <br/>
             <label>
               <input type="checkbox" checked={requiredChecked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required
@@ -103,6 +111,10 @@ export default class FormElementsEdit extends React.Component {
             <div className="form-group">
                 <label>
                   <input type="checkbox" checked={cannotRemoveChecked} value={true} onChange={this.editElementProp.bind(this, 'cannotRemove', 'checked')} /> Cannot Remove
+                </label>
+                <br/>
+                <label>
+                  <input type="checkbox" checked={systemFieldChecked} value={true} onChange={this.editElementProp.bind(this, 'systemField', 'checked')} /> System Field (Locks the Name for non Super Users)
                 </label>
             </div>
         }
