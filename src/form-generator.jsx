@@ -208,6 +208,10 @@ export default class ReactForm extends React.Component {
           break;
       }
 
+      if (item.adminOnly && !this.props.isAdmin) {
+          return;
+      }
+
       // Use the element in custom elements if it's found in there, otherwise use the one in the default FormElements
       let element = _.find(this.props.customElements, (element) => {
           return element.toolbarEntry().element === item.element;
@@ -278,5 +282,6 @@ ReactForm.defaultProps = {
     showErrors:             true,
     validateForCorrectness: false,
     submitLabel:            'Submit',
-    customElements:         []
+    customElements:         [],
+    isAdmin:                false
 };
