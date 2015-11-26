@@ -107,10 +107,18 @@ export default class FormBuilderPreview extends React.Component {
         }) || FormElements[item.element];
 
         if (element) {
-            return React.createElement(
+            let reactElement = React.createElement(
                 element,
                 props
             );
+
+            if (item.hidden && !this.props.isSuperUser) {
+                return (
+                    <div className="hidden">{reactElement}</div>
+                )
+            } else {
+                return reactElement;
+            }
         } else {
           console.warn('Invalid element type ' + item.element);
         }
