@@ -20,7 +20,7 @@ export default class Telephone extends FormElement {
       }
   }
 
-  render() {
+  renderComponent() {
     let props = this.baseInputProps();
     props.type = "telephone";
     props.className = "form-control telephone";
@@ -31,17 +31,7 @@ export default class Telephone extends FormElement {
       props.ref = 'input';
     }
 
-    return this.renderWithSortable(
-      <div className="rfb-item">
-        { !this.props.mutable &&
-          <HeaderBar {...this.headerBarProps()} />
-        }
-        <div className="form-group">
-          <HeaderLabels {...this.headerLabelProps()} />
-          <MaskedInput {...props} />
-        </div>
-      </div>
-    );
+    return (<MaskedInput {...props} />);
   }
 }
 

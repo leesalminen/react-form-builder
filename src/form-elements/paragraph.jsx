@@ -1,32 +1,27 @@
 import React from 'react';
-import FormElement from './util/form-element.jsx';
+import FormElementStatic from './util/form-element-static.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 
-export default class Paragraph extends FormElement {
-  static toolbarEntry() {
-    return {
-      element: 'Paragraph',
-      displayName: 'Paragraph',
-      icon: 'fa fa-paragraph',
-      static: true
-    };
-  }
+export default class Paragraph extends FormElementStatic {
+    static toolbarEntry() {
+        return {
+            element: 'Paragraph',
+            displayName: 'Paragraph',
+            icon: 'fa fa-paragraph',
+            static: true
+        };
+    }
 
-  static defaultOptions() {
-      return {
-          content: 'Placeholder Text...'
-      }
-  }
-
-  render() {
-    return this.renderWithSortable(
-      <div className="rfb-item">
-        { !this.props.mutable &&
-          <HeaderBar {...this.headerBarProps()} />
+    static defaultOptions() {
+        return {
+            content: 'Placeholder Text...'
         }
-        <p className="static">{this.props.data.content}</p>
-      </div>
-    );
-  }
+    }
+
+    renderComponent() {
+        return (
+            <p className="static">{this.props.data.content}</p>
+        );
+    }
 }

@@ -25,7 +25,7 @@ export default class Rating extends FormElement {
     return this.refs.input.state.rating !== 0;
   }
 
-  render() {
+  renderComponent() {
     let props = this.baseInputProps();
     props.ratingAmount = 5;
 
@@ -34,16 +34,6 @@ export default class Rating extends FormElement {
       props.editing = true;
       props.ref = 'input';
     }
-    return this.renderWithSortable(
-      <div className="rfb-item">
-        { !this.props.mutable &&
-          <HeaderBar {...this.headerBarProps()} />
-        }
-        <div className="form-group">
-          <HeaderLabels {...this.headerLabelProps()} />
-          <StarRating {...props} />
-        </div>
-      </div>
-    );
+    return (<StarRating {...props} />);
   }
 }

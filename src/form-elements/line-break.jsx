@@ -1,9 +1,9 @@
 import React from 'react';
-import FormElement from './util/form-element.jsx';
+import FormElementStatic from './util/form-element-static.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 
-export default class LineBreak extends FormElement {
+export default class LineBreak extends FormElementStatic {
   static toolbarEntry() {
     return {
       element: 'LineBreak',
@@ -11,23 +11,15 @@ export default class LineBreak extends FormElement {
       static: true,
       hasOptions: false,
       icon: 'fa fa-arrows-h'
-    }
+    };
   }
 
   static defaultOptions() {
       return {
-          
-      }
+      };
   }
 
-  render() {
-    return this.renderWithSortable(
-      <div className="rfb-item">
-        { !this.props.mutable &&
-          <HeaderBar {...this.headerBarProps()} />
-        }
-        <hr />
-      </div>
-    );
-  }
+renderComponent() {
+    return (<hr />);
+}
 }

@@ -115,14 +115,8 @@ export default class CreditCard extends FormElement {
       });
   }
 
-  render() {
-    return this.renderWithSortable(
-      <div className="rfb-item">
-        { !this.props.mutable &&
-          <HeaderBar {...this.headerBarProps()} />
-        }
-        <div className="form-group">
-          <HeaderLabels data={this.props.data} mutable={this.props.mutable} />
+  renderComponent() {
+      return (
           <Well>
               <Alert bsStyle="danger" className={classNames({hidden: !this.state.error})}>{this.state.error}</Alert>
               <Input ref="token" type="hidden" name={this.props.data.name + '[token]'} value={this.state.token}/>
@@ -156,8 +150,6 @@ export default class CreditCard extends FormElement {
                   </Col>
               </Row>
           </Well>
-        </div>
-      </div>
-    );
+      );
   }
 }

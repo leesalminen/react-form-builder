@@ -19,7 +19,8 @@ export default class TextInput extends FormElement {
         defaultValue: ''
     };
   }
-  render() {
+
+  renderComponent() {
     let props = this.baseInputProps();
     props.type = "text";
     props.className = "form-control";
@@ -28,16 +29,6 @@ export default class TextInput extends FormElement {
       props.defaultValue = this.props.defaultValue;
       props.ref = 'input';
     }
-    return this.renderWithSortable(
-      <div className="rfb-item">
-        { !this.props.mutable &&
-          <HeaderBar {...this.headerBarProps()} />
-        }
-        <div className="form-group">
-          <HeaderLabels {...this.headerLabelProps()}/>
-          <input {...props} />
-        </div>
-      </div>
-    );
+    return (<input {...props} />);
   }
 }
