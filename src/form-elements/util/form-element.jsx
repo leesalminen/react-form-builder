@@ -63,24 +63,28 @@ export default class FormElement extends SortableItem {
         }
     }
 
+    renderReadOnly() {
+        return <div>{_.get(this.props, 'defaultValue', '')}</div>;
+    }
+
+    renderComponent() {
+        console.error('All form elements must define their own renderComponent method');
+    }
+
     render() {
-        if (this.props.readOnly === true) {
-            return this.renderReadOnly();
-        } else {
-            return this.renderWithSortable(
-                <div className="rfb-item">
-                    { !this.props.mutable &&
-                        <HeaderBar {...this.headerBarProps()} />
+        return this.renderWithSortable(
+            <div className="rfb-item">
+                { !this.props.mutable &&
+                    <HeaderBar {...this.headerBarProps()} />
+                }
+                <div className="form-group">
+                    {
+                        !this.static &&
+                        <HeaderLabels {...this.headerLabelProps()}/>
                     }
-                    <div className="form-group">
-                        {
-                            !this.static &&
-                            <HeaderLabels {...this.headerLabelProps()}/>
-                        }
-                        {this.renderComponent()}
-                    </div>
+                    {this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent()}
                 </div>
-            );
-        }
+            </div>
+        );
     }
 }
