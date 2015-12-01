@@ -1,12 +1,12 @@
 import React from 'react';
-import FormElement from './util/form-element.jsx';
+import FormElementWithOptions from './util/form-element-with-options.jsx';
 
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
 import ID from '../UUID';
 
-export default class Checkboxes extends FormElement {
+export default class Checkboxes extends FormElementWithOptions {
     static toolbarEntry() {
         return {
             element: 'Checkboxes',

@@ -15,7 +15,7 @@ export default class DynamicOptionList extends React.Component {
     }
   }
   _setValue(text) {
-    return text.replace(/[^A-Z0-9]+/ig, "_").toLowerCase();
+    return _.snakeCase(text);
   }
   editOption(option_index, e) {
     let this_element = this.state.element;

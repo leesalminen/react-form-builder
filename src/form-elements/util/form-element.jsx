@@ -64,7 +64,7 @@ export default class FormElement extends SortableItem {
     }
 
     renderReadOnly() {
-        return <div>{_.get(this.props, 'defaultValue', '')}</div>;
+        return _.get(this.props, 'defaultValue', '');
     }
 
     renderComponent() {
@@ -82,7 +82,9 @@ export default class FormElement extends SortableItem {
                         !this.static &&
                         <HeaderLabels {...this.headerLabelProps()}/>
                     }
-                    {this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent()}
+                    <div>
+                        {this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent()}
+                    </div>
                 </div>
             </div>
         );

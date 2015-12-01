@@ -8,7 +8,7 @@ ReactDOM.render(
     url         = "/ownerForm.json"
     readOnly    = {true}
     answerData  = {{
-        'email': 'asfs'
+        'dropdown': 'option_2'
     }}/>,
   document.getElementById('form-builder')
 )

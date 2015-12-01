@@ -1,5 +1,5 @@
 import React from 'react';
-import FormElement from './util/form-element.jsx';
+import FormElementWithOptions from './util/form-element-with-options.jsx';
 import Select from 'react-select';
 
 import HeaderBar from './util/header-bar.jsx';
@@ -7,14 +7,14 @@ import HeaderLabels from './util/header-labels.jsx';
 
 import ID from '../UUID';
 
-export default class Tags extends FormElement {
+export default class Tags extends FormElementWithOptions {
     constructor(props) {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
 
         this.state = {
-            value: this.props.defaultValue !== undefined ? this.props.defaultValue.split(",") : []
+            value: this.parseValue(props.defaultValue)
         };
     }
 
