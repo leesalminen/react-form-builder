@@ -31,6 +31,17 @@ export default class Dropdown extends FormElementWithOptions {
         };
     }
 
+    static defaultOptions() {
+        return {
+            label: 'Placeholder Label',
+            options: [
+                {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'option_' + ID.uuid()},
+                {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'option_' + ID.uuid()},
+                {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'option_' + ID.uuid()}
+            ]
+        }
+    }
+
     getOptions(input, callback) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', encodeURI(this.props.data.optionsUrl));
