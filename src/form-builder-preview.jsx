@@ -114,7 +114,7 @@ export default class FormBuilderPreview extends React.Component {
 
             if (item.hidden && !this.props.isSuperUser) {
                 return (
-                    <div className="hidden">{reactElement}</div>
+                    <div className="hidden" key={item.id}>{reactElement}</div>
                 )
             } else {
                 return reactElement;

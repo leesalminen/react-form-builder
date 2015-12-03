@@ -193,7 +193,7 @@ export default class ReactForm extends React.Component {
         let items = this.state._data.map( item => {
             let props = {
                 mutable:    true,
-                key:        item.id ? item.id : 'form_' + item.name,
+                key:        item.id,
                 ref:        item.name,
                 data:       item,
                 readOnly:   this.props.readOnly
@@ -230,7 +230,7 @@ export default class ReactForm extends React.Component {
 
                 if (item.hidden && !this.props.isSuperUser) {
                     return (
-                        <div className="hidden">{reactElement}</div>
+                        <div className="hidden" key={item.id}>{reactElement}</div>
                     )
                 } else {
                     return reactElement;
