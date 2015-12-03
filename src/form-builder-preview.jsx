@@ -63,7 +63,7 @@ export default class FormBuilderPreview extends React.Component {
   }
 
   _onDestroy(item) {
-    ElementActions.deleteElement(item);
+      ElementActions.deleteElement(item);
   }
 
   dismissErrors(e) {

@@ -47,7 +47,7 @@ var ElementStore = Reflux.createStore({
     },
 
     _delete: function(element) {
-        var index = _data.indexOf(element);
+        var index = _.findIndex(_data, {id: element.id});
         _data.splice(index, 1);
         this.trigger(_data);
     },
