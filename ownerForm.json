@@ -51,7 +51,7 @@
                 "key": "option_F6819BA4-5B1F-4932-83C1-9500D606561B"
             }
         ],
-        "optionsUrl": "",
+        "optionsUrl": "/options.json",
         "id": "316B58F1-B0F4-4D93-B664-85FD585C299B",
         "element": "Dropdown",
         "name": "dropdown"
