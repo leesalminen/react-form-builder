@@ -15,7 +15,7 @@ export default class DynamicOptionList extends React.Component {
     }
   }
   _setValue(text) {
-    return _.snakeCase(text);
+    return text; // This used to be snake case but it makes more sense for searching to just use the value
   }
   editOption(option_index, e) {
     let this_element = this.state.element;

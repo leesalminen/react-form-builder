@@ -43,7 +43,7 @@ export default class FormElementWithOptions extends FormElement {
                 <ul>
                 {
                     _.map(selected, function(item) {
-                        return <li>{item.label}</li>;
+                        return <li key={item.value}>{item.label}</li>;
                     })
                 }
                 </ul>
