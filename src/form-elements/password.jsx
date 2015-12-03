@@ -27,13 +27,16 @@ export default class Password extends FormElement {
         return true;
     }
 
+    renderReadOnly() {
+        return '';
+    }
+
     renderComponent() {
         let props = this.baseInputProps();
         props.type = "password";
         props.className = "form-control";
 
         if (this.props.mutable) {
-            props.defaultValue = this.props.defaultValue;
             props.ref = 'input';
         }
 
