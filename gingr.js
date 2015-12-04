@@ -6,7 +6,6 @@ import { FormGenerator } from "./src/app";
 ReactDOM.render(
   <FormGenerator
     url         = "/ownerForm.json"
-    readOnly    = {true}
     answerData  = {{
         'dropdown': 'option_2'
     }}/>,

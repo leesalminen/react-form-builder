@@ -90,11 +90,7 @@ export default class ReactForm extends React.Component {
             let $item = self.refs[item.name];
 
             // Run default required validation, or a custom function if available
-            if (
-                $item.props.data.required === true ||
-                ($item.props.data.requiredPublic === true && !this.props.isAdmin) ||
-                ($item.props.data.requiredAdmin === true && this.props.isAdmin)
-            ) {
+            if ($item.props.data.required === true) {
                 if (_.isFunction($item.validateRequired)) {
                     let isValid = $item.validateRequired();
 
@@ -191,6 +187,8 @@ export default class ReactForm extends React.Component {
 
     render() {
         let items = this.state._data.map( item => {
+            item.required = item.required || (item.requiredAdmin && this.props.isAdmin === true) || (item.requiredPublic && this.props.isAdmin !== true);
+
             let props = {
                 mutable:    true,
                 key:        item.id,

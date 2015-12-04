@@ -9,6 +9,14 @@ export default React.createClass({
           <span className="label-required label label-danger">Required</span>
         }
 
+        { (!this.props.mutable && _.get(this.props.data, 'requiredAdmin', false) === true) &&
+          <span className="label-required label label-danger">Required For Admin</span>
+        }
+
+        { (!this.props.mutable && _.get(this.props.data, 'requiredPublic', false) === true) &&
+          <span className="label-required label label-danger">Required For Public</span>
+        }
+
         { (this.props.mutable && _.get(this.props.data, 'required', false) === true) &&
           <span className="text-red text-danger">*</span>
         }

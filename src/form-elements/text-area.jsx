@@ -19,6 +19,12 @@ export default class TextArea extends FormElement {
         }
     }
 
+    renderReadOnly() {
+        return (
+            <p dangerouslySetInnerHTML={{__html: this.props.defaultValue}}></p>
+        )
+    }
+
     renderComponent() {
         let props = this.baseInputProps();
         props.className = "form-control";

@@ -62,6 +62,7 @@ export default class FormElementsEdit extends React.Component {
         }
     }
     render() {
+        let requiredChecked         = _.get(this.props.element, 'required', false);
         let requiredPublicChecked   = _.get(this.props.element, 'requiredPublic', false);
         let requiredAdminChecked    = _.get(this.props.element, 'requiredAdmin', false);
         let adminOnlyChecked        = _.get(this.props.element, 'adminOnly', false);
@@ -112,6 +113,10 @@ export default class FormElementsEdit extends React.Component {
                         <input type="text" disabled={systemFieldChecked && !this.props.isSuperUser} className={classNames({'form-control': true, 'grayed-input': _.snakeCase(this.props.element.label) === this.props.element.name})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
                         <br/>
                         <label>
+                            <input type="checkbox" checked={requiredChecked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required for All Forms
+                        </label>
+                        <br />
+                        <label>
                             <input type="checkbox" checked={requiredPublicChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredPublic', 'checked')} /> Required for Public Forms
                         </label>
                         <br />
@@ -150,7 +155,7 @@ export default class FormElementsEdit extends React.Component {
                                     _.map(this.props.tags, (tag) => {return {value: _.snakeCase(tag), label: tag}})
                                 }
                                 onChange  = {this.editTags.bind(this)}
-                                onBlur    = {this.updateElement.bind(this)} 
+                                onBlur    = {this.updateElement.bind(this)}
                                 value     = {this.state.element.tags} />
                         </div>
                     </div>
