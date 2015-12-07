@@ -24,6 +24,9 @@ export default React.createClass({
         { (!this.props.mutable && _.get(this.props.data, 'adminOnly', false) === true) &&
           <span className="label-required label label-success">Admin Only</span>
         }
+        { (!this.props.mutable && _.get(this.props.data, 'publicOnly', false) === true) &&
+          <span className="label-required label label-success">Public Only</span>
+        }
         { (!this.props.mutable && _.get(this.props.data, 'cannotRemove', false) === true) &&
           <span className="label-required label label-warning">Cannot Remove</span>
         }

@@ -65,6 +65,7 @@ export default class FormElementsEdit extends React.Component {
         let requiredChecked         = _.get(this.props.element, 'required', false);
         let requiredPublicChecked   = _.get(this.props.element, 'requiredPublic', false);
         let requiredAdminChecked    = _.get(this.props.element, 'requiredAdmin', false);
+        let publicOnlyChecked       = _.get(this.props.element, 'publicOnly', false);
         let adminOnlyChecked        = _.get(this.props.element, 'adminOnly', false);
         let cannotRemoveChecked     = _.get(this.props.element, 'cannotRemove', false);
         let systemFieldChecked      = _.get(this.props.element, 'systemField', false);
@@ -126,6 +127,10 @@ export default class FormElementsEdit extends React.Component {
                         <br />
                         <label>
                             <input type="checkbox" checked={adminOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'adminOnly', 'checked')} /> Admin Only
+                        </label>
+                        <br/>
+                        <label>
+                            <input type="checkbox" checked={publicOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'publicOnly', 'checked')} /> Public Only
                         </label>
                     </div>
                 }

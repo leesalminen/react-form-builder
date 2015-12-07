@@ -89,6 +89,11 @@ export default class ReactForm extends React.Component {
         self.state._data.forEach(item => {
             let $item = self.refs[item.name];
 
+            // Don't validate items that weren't actually rendered (like an admin item on a public form)
+            if ($item === undefined) {
+                return;
+            }
+
             // Run default required validation, or a custom function if available
             if ($item.props.data.required === true) {
                 if (_.isFunction($item.validateRequired)) {
@@ -186,7 +191,13 @@ export default class ReactForm extends React.Component {
     }
 
     render() {
-        let items = this.state._data.map( item => {
+        let items = [];
+
+        this.state._data.forEach( item => {
+            if ((item.publicOnly && this.props.isAdmin === true) || (item.adminOnly && this.props.isAdmin !== true)) {
+                return;
+            }
+
             item.required = item.required || (item.requiredAdmin && this.props.isAdmin === true) || (item.requiredPublic && this.props.isAdmin !== true);
 
             let props = {
@@ -227,16 +238,16 @@ export default class ReactForm extends React.Component {
                 );
 
                 if (item.hidden && !this.props.isSuperUser) {
-                    return (
+                    items.push(
                         <div className="hidden" key={item.id}>{reactElement}</div>
-                    )
+                    );
                 } else {
-                    return reactElement;
+                    items.push(reactElement);
                 }
             } else {
                 console.warn('Invalid element type ' + item.element);
             }
-        })
+        });
 
         let formTokenStyle = {
             display: 'none'
