@@ -1,6 +1,5 @@
 import Camera       from './form-elements/camera.jsx';
 import Checkboxes   from './form-elements/checkboxes.jsx';
-import CreditCard   from './form-elements/credit-card.jsx';
 import DatePicker   from './form-elements/date-picker.jsx';
 import Download     from './form-elements/download.jsx';
 import Dropdown     from './form-elements/dropdown.jsx';
@@ -25,7 +24,6 @@ import TrueFalse    from './form-elements/true-false.jsx';
 export {
     Camera,
     Checkboxes,
-    CreditCard,
     DatePicker,
     Download,
     Dropdown,

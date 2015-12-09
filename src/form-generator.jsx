@@ -160,8 +160,7 @@ export default class ReactForm extends React.Component {
     * @return {Object} The serialized form
     */
     serialize() {
-        let $form = ReactDOM.findDOMNode(this.refs.form);
-        return serializeForm($form, {hash: true})
+        return serializeForm(this.refs.form, {hash: true})
     }
 
     submitForm() {
