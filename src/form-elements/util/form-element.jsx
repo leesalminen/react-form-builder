@@ -39,7 +39,8 @@ export default class FormElement extends SortableItem {
             data:      this.props.data,
             label:     this.props.data.label,
             htmlFor:   this.htmlId,
-            mutable:   this.props.mutable
+            mutable:   this.props.mutable,
+            readOnly:  this.props.readOnly
         }
     }
 
