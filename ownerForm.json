@@ -7,7 +7,8 @@
         "label": "Placeholder Label",
         "defaultValue": "",
         "id": "20C867FD-B352-4ACE-951E-F0AD121CC363",
-        "name": "placeholder_label"
+        "name": "placeholder_label",
+        "tags": "test"
     },
     {
         "element": "FirstName",

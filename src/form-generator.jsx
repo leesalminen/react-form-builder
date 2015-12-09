@@ -197,6 +197,19 @@ export default class ReactForm extends React.Component {
                 return;
             }
 
+            // Only show properly tagged elements
+            if (this.props.tags.length > 0) {
+                if (!item.tags) {
+                    return;
+                }
+
+                let tags = item.tags.split(',');
+
+                if (_.intersection(this.props.tags, tags).length === 0) {
+                    return;
+                }
+            }
+
             item.required = item.required || (item.requiredAdmin && this.props.isAdmin === true) || (item.requiredPublic && this.props.isAdmin !== true);
 
             let props = {
@@ -296,6 +309,7 @@ ReactForm.defaultProps = {
     validateForCorrectness: false,
     submitLabel:            'Submit',
     customElements:         [],
+    tags:                   [],
     isAdmin:                false, // This is whether or not the user is an admin or not on an app basis
     readOnly:               false, // Whether or not this entire form is read only
 };
