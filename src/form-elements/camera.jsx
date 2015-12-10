@@ -12,7 +12,7 @@ export default class Camera extends FormElement {
         this.clearImage   = this.clearImage.bind(this);
 
         this.state = {
-            img: null
+            img: props.defaultValue
         };
     }
 
@@ -54,6 +54,12 @@ export default class Camera extends FormElement {
         })
     }
 
+    renderReadOnly() {
+        return (
+            <img src={this.state.img} height="100" />
+        );
+    }
+
     renderComponent() {
         return (
             <div className="image-upload-container">
@@ -69,6 +75,7 @@ export default class Camera extends FormElement {
 
                 { this.state.img &&
                     <div>
+                        <input {...this.baseInputProps()} type="hidden" value={this.state.img} />
                         <img src={ this.state.img } height="100" className="image-upload-preview" /><br />
                         <div className="btn btn-school btn-image-clear" onClick={this.clearImage}>
                             <i className="fa fa-times"></i> Clear Photo

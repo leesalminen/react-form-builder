@@ -36,7 +36,7 @@ export default class Telephone extends FormElement {
 }
 
 Telephone.defaultProps = _.extend(
-    Telephone.defaultProps,
+    _.clone(Telephone.defaultProps),
     {
         telephoneFormat: '(999) 999-9999'
     }
