@@ -70,6 +70,7 @@ export default class FormElementsEdit extends React.Component {
         let cannotRemoveChecked     = _.get(this.props.element, 'cannotRemove', false);
         let systemFieldChecked      = _.get(this.props.element, 'systemField', false);
         let hiddenChecked           = _.get(this.props.element, 'hidden', false);
+        let searchableChecked       = _.get(this.props.element, 'searchable', false);
 
         let thisFiles = this.props.files.length ? this.props.files : [];
         if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
@@ -147,6 +148,10 @@ export default class FormElementsEdit extends React.Component {
                         <br/>
                         <label>
                             <input type="checkbox" checked={hiddenChecked} value={true} onChange={this.editElementProp.bind(this, 'hidden', 'checked')} /> Hidden (For non Super Users)
+                        </label>
+                        <br/>
+                        <label>
+                            <input type="checkbox" checked={searchableChecked} value={true} onChange={this.editElementProp.bind(this, 'searchable', 'checked')} /> Searchable
                         </label>
                     </div>
                 }
