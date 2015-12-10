@@ -71,6 +71,7 @@ export default class FormElementsEdit extends React.Component {
         let systemFieldChecked      = _.get(this.props.element, 'systemField', false);
         let hiddenChecked           = _.get(this.props.element, 'hidden', false);
         let searchableChecked       = _.get(this.props.element, 'searchable', false);
+        let returnDataChecked       = _.get(this.props.element, 'returnData', false);
 
         let thisFiles = this.props.files.length ? this.props.files : [];
         if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
@@ -135,26 +136,27 @@ export default class FormElementsEdit extends React.Component {
                         </label>
                     </div>
                 }
-                {
-                    this.props.isSuperUser &&
-                    <div className="form-group">
-                        <label>
-                            <input type="checkbox" checked={cannotRemoveChecked} value={true} onChange={this.editElementProp.bind(this, 'cannotRemove', 'checked')} /> Cannot Remove
-                        </label>
-                        <br/>
-                        <label>
-                            <input type="checkbox" checked={systemFieldChecked} value={true} onChange={this.editElementProp.bind(this, 'systemField', 'checked')} /> System Field (Locks the Name for non Super Users)
-                        </label>
-                        <br/>
-                        <label>
-                            <input type="checkbox" checked={hiddenChecked} value={true} onChange={this.editElementProp.bind(this, 'hidden', 'checked')} /> Hidden (For non Super Users)
-                        </label>
-                        <br/>
-                        <label>
-                            <input type="checkbox" checked={searchableChecked} value={true} onChange={this.editElementProp.bind(this, 'searchable', 'checked')} /> Searchable
-                        </label>
-                    </div>
-                }
+                <div className="form-group" className={classNames({'hidden': this.props.isSuperUser !== true})}>
+                    <label>
+                        <input type="checkbox" checked={cannotRemoveChecked} value={true} onChange={this.editElementProp.bind(this, 'cannotRemove', 'checked')} /> Cannot Remove
+                    </label>
+                    <br/>
+                    <label>
+                        <input type="checkbox" checked={systemFieldChecked} value={true} onChange={this.editElementProp.bind(this, 'systemField', 'checked')} /> System Field (Locks the Name for non Super Users)
+                    </label>
+                    <br/>
+                    <label>
+                        <input type="checkbox" checked={hiddenChecked} value={true} onChange={this.editElementProp.bind(this, 'hidden', 'checked')} /> Hidden (For non Super Users)
+                    </label>
+                    <br/>
+                    <label>
+                        <input type="checkbox" checked={searchableChecked} value={true} onChange={this.editElementProp.bind(this, 'searchable', 'checked')} /> Searchable
+                    </label>
+                    <br/>
+                    <label>
+                        <input type="checkbox" checked={returnDataChecked} value={true} onChange={this.editElementProp.bind(this, 'returnData', 'checked')} /> Whether or not sensitive data is transmitted back (Try not to edit this)
+                    </label>
+                </div>
                 { this.props.hasOwnProperty('tags') &&
                     <div className="form-group">
                         <div className="form-group-range">
