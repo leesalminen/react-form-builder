@@ -166,5 +166,6 @@ FormBuilderPreview.defaultProps = {
     editMode: false,
     editElement: null,
     className: '',
-    customElements: []
+    customElements: [],
+    tags: ['Details', 'Main']
 }
