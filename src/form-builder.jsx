@@ -78,7 +78,8 @@ export default class FormBuilder extends React.Component {
                   editModeOn        = {this.editModeOn}
                   editMode          = {this.state.editMode}
                   editElement       = {this.state.editElement}
-                  isSuperUser       = {this.state.isSuperUser} />
+                  isSuperUser       = {this.state.isSuperUser}
+                  tags              = {this.props.tags} />
               <div className="text-right">
                 <button className="btn btn-primary btn-big btn-agree" onClick={ElementActions.save}>Save</button>
               </div>
@@ -94,5 +95,6 @@ export default class FormBuilder extends React.Component {
 
 FormBuilder.defaultProps = {
     customElements: [],
+    tags: [],
     isSuperUser: false
 }
