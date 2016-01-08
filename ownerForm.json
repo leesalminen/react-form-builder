@@ -56,5 +56,15 @@
         "id": "316B58F1-B0F4-4D93-B664-85FD585C299B",
         "element": "Dropdown",
         "name": "dropdown"
+    },
+    {
+        "label": "Hidden Test",
+        "defaultValue": "",
+        "id": "84034B28-F57A-4C7C-A06F-B33E592E6CC5",
+        "element": "Hidden",
+        "name": "hidden_test",
+        "hidden": true,
+        "systemField": true,
+        "cannotRemove": true
     }
 ]

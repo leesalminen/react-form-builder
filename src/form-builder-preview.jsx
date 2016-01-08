@@ -106,19 +106,18 @@ export default class FormBuilderPreview extends React.Component {
             return element.toolbarEntry().element === item.element;
         }) || FormElements[item.element];
 
+        // Hide the element if it's hidden from non superusers
+        if (item.hidden && !this.props.isSuperUser) {
+            props.hidden = true;
+        }
+
         if (element) {
             let reactElement = React.createElement(
                 element,
                 props
             );
 
-            if (item.hidden && !this.props.isSuperUser) {
-                return (
-                    <div className="hidden" key={item.id}>{reactElement}</div>
-                )
-            } else {
-                return reactElement;
-            }
+            return reactElement;
         } else {
           console.warn('Invalid element type ' + item.element);
         }

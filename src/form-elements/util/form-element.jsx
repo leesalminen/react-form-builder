@@ -74,7 +74,7 @@ export default class FormElement extends SortableItem {
 
     render() {
         return this.renderWithSortable(
-            <div className="rfb-item">
+            <div className={'rfb-item' + (this.props.hidden ? ' rfb-hidden' : '')}>
                 { !this.props.mutable &&
                     <HeaderBar {...this.headerBarProps()} />
                 }

@@ -6,7 +6,7 @@ import { FormBuilder } from "./src/app";
 ReactDOM.render(
   <FormBuilder
       url="/ownerForm.json"
-      isSuperUser={true} />,
+      isSuperUser={false} />,
   document.getElementById('form-builder')
 )
 

@@ -135,6 +135,9 @@
           opacity: .4;
           border: 2px #ccc dashed;
         }
+        &.rfb-hidden {
+            display: none;
+        }
         .toolbar-header {
           opacity: 0;
           z-index: 100;
