@@ -128,11 +128,11 @@ export default class FormElementsEdit extends React.Component {
                         </label>
                         <br />
                         <label>
-                            <input type="checkbox" checked={adminOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'adminOnly', 'checked')} /> Customer Only
+                            <input type="checkbox" checked={publicOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'publicOnly', 'checked')} /> Customer Only
                         </label>
                         <br/>
                         <label>
-                            <input type="checkbox" checked={publicOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'publicOnly', 'checked')} /> Employee Only
+                            <input type="checkbox" checked={adminOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'adminOnly', 'checked')} /> Employee Only
                         </label>
                     </div>
                 }
