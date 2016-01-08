@@ -115,24 +115,28 @@ export default class FormElementsEdit extends React.Component {
                         <label>Field Name</label>
                         <input type="text" disabled={systemFieldChecked && !this.props.isSuperUser} className={classNames({'form-control': true, 'grayed-input': _.snakeCase(this.props.element.label) === this.props.element.name})} defaultValue={this.props.element.name} value={this.state.element.name} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'name', 'value')} />
                         <br/>
-                        <label>
-                            <input type="checkbox" checked={requiredChecked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required for All Forms
-                        </label>
-                        <br />
+                        {
+                            /*
+                                <label>
+                                    <input type="checkbox" checked={requiredChecked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} /> Required for All Forms
+                                </label>
+                                <br />
+                            */
+                        }
                         <label>
                             <input type="checkbox" checked={requiredPublicChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredPublic', 'checked')} /> Required for Customer Forms
                         </label>
                         <br />
                         <label>
-                            <input type="checkbox" checked={requiredAdminChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredAdmin', 'checked')} /> Required for Employee Forms
+                            <input type="checkbox" checked={requiredAdminChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredAdmin', 'checked')} /> Required for Business Forms
                         </label>
                         <br />
                         <label>
-                            <input type="checkbox" checked={publicOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'publicOnly', 'checked')} /> Customer Only
+                            <input type="checkbox" checked={publicOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'publicOnly', 'checked')} /> Customer Forms Only
                         </label>
                         <br/>
                         <label>
-                            <input type="checkbox" checked={adminOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'adminOnly', 'checked')} /> Employee Only
+                            <input type="checkbox" checked={adminOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'adminOnly', 'checked')} /> Business Forms Only
                         </label>
                     </div>
                 }

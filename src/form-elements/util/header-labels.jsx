@@ -10,7 +10,7 @@ export default React.createClass({
         }
 
         { (!this.props.mutable && _.get(this.props.data, 'requiredAdmin', false) === true) &&
-          <span className="label-required label label-danger">Required For Employee</span>
+          <span className="label-required label label-danger">Required For Business</span>
         }
 
         { (!this.props.mutable && _.get(this.props.data, 'requiredPublic', false) === true) &&
@@ -22,7 +22,7 @@ export default React.createClass({
         }
 
         { (!this.props.mutable && _.get(this.props.data, 'adminOnly', false) === true) &&
-          <span className="label-required label label-success">Employee Only</span>
+          <span className="label-required label label-success">Business Only</span>
         }
         { (!this.props.mutable && _.get(this.props.data, 'publicOnly', false) === true) &&
           <span className="label-required label label-success">Customer Only</span>
