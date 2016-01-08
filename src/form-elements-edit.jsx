@@ -120,19 +120,19 @@ export default class FormElementsEdit extends React.Component {
                         </label>
                         <br />
                         <label>
-                            <input type="checkbox" checked={requiredPublicChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredPublic', 'checked')} /> Required for Public Forms
+                            <input type="checkbox" checked={requiredPublicChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredPublic', 'checked')} /> Required for Customer Forms
                         </label>
                         <br />
                         <label>
-                            <input type="checkbox" checked={requiredAdminChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredAdmin', 'checked')} /> Required for Admin Forms
+                            <input type="checkbox" checked={requiredAdminChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredAdmin', 'checked')} /> Required for Employee Forms
                         </label>
                         <br />
                         <label>
-                            <input type="checkbox" checked={adminOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'adminOnly', 'checked')} /> Admin Only
+                            <input type="checkbox" checked={adminOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'adminOnly', 'checked')} /> Customer Only
                         </label>
                         <br/>
                         <label>
-                            <input type="checkbox" checked={publicOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'publicOnly', 'checked')} /> Public Only
+                            <input type="checkbox" checked={publicOnlyChecked} value={true} onChange={this.editElementProp.bind(this, 'publicOnly', 'checked')} /> Employee Only
                         </label>
                     </div>
                 }
