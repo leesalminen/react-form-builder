@@ -20,12 +20,12 @@
         "name": "first_name"
     },
     {
-        "element": "Email",
+        "element": "Telephone",
         "displayName": "Email",
         "icon": "fa fa-envelope",
-        "label": "Email",
+        "label": "Telephone",
         "id": "B35FF370-A614-4604-90EC-C42D29EE93D1",
-        "name": "email"
+        "name": "Telephone"
     },
     {
         "label": "Image",
@@ -56,15 +56,5 @@
         "id": "316B58F1-B0F4-4D93-B664-85FD585C299B",
         "element": "Dropdown",
         "name": "dropdown"
-    },
-    {
-        "label": "Hidden Test",
-        "defaultValue": "",
-        "id": "84034B28-F57A-4C7C-A06F-B33E592E6CC5",
-        "element": "Hidden",
-        "name": "hidden_test",
-        "hidden": true,
-        "systemField": true,
-        "cannotRemove": true
     }
 ]
