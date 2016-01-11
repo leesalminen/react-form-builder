@@ -80,7 +80,7 @@ var ElementStore = Reflux.createStore({
      * Validate the form and post to the _saveUrl if we were initialized with one
      * Log out the data if no URL was provided
      */
-    save: function() {
+    save: function(onSave) {
         if (this.validateElements()) {
             if (_saveUrl) {
                 $.ajax({
@@ -91,10 +91,16 @@ var ElementStore = Reflux.createStore({
                     },
                     dataType: 'json',
                     success: function(data) {
+                        if (onSave) {
+                            onSave(data);
+                        }
                     }
                 })
             } else {
                 console.log(JSON.stringify(_data));
+                if (onSave) {
+                    onSave(JSON.stringify(_data));
+                }
             }
         } else {
             this.trigger(

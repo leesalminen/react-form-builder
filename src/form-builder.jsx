@@ -81,7 +81,7 @@ export default class FormBuilder extends React.Component {
                   isSuperUser       = {this.state.isSuperUser}
                   tags              = {this.props.tags} />
               <div className="text-right">
-                <button className="btn btn-primary btn-big btn-agree" onClick={ElementActions.save}>Save</button>
+                <button className="btn btn-primary btn-big btn-agree" onClick={ElementActions.save.bind(this, this.props.onSave)}>Save</button>
               </div>
             </div>
             <Toolbar {...toolbarProps} />
