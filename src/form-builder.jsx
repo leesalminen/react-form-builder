@@ -18,6 +18,16 @@ export default class FormBuilder extends React.Component {
       isSuperUser: props.isSuperUser
     }
     document.addEventListener("click", this.editModeOff.bind(this));
+
+    // Warn if navigating away and the form is dirty
+    window.addEventListener("beforeunload", (e) => {
+        if (this.isDirty()) {
+            var confirmationMessage = 'You have unsaved changed on this form.  Are you sure you want to leave this page?';
+
+            e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+            return confirmationMessage;              // Gecko, WebKit, Chrome <34
+        }
+    });
   }
 
   __secretSuperUserModeOn() {
@@ -59,6 +69,24 @@ export default class FormBuilder extends React.Component {
     }
   }
 
+  isDirty() {
+      return this.refs.formbuilder.state.isDirty;
+  }
+
+  save() {
+      let callback = () => {
+          if (this.props.onSave) {
+              this.props.onSave();
+          }
+
+          this.refs.formbuilder.setState({
+              isDirty: false
+          });
+      }
+
+      ElementActions.save(callback);
+  }
+
   render() {
     let toolbarProps = {};
     if (this.props.toolbarItems)
@@ -69,6 +97,7 @@ export default class FormBuilder extends React.Component {
           <div>
             <div className="react-form-builder-preview pull-left">
               <FormBuilderPreview
+                  ref               = "formbuilder"
                   files             = {this.props.files}
                   manualEditModeOff = {this.manualEditModeOff.bind(this)}
                   parent            = {this}
@@ -81,7 +110,7 @@ export default class FormBuilder extends React.Component {
                   isSuperUser       = {this.state.isSuperUser}
                   tags              = {this.props.tags} />
               <div className="text-right">
-                <button className="btn btn-primary btn-big btn-agree" onClick={ElementActions.save.bind(this, this.props.onSave)}>Save</button>
+                <button className="btn btn-primary btn-big btn-agree" onClick={this.save.bind(this)}>Save</button>
               </div>
             </div>
             <Toolbar {...toolbarProps} />
