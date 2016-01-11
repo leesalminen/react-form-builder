@@ -189,7 +189,7 @@ export default class FormElementsEdit extends React.Component {
                         <div className="form-group-range">
                             <label>Min</label>
                             <input type="number" className="form-control" defaultValue={this.props.element.minValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'minValue', 'value')} />
-                            <input type="text" className="form-control" defaultValue={this.props.element.min_label} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'min_label', 'value')} />
+                            <input type="text" className="form-control" defaultValue={this.props.element.minLabel} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'minLabel', 'value')} />
                         </div>
                     </div>
                 }
@@ -198,7 +198,7 @@ export default class FormElementsEdit extends React.Component {
                         <div className="form-group-range">
                             <label>Max</label>
                             <input type="number" className="form-control" defaultValue={this.props.element.maxValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'maxValue', 'value')} />
-                            <input type="text" className="form-control" defaultValue={this.props.element.max_label} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'max_label', 'value')} />
+                            <input type="text" className="form-control" defaultValue={this.props.element.maxLabel} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'maxLabel', 'value')} />
                         </div>
                     </div>
                 }

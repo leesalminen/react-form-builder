@@ -8,6 +8,7 @@ ReactDOM.render(
     url         = "/ownerForm.json"
     answerData  = {{
         'dropdown': 'option_2'
-    }}/>,
+    }}
+    handleSubmit = {function(data){console.log(data)}}/>,
   document.getElementById('form-builder')
 )

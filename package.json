@@ -29,7 +29,7 @@
     "form-serialize": "^0.7.0",
     "lodash": "latest",
     "react-bootstrap": "^0.27.3",
-    "react-bootstrap-native-slider": "git+https://github.com/blackjk3/react.bootstrap.slidertest.git",
+    "react-bootstrap-native-slider": "git+https://github.com/lofiinterstate/react.bootstrap.slidertest.git",
     "react-input-mask": "^0.5.10",
     "react-select": "^0.9.1",
     "react-signature-pad": "0.0.3",
@@ -39,8 +39,8 @@
     "reflux": "^0.2.8"
   },
   "peerDependencies": {
-    "react": "~0.14.2",
-    "react-dom": "~0.14.2"
+    "react": "~0.14.6",
+    "react-dom": "~0.14.6"
   },
   "devDependencies": {
     "babel": "",
