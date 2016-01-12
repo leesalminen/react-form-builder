@@ -30,7 +30,8 @@ export default class Email extends FormElement {
 
     static defaultOptions() {
         return {
-            label: 'Email'
+            label: 'Email',
+            isUnique: true,
         }
     }
 

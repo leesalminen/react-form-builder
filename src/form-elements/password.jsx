@@ -4,6 +4,8 @@ import FormElement from './util/form-element.jsx';
 import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
+import { Well } from 'react-bootstrap';
+
 export default class Password extends FormElement {
     static toolbarEntry() {
         return {
@@ -42,7 +44,7 @@ export default class Password extends FormElement {
         }
 
         return (
-            <div>
+            <Well>
                 <div className="form-group">
                     <input {...props} />
                 </div>
@@ -50,7 +52,7 @@ export default class Password extends FormElement {
                     <label htmlFor={this.htmlId + '_confirm'}>{'Confirm ' + this.props.data.label}</label>
                     <input id={this.htmlId + '_confirm'} ref="confirm" type="password" className="form-control"/>
                 </div>
-            </div>
+            </Well>
         );
     }
 }
