@@ -164,7 +164,7 @@ export default class FormElementsEdit extends React.Component {
                 { this.props.hasOwnProperty('tags') &&
                     <div className="form-group">
                         <div className="form-group-range">
-                            <label>Tags (These affect where data is displayed when reading data back in)</label>
+                            <label>Tags (These control where data is displayed)</label>
                             <Select
                                 multi     = {true}
                                 options   = {
