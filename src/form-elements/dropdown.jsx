@@ -38,7 +38,8 @@ export default class Dropdown extends FormElementWithOptions {
                 {value: 'place_holder_option_1', label: 'Place holder option 1', key: 'option_' + ID.uuid()},
                 {value: 'place_holder_option_2', label: 'Place holder option 2', key: 'option_' + ID.uuid()},
                 {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'option_' + ID.uuid()}
-            ]
+            ],
+            optionsUrl: '',
         }
     }
 
