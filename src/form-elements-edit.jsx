@@ -53,13 +53,23 @@ export default class FormElementsEdit extends React.Component {
             if (targProperty === 'checked') {this.updateElement();};
         });
     }
-    updateElement() {
+    updateElement(element) {
         let thisElement = this.state.element;
-        // to prevent ajax calls with no change
-        if (this.state.dirty) {
-            this.props.updateElement.call(this.props.preview, thisElement);
-            this.setState({dirty: false});
+
+        // Parse out any default values here if we have an option list
+        if (element.options !== undefined) {
+            let defaults = _.filter(element.options, (option) => {
+                return option.default === true;
+            });
+            defaults = _.pluck(defaults, 'value');
+
+            if (defaults.length > 0) {
+                element.defaultValue = defaults;
+            }
         }
+
+        this.props.updateElement.call(this.props.preview, thisElement);
+        this.setState({dirty: false});
     }
     render() {
         let requiredChecked         = _.get(this.props.element, 'required', false);
@@ -202,21 +212,15 @@ export default class FormElementsEdit extends React.Component {
                         </div>
                     </div>
                 }
-                { this.props.element.hasOwnProperty('defaultValue') &&
+                { this.props.element.hasOwnProperty('defaultValue') && !this.props.element.hasOwnProperty('options') && 
                     <div className="form-group">
                         <label>Default Value</label>
                         <input type="text" className="form-control" defaultValue={this.props.element.defaultValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'defaultValue', 'value')} />
                     </div>
                 }
-                { this.props.showCorrectColumn && this.props.element.canHaveAnswer && !this.props.element.hasOwnProperty('options') &&
-                    <div className="form-group">
-                        <label>Correct Answer</label>
-                        <input type="text" className="form-control" defaultValue={this.props.element.correct} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'correct', 'value')} />
-                    </div>
-                }
                 { this.props.element.hasOwnProperty('options') &&
                     <div className="form-group">
-                        <DynamicOptionList showCorrectColumn={this.props.showCorrectColumn} data={this.props.preview.state.data} updateElement={this.props.updateElement} preview={this.props.preview} element={this.props.element} key={this.props.element.options.length} />
+                        <DynamicOptionList ref="options" data={this.props.preview.state.data} updateElement={this.updateElement.bind(this)} preview={this.props.preview} element={this.props.element} key={this.props.element.options.length} />
                     </div>
                 }
                 { this.props.element.hasOwnProperty('optionsUrl') &&

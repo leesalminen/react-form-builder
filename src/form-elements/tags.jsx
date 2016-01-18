@@ -29,6 +29,7 @@ export default class Tags extends FormElementWithOptions {
     static defaultOptions() {
         return {
             label: 'Placeholder Label',
+            multiple: true,
             options: [
                 {value: 'place_holder_tag_1', label: 'Place holder tag 1', key: 'option_' + ID.uuid()},
                 {value: 'place_holder_tag_2', label: 'Place holder tag 2', key: 'option_' + ID.uuid()},

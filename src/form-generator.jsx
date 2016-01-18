@@ -42,39 +42,6 @@ export default class ReactForm extends React.Component {
         return defaultChecked;
     }
 
-    _isIncorrect(item) {
-        let incorrect = false;
-        if (item.canHaveAnswer) {
-            if (item.element === "Checkboxes" || item.element === "RadioButtons") {
-                item.options.forEach(option => {
-                    let $option = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+option.key]);
-                    if ((option.hasOwnProperty("correct") && !$option.checked) || (!option.hasOwnProperty("correct") && $option.checked))
-                    incorrect = true;
-                })
-            } else {
-                let $item = null
-                if (item.element === "Rating") {
-                    $item = {};
-                    $item.value = this.refs[item.name].refs["child_ref_"+item.name].state.rating;
-                    if ($item.value.toString() !== item.correct)
-                    incorrect = true;
-                } else {
-                    if (item.element === "Tags") {
-                        $item = {};
-                        $item.value = this.refs[item.name].refs["child_ref_"+item.name].state.value
-                    } else {
-                        $item = ReactDOM.findDOMNode(this.refs[item.name].refs["child_ref_"+item.name]);
-                        $item.value = $item.value.trim();
-                    }
-
-                    if ($item.value.toLowerCase() !== item.correct.trim().toLowerCase())
-                    incorrect = true;
-                }
-            }
-        }
-        return incorrect;
-    }
-
     /**
     * Validate the form and return errors
     * @return {Promise} Resolves an array of error strings.  The array is empty if the form is valid
@@ -117,10 +84,6 @@ export default class ReactForm extends React.Component {
                         errors.push(isValid);
                     }
                 }
-            }
-
-            if (self.props.validateForCorrectness && self._isIncorrect(item)) {
-                errors.push(item.label + " was answered incorrectly!");
             }
         });
 
@@ -306,7 +269,6 @@ ReactForm.defaultProps = {
     answerData:             {},
     validate:               true,
     showErrors:             true,
-    validateForCorrectness: false,
     submitLabel:            'Submit',
     customElements:         [],
     tags:                   [],

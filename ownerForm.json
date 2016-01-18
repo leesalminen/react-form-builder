@@ -39,7 +39,8 @@
             {
                 "value": "option_1",
                 "label": "Option 1",
-                "key": "option_38FB7AF0-31C7-48D3-8D3B-29D17ED3897A"
+                "key": "option_38FB7AF0-31C7-48D3-8D3B-29D17ED3897A",
+                "default": true
             },
             {
                 "value": "option_2",
@@ -49,13 +50,18 @@
             {
                 "value": "option_3",
                 "label": "Option 3",
-                "key": "option_F6819BA4-5B1F-4932-83C1-9500D606561B"
+                "key": "option_F6819BA4-5B1F-4932-83C1-9500D606561B",
+                "default": true
             }
         ],
         "optionsUrl": "/options.json",
         "id": "316B58F1-B0F4-4D93-B664-85FD585C299B",
         "element": "Dropdown",
-        "name": "dropdown"
+        "name": "dropdown",
+        "defaultValue": [
+            "option_1",
+            "option_3"
+        ]
     },
     {
         "label": "Range",
@@ -68,5 +74,34 @@
         "id": "2E36B02E-9BB8-4FF3-B219-CE14D731BA0C",
         "element": "Range",
         "name": "range"
+    },
+    {
+        "label": "Checkboxes",
+        "options": [
+            {
+                "value": "place_holder_option_1",
+                "label": "Place holder option 1",
+                "key": "option_BD0BDBF9-BE29-46B8-AB32-55772B65E8F3"
+            },
+            {
+                "value": "place_holder_option_2",
+                "label": "Place holder option 2",
+                "key": "option_FA8DBC7E-9AEC-4336-A0E6-09D9C980E218",
+                "default": true
+            },
+            {
+                "value": "place_holder_option_3",
+                "label": "Place holder option 3",
+                "key": "option_FB49A7AB-7569-4EC2-9035-7D1711FA3368",
+                "default": true
+            }
+        ],
+        "id": "8FD3F9EF-F930-446F-B5CE-B88ACC4FD9E0",
+        "element": "Checkboxes",
+        "name": "checkboxes",
+        "defaultValue": [
+            "place_holder_option_2",
+            "place_holder_option_3"
+        ]
     }
 ]

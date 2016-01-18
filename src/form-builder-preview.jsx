@@ -38,7 +38,7 @@ export default class FormBuilderPreview extends React.Component {
         let found = false;
 
         for(var i=0; i < data.length; i++) {
-            if (element.id === data[i].id) {
+            if (element.id === data[i].id) {                
                 data[i] = element;
                 found = true;
                 break;
@@ -152,7 +152,6 @@ export default class FormBuilderPreview extends React.Component {
                 <div className="edit-form">
                     { this.props.editElement !== null &&
                         <FormElementsEdit
-                            showCorrectColumn   = {this.props.showCorrectColumn}
                             files               = {this.props.files}
                             manualEditModeOff   = {this.props.manualEditModeOff}
                             preview             = {this}
@@ -171,7 +170,6 @@ export default class FormBuilderPreview extends React.Component {
 }
 
 FormBuilderPreview.defaultProps = {
-    showCorrectColumn: false,
     files: [],
     editMode: false,
     editElement: null,
