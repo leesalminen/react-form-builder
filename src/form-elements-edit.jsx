@@ -171,14 +171,10 @@ export default class FormElementsEdit extends React.Component {
                     <label>
                         <input type="checkbox" checked={returnDataChecked} value={true} onChange={this.editElementProp.bind(this, 'returnData', 'checked')} /> Whether or not sensitive data is transmitted back (Try not to edit this)
                     </label>
-                    { this.props.hasOwnProperty('options') &&
-                        <span>
-                            <br/>
-                            <label>
-                                <input type="checkbox" checked={allowCreateChecked} value={true} onChange={this.editElementProp.bind(this, 'allowCreate', 'checked')} /> Allow Creation of New Option?
-                            </label>
-                        </span>
-                    }
+                    <br/>
+                    <label>
+                        <input type="checkbox" checked={allowCreateChecked} value={true} onChange={this.editElementProp.bind(this, 'allowCreate', 'checked')} /> Allow Creation of New Option?
+                    </label>
                 </div>
                 { this.props.hasOwnProperty('tags') &&
                     <div className="form-group">
