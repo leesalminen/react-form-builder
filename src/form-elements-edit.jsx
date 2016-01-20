@@ -229,6 +229,12 @@ export default class FormElementsEdit extends React.Component {
                         <input type="text" className="form-control" defaultValue={this.props.element.optionsUrl} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'optionsUrl', 'value')} />
                     </div>
                 }
+                { this.props.element.hasOwnProperty('addModalUrl') &&
+                    <div className="form-group">
+                        <label>Add Modal URL</label>
+                        <input type="text" className="form-control" defaultValue={this.props.element.addModalUrl} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'addModalUrl', 'value')} />
+                    </div>
+                }
                 <button className="pull-right btn btn-primary" onClick={this.props.manualEditModeOff}>Save</button>
             </div>
         );

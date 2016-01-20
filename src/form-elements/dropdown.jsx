@@ -40,6 +40,7 @@ export default class Dropdown extends FormElementWithOptions {
                 {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'option_' + ID.uuid()}
             ],
             optionsUrl: '',
+            addModalUrl: '',
         }
     }
 
