@@ -40,7 +40,6 @@ export default class Dropdown extends FormElementWithOptions {
                 {value: 'place_holder_option_3', label: 'Place holder option 3', key: 'option_' + ID.uuid()}
             ],
             optionsUrl: '',
-            addModalUrl: '',
         }
     }
 
@@ -106,15 +105,15 @@ export default class Dropdown extends FormElementWithOptions {
             props.ref = 'input';
             props.value = this.state.value;
             props.onChange = this.handleChange;
+            props.allowCreate = false;
+
+            if(this.props.data.allowCreate) {
+                props.allowCreate = true;
+            }
         }
 
         return (
-            <div>
-                {(!_.isEmpty(this.props.data.addModalUrl)) ?
-                    <a className="btn btn-default btn-xs" href="#" data-remote={this.props.data.addModalUrl} data-target="#myModal" data-toggle="modal">Add</a>
-                : null }
-                <Select {...props} />
-            </div>
+            <Select {...props} />
         );
     }
 }

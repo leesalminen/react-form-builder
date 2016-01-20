@@ -82,6 +82,7 @@ export default class FormElementsEdit extends React.Component {
         let hiddenChecked           = _.get(this.props.element, 'hidden', false);
         let searchableChecked       = _.get(this.props.element, 'searchable', false);
         let returnDataChecked       = _.get(this.props.element, 'returnData', false);
+        let allowCreateChecked      = _.get(this.props.element, 'allowCreate', false);
 
         let thisFiles = this.props.files.length ? this.props.files : [];
         if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
@@ -170,6 +171,14 @@ export default class FormElementsEdit extends React.Component {
                     <label>
                         <input type="checkbox" checked={returnDataChecked} value={true} onChange={this.editElementProp.bind(this, 'returnData', 'checked')} /> Whether or not sensitive data is transmitted back (Try not to edit this)
                     </label>
+                    { this.props.hasOwnProperty('options') &&
+                        <span>
+                            <br/>
+                            <label>
+                                <input type="checkbox" checked={allowCreateChecked} value={true} onChange={this.editElementProp.bind(this, 'allowCreate', 'checked')} /> Allow Creation of New Option?
+                            </label>
+                        </span>
+                    }
                 </div>
                 { this.props.hasOwnProperty('tags') &&
                     <div className="form-group">
@@ -227,12 +236,6 @@ export default class FormElementsEdit extends React.Component {
                     <div className="form-group">
                         <label>Options URL</label>
                         <input type="text" className="form-control" defaultValue={this.props.element.optionsUrl} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'optionsUrl', 'value')} />
-                    </div>
-                }
-                { this.props.element.hasOwnProperty('addModalUrl') &&
-                    <div className="form-group">
-                        <label>Add Modal URL</label>
-                        <input type="text" className="form-control" defaultValue={this.props.element.addModalUrl} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'addModalUrl', 'value')} />
                     </div>
                 }
                 <button className="pull-right btn btn-primary" onClick={this.props.manualEditModeOff}>Save</button>
