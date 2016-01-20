@@ -110,8 +110,8 @@ export default class Dropdown extends FormElementWithOptions {
 
         return (
             <div>
-                {(!_.isEmpty(this.props.addModalUrl)) ?
-                    <a className="btn btn-default btn-xs" href="#" data-remote={this.props.addModalUrl} data-target="#myModal" data-toggle="modal">Add</a>
+                {(!_.isEmpty(this.props.data.addModalUrl)) ?
+                    <a className="btn btn-default btn-xs" href="#" data-remote={this.props.data.addModalUrl} data-target="#myModal" data-toggle="modal">Add</a>
                 : null }
                 <Select {...props} />
             </div>
