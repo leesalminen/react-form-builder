@@ -217,7 +217,7 @@ export default class FormElementsEdit extends React.Component {
                         </div>
                     </div>
                 }
-                { this.props.element.hasOwnProperty('defaultValue') && !this.props.element.hasOwnProperty('options') && 
+                { this.props.element.hasOwnProperty('defaultValue') && !this.props.element.hasOwnProperty('options') &&
                     <div className="form-group">
                         <label>Default Value</label>
                         <input type="text" className="form-control" defaultValue={this.props.element.defaultValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'defaultValue', 'value')} />

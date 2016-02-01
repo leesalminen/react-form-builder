@@ -193,8 +193,13 @@ export default class ReactForm extends React.Component {
             // Attach any additional props necessary here
             switch (item.element) {
                 case "Download":
-                props.downloadPath = this.props.downloadPath;
-                break;
+                    props.downloadPath = this.props.downloadPath;
+                    break;
+                case "Telephone":
+                    if (this.props.telephoneFormat) {
+                        props.telephoneFormat = this.props.telephoneFormat;
+                    }
+                    break;
             }
 
             if (item.adminOnly && !this.props.isAdmin) {
