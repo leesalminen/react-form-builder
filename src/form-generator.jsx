@@ -198,6 +198,7 @@ export default class ReactForm extends React.Component {
                 case "Telephone":
                     if (this.props.telephoneFormat) {
                         props.telephoneFormat = this.props.telephoneFormat;
+                        props.telephoneFormat = props.telephoneFormat.replace(/[0-9]/g, '9');
                     }
                     break;
             }
