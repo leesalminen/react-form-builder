@@ -126,9 +126,9 @@ export default class ReactForm extends React.Component {
         return serializeForm(this.refs.form, {hash: true})
     }
 
-    submitForm() {
+    submitForm(e) {
         if (this.props.handleSubmit) {
-            this.props.handleSubmit(this.serialize());
+            this.props.handleSubmit(e, this.serialize());
         } else {
             let $form = ReactDOM.findDOMNode(this.refs.form);
             $form.submit();
@@ -144,11 +144,11 @@ export default class ReactForm extends React.Component {
         if (self.props.validate !== false) {
             self.validate().then(function(errors) {
                 if (errors.length === 0) {
-                    self.submitForm();
+                    self.submitForm(e);
                 }
             });
         } else {
-            self.submitForm();
+            self.submitForm(e);
         }
     }
 
