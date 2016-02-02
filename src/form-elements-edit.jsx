@@ -53,18 +53,18 @@ export default class FormElementsEdit extends React.Component {
             if (targProperty === 'checked') {this.updateElement();};
         });
     }
-    updateElement(element) {
+    updateElement() {
         let thisElement = this.state.element;
 
         // Parse out any default values here if we have an option list
-        if (element.options !== undefined) {
-            let defaults = _.filter(element.options, (option) => {
+        if (thisElement.options !== undefined) {
+            let defaults = _.filter(thisElement.options, (option) => {
                 return option.default === true;
             });
             defaults = _.pluck(defaults, 'value');
 
             if (defaults.length > 0) {
-                element.defaultValue = defaults;
+                thisElement.defaultValue = defaults;
             }
         }
 
