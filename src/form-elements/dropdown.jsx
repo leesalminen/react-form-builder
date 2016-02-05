@@ -48,8 +48,8 @@ export default class Dropdown extends FormElementWithOptions {
 
         let url = encodeURI(this.props.data.optionsUrl);
 
-        if (this.state.getParams) {
-            url += (url.indexOf('?') > -1 ? '&' : '?') + this.state.getParams;
+        if (this.props.requestParams) {
+            url += (url.indexOf('?') > -1 ? '&' : '?') + this.props.requestParams;
         }
 
         xhr.open('GET', url);

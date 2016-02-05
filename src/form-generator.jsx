@@ -176,11 +176,12 @@ export default class ReactForm extends React.Component {
             item.required = item.required || (item.requiredAdmin && this.props.isAdmin === true) || (item.requiredPublic && this.props.isAdmin !== true);
 
             let props = {
-                mutable:    true,
-                key:        item.id,
-                ref:        item.name,
-                data:       item,
-                readOnly:   this.props.readOnly
+                mutable:        true,
+                key:            item.id,
+                ref:            item.name,
+                data:           item,
+                readOnly:       this.props.readOnly,
+                requestParams:  this.props.requestParams,
             }
 
             // Use this.props.answerData if available, otherwise use the item's default value
@@ -280,4 +281,5 @@ ReactForm.defaultProps = {
     tags:                   [],
     isAdmin:                false, // This is whether or not the user is an admin or not on an app basis
     readOnly:               false, // Whether or not this entire form is read only
+    requestParams:          null,
 };

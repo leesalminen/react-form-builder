@@ -9,6 +9,7 @@ ReactDOM.render(
     answerData  = {{
         'dropdown': 'option_2'
     }}
+    requestParams = 'asdf=asdfasdf'
     handleSubmit = {function(data){console.log(data)}}/>,
   document.getElementById('form-builder')
 )
