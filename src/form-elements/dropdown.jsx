@@ -45,7 +45,14 @@ export default class Dropdown extends FormElementWithOptions {
 
     getOptions(input, callback) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', encodeURI(this.props.data.optionsUrl));
+
+        let url = encodeURI(this.props.data.optionsUrl);
+
+        if (this.state.getParams) {
+            url += (url.indexOf('?') > -1 ? '&' : '?') + this.state.getParams;
+        }
+
+        xhr.open('GET', url);
         xhr.onload = function() {
             if (xhr.status === 200) {
                 let options = JSON.parse(xhr.responseText);
@@ -116,4 +123,8 @@ export default class Dropdown extends FormElementWithOptions {
             <Select {...props} />
         );
     }
+}
+
+Dropdown.defaultProps = {
+    getParams: null
 }
