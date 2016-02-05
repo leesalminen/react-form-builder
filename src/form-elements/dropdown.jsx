@@ -124,7 +124,3 @@ export default class Dropdown extends FormElementWithOptions {
         );
     }
 }
-
-Dropdown.defaultProps = {
-    getParams: null
-}
