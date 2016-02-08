@@ -14,12 +14,18 @@ export default class Dropdown extends FormElementWithOptions {
         this.handleChange = this.handleChange.bind(this);
         this.getOptions   = this.getOptions.bind(this);
 
+        // Hold off on setting the value to the default until we have options
+        let state = {
+                asyncOptionsRetrieved:  false
+        };
+
+        if (props.optionsUrl) {
+            state.value = this.parseValue(props.defaultValue);
+        }
+
         this.state = _.extend(
             this.state,
-            {
-                value:                  this.parseValue(props.defaultValue),
-                asyncOptionsRetrieved:  false
-            }
+            state
         );
     }
 
@@ -66,8 +72,9 @@ export default class Dropdown extends FormElementWithOptions {
                 }
 
                 this.setState({
-                    asyncOptionsRetrieved: true,
-                    options: options
+                    asyncOptionsRetrieved:  true,
+                    options:                options,
+                    value:                  this.parseValue(this.props.defaultValue),
                 });
             }
             else {
