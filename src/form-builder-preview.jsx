@@ -106,12 +106,15 @@ export default class FormBuilderPreview extends React.Component {
                 mutable:        false,
                 parent:         this.props.parent,
                 editModeOn:     this.props.editModeOn,
-                defaultValue:   _.get(item, 'defaultValue', false),
                 isDraggable:    true,
                 sortData:       item.id,
                 data:           item,
                 _onDestroy:     this._onDestroy
             };
+
+            if (item.defaultValue !== undefined) {
+                props.defaultValue = this.props.defaultValue;
+            }
 
             // Use the element in custom elements if it's found in there, otherwise use the one in the default FormElements
             let element = _.find(this.props.customElements, (element) => {

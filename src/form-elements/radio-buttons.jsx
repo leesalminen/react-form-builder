@@ -39,11 +39,14 @@ export default class RadioButtons extends FormElementWithOptions {
     }
 
     renderComponent() {
-        let self = this;
+        let self            = this;
         return (
             this.props.data.options.map(function (option) {
+                // Do this in the loop since we modify props for each item
+                let props           = self.baseInputProps();
+                let defaultValue    = _.get(props, 'defaultValue', _.get(props, 'value', []));
+
                 let this_key = 'preview_' + option.key;
-                let props = self.baseInputProps();
 
                 props.htmlId += '_' + option.key;
                 props.name   = self.props.data.name;
@@ -51,10 +54,14 @@ export default class RadioButtons extends FormElementWithOptions {
                 props.type = "radio"
                 props.value = option.value;
 
-                let defaultValue = _.get(self.props, 'defaultValue', []);
-                props.defaultChecked = defaultValue.indexOf(option.value) > -1;
+                if (self.props.mutable) {
+                    props.defaultChecked = defaultValue.indexOf(option.value) > -1;
+                } else {
+                    props.checked = defaultValue.indexOf(option.value) > -1;
+                }
+
                 props.ref = "option_" + option.key;
-                
+
                 return (
                     <label className="radio-label" key={this_key}>
                         <input {...props} /> {option.label}
