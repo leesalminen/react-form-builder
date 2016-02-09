@@ -49,7 +49,6 @@ export default class FormElement extends SortableItem {
             ref:            'input',
             id:             this.htmlId,
             name:           this.props.data.name,
-            disabled:       this.props.mutable === false,
         }
 
         if (this.props.returnData !== false && this.props.data.defaultValue !== undefined) {
