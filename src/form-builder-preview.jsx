@@ -109,7 +109,8 @@ export default class FormBuilderPreview extends React.Component {
                 isDraggable:    true,
                 sortData:       item.id,
                 data:           item,
-                _onDestroy:     this._onDestroy
+                _onDestroy:     this._onDestroy,
+                requestParams:  this.props.requestParams,
             };
 
             if (item.defaultValue !== undefined) {
