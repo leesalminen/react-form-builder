@@ -47,10 +47,6 @@ export default class Signature extends FormElement {
         let props = this.baseInputProps();
         props.type = "hidden";
 
-        if (this.props.mutable) {
-            props.defaultValue = this.props.defaultValue;
-            props.ref = 'input';
-        }
         let pad_props = {};
         pad_props.clearButton = {true};
         if (this.props.mutable) {

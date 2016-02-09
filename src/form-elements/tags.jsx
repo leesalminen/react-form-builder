@@ -54,13 +54,13 @@ export default class Tags extends FormElementWithOptions {
 
         let props = this.baseInputProps;
         props.multi = true;
+        props.value = this.state.value;
+        props.ref = 'input';
 
         props.options = options;
         if (!this.props.mutable) {props.value = options[0].text} // to show a sample of what tags looks like
         if (this.props.mutable) {
-            props.value = this.state.value;
             props.onChange = this.handleChange;
-            props.ref = 'input';
         }
         return (<Select {...props} />);
     }

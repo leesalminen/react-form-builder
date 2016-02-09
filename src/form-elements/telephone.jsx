@@ -25,11 +25,8 @@ export default class Telephone extends FormElement {
     props.type = "telephone";
     props.className = "form-control telephone";
     props.mask = _.get(this.props.data, 'telephoneFormat', this.props.telephoneFormat);
-
-    if (this.props.mutable) {
-      props.defaultValue = this.props.defaultValue;
-      props.ref = 'input';
-    }
+    props.defaultValue = this.props.defaultValue;
+    props.ref = 'input';
 
     return (<MaskedInput {...props} />);
   }

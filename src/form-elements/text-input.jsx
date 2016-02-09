@@ -25,10 +25,6 @@ export default class TextInput extends FormElement {
     props.type = "text";
     props.className = "form-control";
 
-    if (this.props.mutable) {
-      props.defaultValue = this.props.defaultValue;
-      props.ref = 'input';
-    }
     return (<input {...props} />);
   }
 }

@@ -17,7 +17,7 @@ export default class Password extends FormElement {
 
     static defaultOptions() {
         return {
-            label: 'Password',
+            label:        'Password',
             returnData:   false
         }
     }
@@ -38,10 +38,6 @@ export default class Password extends FormElement {
         let props = this.baseInputProps();
         props.type = "password";
         props.className = "form-control";
-
-        if (this.props.mutable) {
-            props.ref = 'input';
-        }
 
         return (
             <Well>

@@ -50,11 +50,11 @@ export default class RadioButtons extends FormElementWithOptions {
 
                 props.type = "radio"
                 props.value = option.value;
-                if (self.props.mutable) {
-                    let defaultValue = _.get(self.props, 'defaultValue', []);
-                    props.defaultChecked = defaultValue.indexOf(option.value) > -1;
-                    props.ref = "option_" + option.key;
-                }
+
+                let defaultValue = _.get(self.props, 'defaultValue', []);
+                props.defaultChecked = defaultValue.indexOf(option.value) > -1;
+                props.ref = "option_" + option.key;
+                
                 return (
                     <label className="radio-label" key={this_key}>
                         <input {...props} /> {option.label}

@@ -37,10 +37,6 @@ export default class Range extends FormElement {
 
         props.defaultValue = this.props.defaultValue !== undefined ? parseInt(this.props.defaultValue, 10) : parseInt(this.props.data.defaultValue, 10);
 
-        if (this.props.mutable) {
-            props.ref = 'input';
-        }
-
         let datalist = [];
         for (var i=parseInt(this.props.data.minValue, 10); i <= parseInt(this.props.data.maxValue, 10); i += parseInt(this.props.data.step, 10)) {
             datalist.push(i);

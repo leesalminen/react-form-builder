@@ -41,6 +41,7 @@ export default class Checkboxes extends FormElementWithOptions {
 
     renderComponent() {
         let self = this;
+        let defaultValue = _.get(self.props, 'defaultValue', []);
 
         return (
             self.props.data.options.map(function (option) {
@@ -50,11 +51,10 @@ export default class Checkboxes extends FormElementWithOptions {
 
                 props.type = "checkbox"
                 props.value = option.value;
-                if (self.props.mutable) {
-                    let defaultValue = _.get(self.props, 'defaultValue', []);
-                    props.defaultChecked = defaultValue.indexOf(option.value) > -1;
-                    props.ref = "option_" + option.value;
-                }
+
+                props.defaultChecked = defaultValue.indexOf(option.value) > -1;
+                props.ref = "option_" + option.value;
+
                 return (
                     <label className="checkbox-label" key={option.value}>
                         <input {...props} /> {option.label}

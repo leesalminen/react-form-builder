@@ -28,11 +28,10 @@ export default class Rating extends FormElement {
   renderComponent() {
     let props = this.baseInputProps();
     props.ratingAmount = 5;
+    props.rating = (this.props.defaultValue !== undefined && this.props.defaultValue.length) ? parseFloat(this.props.defaultValue, 10) : 0;
 
     if (this.props.mutable) {
-      props.rating = (this.props.defaultValue !== undefined && this.props.defaultValue.length) ? parseFloat(this.props.defaultValue, 10) : 0;
       props.editing = true;
-      props.ref = 'input';
     }
     return (<StarRating {...props} />);
   }

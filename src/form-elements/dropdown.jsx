@@ -108,16 +108,15 @@ export default class Dropdown extends FormElementWithOptions {
     renderComponent() {
         let props = this.baseInputProps();
 
-        if (this.props.mutable) {
-            if (this.props.data.optionsUrl) {
-                props.asyncOptions = this.getOptions;
-            } else{
-                props.options = this.props.data.options;
-            }
+        if (this.props.data.optionsUrl) {
+            props.asyncOptions = this.getOptions;
+        } else{
+            props.options = this.props.data.options;
+        }
+        
+        props.value = this.state.value;
 
-            props.defaultValue = this.props.defaultValue;
-            props.ref = 'input';
-            props.value = this.state.value;
+        if (this.props.mutable) {
             props.onChange = this.handleChange;
             props.allowCreate = false;
 

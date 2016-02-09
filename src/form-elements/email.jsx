@@ -113,9 +113,6 @@ export default class Email extends FormElement {
         props.className = "form-control";
 
         if (this.props.mutable) {
-            props.defaultValue = this.props.defaultValue;
-            props.ref = 'input';
-
             if(!_.isNull(this.state.email)) {
                 props.value = this.state.value;
             }

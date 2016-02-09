@@ -5,20 +5,11 @@
         "displayName": "Text Input",
         "icon": "fa fa-font",
         "label": "Placeholder Label",
-        "defaultValue": "",
+        "defaultValue": "asdf",
         "id": "20C867FD-B352-4ACE-951E-F0AD121CC363",
         "name": "placeholder_label",
         "tags": "test"
-    },
-    {
-        "element": "FirstName",
-        "displayName": "First Name",
-        "icon": "fa fa-male",
-        "isUnique": true,
-        "label": "First Name",
-        "id": "357C6409-EBDD-417F-8327-B206F4017CC6",
-        "name": "first_name"
-    },
+    },  
     {
         "element": "Telephone",
         "displayName": "Email",

@@ -24,11 +24,6 @@ export default class DatePicker extends FormElement {
         props.type = "date";
         props.className = "form-control";
 
-        if (this.props.mutable) {
-            props.defaultValue = this.props.defaultValue;
-            props.ref = 'input';
-        }
-
         return (
             <input {...props} />
         );

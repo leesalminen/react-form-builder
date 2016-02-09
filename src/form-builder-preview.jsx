@@ -38,7 +38,7 @@ export default class FormBuilderPreview extends React.Component {
         let found = false;
 
         for(var i=0; i < data.length; i++) {
-            if (element.id === data[i].id) {                
+            if (element.id === data[i].id) {
                 data[i] = element;
                 found = true;
                 break;
@@ -106,6 +106,7 @@ export default class FormBuilderPreview extends React.Component {
                 mutable:        false,
                 parent:         this.props.parent,
                 editModeOn:     this.props.editModeOn,
+                defaultValue:   _.get(item, 'defaultValue', false),
                 isDraggable:    true,
                 sortData:       item.id,
                 data:           item,
