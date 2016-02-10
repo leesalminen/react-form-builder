@@ -27,7 +27,7 @@ export default class TextArea extends FormElement {
 
     renderComponent() {
         let props = this.baseInputProps();
-        props.className = "form-control";
+        props.className = "form-control formbuilder";
         props.defaultValue = this.props.defaultValue;
 
         if (this.props.mutable) {
