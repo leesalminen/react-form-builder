@@ -9,7 +9,7 @@
         "id": "20C867FD-B352-4ACE-951E-F0AD121CC363",
         "name": "placeholder_label",
         "tags": "test"
-    },  
+    },
     {
         "element": "Telephone",
         "displayName": "Email",
@@ -26,25 +26,6 @@
     },
     {
         "label": "Dropdown",
-        "options": [
-            {
-                "value": "option_1",
-                "label": "Option 1",
-                "key": "option_38FB7AF0-31C7-48D3-8D3B-29D17ED3897A",
-                "default": true
-            },
-            {
-                "value": "option_2",
-                "label": "Option 2",
-                "key": "option_05523DC4-8B35-4E50-AC90-130F5ADBFC4C"
-            },
-            {
-                "value": "option_3",
-                "label": "Option 3",
-                "key": "option_F6819BA4-5B1F-4932-83C1-9500D606561B",
-                "default": true
-            }
-        ],
         "optionsUrl": "/options.json",
         "id": "316B58F1-B0F4-4D93-B664-85FD585C299B",
         "element": "Dropdown",

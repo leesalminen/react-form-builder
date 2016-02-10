@@ -87,7 +87,7 @@ export default class Dropdown extends FormElementWithOptions {
         return (this.refs.input.state.value.length > 0);
     }
 
-    componentDidMonut() {
+    componentDidMount() {
         if (!this.state.asyncOptionsRetrieved && this.props.data.optionsUrl) {
             this.getOptions();
         }
@@ -96,8 +96,7 @@ export default class Dropdown extends FormElementWithOptions {
     renderComponent() {
         let props = this.baseInputProps();
 
-        props.options = this.props.data.options;
-
+        props.options = this.state.options;
         props.value = this.state.value;
 
         if (this.props.mutable) {
