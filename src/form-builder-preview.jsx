@@ -114,7 +114,7 @@ export default class FormBuilderPreview extends React.Component {
             };
 
             if (item.defaultValue !== undefined) {
-                props.defaultValue = this.props.defaultValue;
+                props.defaultValue = item.defaultValue;
             }
 
             // Use the element in custom elements if it's found in there, otherwise use the one in the default FormElements

@@ -7,6 +7,7 @@ ReactDOM.render(
   <FormGenerator
     url         = "/ownerForm.json"
     answerData  = {{
+        'placeholder_label': 'Name',
         'dropdown': 'option_2'
     }}
     requestParams = 'asdf=asdfasdf'

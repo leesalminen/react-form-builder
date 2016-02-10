@@ -51,11 +51,11 @@ export default class FormElement extends SortableItem {
             name:           this.props.data.name,
         }
 
-        if (this.props.returnData !== false && this.props.data.defaultValue !== undefined) {
+        if (this.props.returnData !== false && this.props.defaultValue !== undefined) {
             if (this.props.mutable) {
-                props.defaultValue = this.props.data.defaultValue;
+                props.defaultValue = this.props.defaultValue;
             } else {
-                props.value = this.props.data.defaultValue;
+                props.value = this.props.defaultValue;
             }
         }
 
