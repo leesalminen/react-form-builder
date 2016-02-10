@@ -49,7 +49,7 @@ export default class Dropdown extends FormElementWithOptions {
         }
     }
 
-    getOptions(input, callback) {
+    getOptions() {
         var xhr = new XMLHttpRequest();
 
         let url = encodeURI(this.props.data.optionsUrl);
@@ -62,14 +62,6 @@ export default class Dropdown extends FormElementWithOptions {
         xhr.onload = function() {
             if (xhr.status === 200) {
                 let options = JSON.parse(xhr.responseText);
-                if (callback) {
-                    callback(null,
-                        {
-                            options: options,
-                            complete: true
-                        }
-                    );
-                }
 
                 this.setState({
                     asyncOptionsRetrieved:  true,
@@ -78,9 +70,7 @@ export default class Dropdown extends FormElementWithOptions {
                 });
             }
             else {
-                if (callback) {
-                    callback('Error retrieving async options');
-                }
+                console.warn('Error retrieving async options');
             }
         }.bind(this);
         xhr.send();
@@ -97,23 +87,17 @@ export default class Dropdown extends FormElementWithOptions {
         return (this.refs.input.state.value.length > 0);
     }
 
-    renderReadOnly() {
+    componentDidMonut() {
         if (!this.state.asyncOptionsRetrieved && this.props.data.optionsUrl) {
             this.getOptions();
         }
-
-        return super.renderReadOnly();
     }
 
     renderComponent() {
         let props = this.baseInputProps();
 
-        if (this.props.data.optionsUrl) {
-            props.asyncOptions = this.getOptions;
-        } else{
-            props.options = this.props.data.options;
-        }
-        
+        props.options = this.props.data.options;
+
         props.value = this.state.value;
 
         if (this.props.mutable) {
