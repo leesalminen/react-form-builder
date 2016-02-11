@@ -22,8 +22,8 @@ export default class Range extends FormElement {
             defaultValue: 3,
             minValue: 1,
             maxValue: 5,
-            minLabel: 'Easy',
-            maxLabel: 'Difficult'
+            minLabel: 'A Little',
+            maxLabel: 'A Lot'
         }
     }
 
