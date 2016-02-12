@@ -65,6 +65,7 @@ export default class Camera extends FormElement {
     renderComponent() {
         return (
             <div className="image-upload-container">
+                <input {...this.baseInputProps()} type="hidden" value={this.state.img !== null ? this.state.img : ''} />
                 { !this.state.img &&
                     <div>
                         <input type="file" accept="image/*" capture="camera" className="image-upload" onChange={this.displayImage} />
@@ -77,7 +78,6 @@ export default class Camera extends FormElement {
 
                 { this.state.img &&
                     <div>
-                        <input {...this.baseInputProps()} type="hidden" value={this.state.img} />
                         <img src={ this.state.img } height="100" className="image-upload-preview" /><br />
                         <div className="btn btn-school btn-image-clear" onClick={this.clearImage}>
                             <i className="fa fa-times"></i> Clear Photo
