@@ -154,6 +154,7 @@ export default class ReactForm extends React.Component {
 
     render() {
         let items = [];
+        let isEditing = Object.keys(this.props.answerData).length > 0;
 
         this.state._data.forEach( item => {
             if ((item.publicOnly && this.props.isAdmin === true) || (item.adminOnly && this.props.isAdmin !== true)) {
@@ -173,7 +174,13 @@ export default class ReactForm extends React.Component {
                 }
             }
 
+            // See if the item is required on this public/admin form
+            // But if the data for this item is suppressed and we're editing, make it not required
             item.required = item.required || (item.requiredAdmin && this.props.isAdmin === true) || (item.requiredPublic && this.props.isAdmin !== true);
+
+            if (item.suppressData === true && isEditing) {
+                item.required = false;
+            }
 
             let props = {
                 mutable:        true,
