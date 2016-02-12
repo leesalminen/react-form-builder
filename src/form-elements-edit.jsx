@@ -81,7 +81,7 @@ export default class FormElementsEdit extends React.Component {
         let systemFieldChecked      = _.get(this.props.element, 'systemField', false);
         let hiddenChecked           = _.get(this.props.element, 'hidden', false);
         let searchableChecked       = _.get(this.props.element, 'searchable', false);
-        let returnDataChecked       = _.get(this.props.element, 'returnData', false);
+        let suppressDataChecked     = _.get(this.props.element, 'suppressDataChecked', false);
         let allowCreateChecked      = _.get(this.props.element, 'allowCreate', false);
 
         let thisFiles = this.props.files.length ? this.props.files : [];
@@ -169,7 +169,7 @@ export default class FormElementsEdit extends React.Component {
                     </label>
                     <br/>
                     <label>
-                        <input type="checkbox" checked={returnDataChecked} value={true} onChange={this.editElementProp.bind(this, 'returnData', 'checked')} /> Whether or not sensitive data is transmitted back (Try not to edit this)
+                        <input type="checkbox" checked={suppressDataChecked} value={true} onChange={this.editElementProp.bind(this, 'suppressData', 'checked')} /> Do not transmit back sensitive data (Try not to edit this)
                     </label>
                     <br/>
                     <label>

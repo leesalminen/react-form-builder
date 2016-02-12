@@ -18,7 +18,7 @@ export default class Password extends FormElement {
     static defaultOptions() {
         return {
             label:        'Password',
-            returnData:   false
+            suppressData: true
         }
     }
 

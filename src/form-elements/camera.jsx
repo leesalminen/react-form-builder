@@ -41,6 +41,8 @@ export default class Camera extends FormElement {
             reader.readAsDataURL(file);
 
             reader.onloadend = function() {
+                console.log(reader.result.length);
+
                 self.setState({
                     img: reader.result
                 });
