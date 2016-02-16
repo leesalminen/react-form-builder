@@ -74,9 +74,13 @@ export default class FormBuilder extends React.Component {
   }
 
   save() {
+      if (this.props.onSave) {
+          this.props.onSave();
+      }
+
       let callback = () => {
-          if (this.props.onSave) {
-              this.props.onSave();
+          if (this.props.onSaveComplete) {
+              this.props.onSaveComplete();
           }
 
           this.refs.formbuilder.setState({
