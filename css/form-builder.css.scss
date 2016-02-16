@@ -204,6 +204,12 @@
         margin: 5px;
         padding: 10px;
         border: 1px dashed #ddd;
+
+        &:active {
+            background-color: #00cc00;
+            transition: .1s ease;
+        }
+
         i {
           margin: 0 15px 0 10px;
         }
