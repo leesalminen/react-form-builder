@@ -177,7 +177,7 @@ export default class FormElementsEdit extends React.Component {
                         <input type="checkbox" checked={allowCreateChecked} value={true} onChange={this.editElementProp.bind(this, 'allowCreate', 'checked')} /> Allow Creation of New Option?
                     </label>
                 </div>
-                { this.props.hasOwnProperty('sendEmail') &&
+                { !_.isUndefined(this.props.element.sendEmail) &&
                     <div className="form-group">
                         <label>
                             <input type="checkbox" checked={sendEmail} value={true} onChange={this.editElementProp.bind(this, 'sendEmail', 'checked')} /> Send System Generated Emails?
