@@ -83,6 +83,7 @@ export default class FormElementsEdit extends React.Component {
         let searchableChecked       = _.get(this.props.element, 'searchable', false);
         let suppressDataChecked     = _.get(this.props.element, 'suppressDataChecked', false);
         let allowCreateChecked      = _.get(this.props.element, 'allowCreate', false);
+        let sendEmail               = _.get(this.props.element, 'sendEmail', false);
 
         let thisFiles = this.props.files.length ? this.props.files : [];
         if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
@@ -176,6 +177,13 @@ export default class FormElementsEdit extends React.Component {
                         <input type="checkbox" checked={allowCreateChecked} value={true} onChange={this.editElementProp.bind(this, 'allowCreate', 'checked')} /> Allow Creation of New Option?
                     </label>
                 </div>
+                { this.props.hasOwnProperty('sendEmail') &&
+                    <div className="form-group">
+                        <label>
+                            <input type="checkbox" checked={sendEmail} value={true} onChange={this.editElementProp.bind(this, 'sendEmail', 'checked')} /> Send System Generated Emails?
+                        </label>
+                    </div>
+                }
                 { this.props.hasOwnProperty('tags') &&
                     <div className="form-group">
                         <div className="form-group-range">

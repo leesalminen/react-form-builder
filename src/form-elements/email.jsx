@@ -6,6 +6,7 @@ import HeaderLabels from './util/header-labels.jsx';
 
 export default class Email extends FormElement {
     constructor(props) {
+
         super(props);
 
         this.state = {
@@ -32,6 +33,7 @@ export default class Email extends FormElement {
         return {
             label: 'Email',
             isUnique: true,
+            sendEmail: false
         }
     }
 
