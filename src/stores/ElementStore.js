@@ -94,6 +94,9 @@ var ElementStore = Reflux.createStore({
                         if (onSave) {
                             onSave(data);
                         }
+                    },
+                    error: function() {
+                        onSave();
                     }
                 })
             } else {
