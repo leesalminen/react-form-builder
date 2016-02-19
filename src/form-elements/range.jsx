@@ -7,14 +7,6 @@ import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
 export default class Range extends FormElement {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            value: false
-        };
-    }
-
     static toolbarEntry() {
         return {
             element: 'Range',
@@ -33,12 +25,6 @@ export default class Range extends FormElement {
             minLabel: 'A Little',
             maxLabel: 'A Lot'
         }
-    }
-
-    setValue(val) {
-        this.setState({
-            value: val
-        })
     }
 
     renderComponent() {
@@ -83,8 +69,7 @@ export default class Range extends FormElement {
                     </div>
                     <SliderNativeBootstrap
                         name={props.name}
-                        value={this.state.value || props.defaultValue}
-                        onChange={this.setValue}
+                        value={props.defaultValue}
                         step={this.props.data.step}
                         max={this.props.data.maxValue}
                         min={this.props.data.minValue} />
