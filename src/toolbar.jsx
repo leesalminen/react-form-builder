@@ -66,7 +66,7 @@ export default class Toolbar extends React.Component {
         <h4>
           Toolbox
           <br />
-          Click to add
+          <small>Click to add</small>
         </h4>
         <ul>
           {
