@@ -66,7 +66,7 @@ var ElementStore = Reflux.createStore({
         var unique = true;
 
         _data.forEach(element => {
-            if (names[element.name] !== undefined) {
+            if (element.name !== undefined && names[element.name] !== undefined) {
                 unique = false;
             }
 
