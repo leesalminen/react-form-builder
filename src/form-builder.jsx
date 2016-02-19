@@ -88,7 +88,7 @@ export default class FormBuilder extends React.Component {
           });
       }
 
-      ElementActions.save(callback);
+      ElementActions.save(callback, this.props.onSaveError);
   }
 
   render() {
