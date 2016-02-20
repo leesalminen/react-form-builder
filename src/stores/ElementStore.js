@@ -80,7 +80,7 @@ var ElementStore = Reflux.createStore({
      * Validate the form and post to the _saveUrl if we were initialized with one
      * Log out the data if no URL was provided
      */
-    save: function(onSave) {
+    save: function(onSave, onSaveError) {
         if (this.validateElements()) {
             if (_saveUrl) {
                 $.ajax({
@@ -95,8 +95,10 @@ var ElementStore = Reflux.createStore({
                             onSave(data);
                         }
                     },
-                    error: function() {
-                        onSave();
+                    error: function(jqXHR, status) {
+                        if (onSaveError) {
+                            onSaveError(status);
+                        }
                     }
                 })
             } else {
@@ -106,6 +108,10 @@ var ElementStore = Reflux.createStore({
                 }
             }
         } else {
+            if (onSaveError) {
+                onSaveError('All input fields must have unique names');
+            }
+
             this.trigger(
                 {
                     error: 'All input fields must have unique names'
