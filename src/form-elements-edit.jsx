@@ -61,7 +61,7 @@ export default class FormElementsEdit extends React.Component {
             let defaults = _.filter(thisElement.options, (option) => {
                 return option.default === true;
             });
-            defaults = _.pluck(defaults, 'value');
+            defaults = _.map(defaults, 'value');
 
             if (defaults.length > 0) {
                 thisElement.defaultValue = defaults;
