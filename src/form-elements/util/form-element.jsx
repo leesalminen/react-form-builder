@@ -87,7 +87,7 @@ export default class FormElement extends SortableItem {
 
     render() {
         let element = (
-            <div className={'rfb-item inline' + (this.props.hidden ? ' rfb-hidden' : '')}>
+            <div className={'rfb-item ' + (this.props.inline ? 'rfb-inline ' : '') + (this.props.hidden ? ' rfb-hidden' : '')}>
                 { !this.props.mutable &&
                     <HeaderBar {...this.headerBarProps()} />
                 }
