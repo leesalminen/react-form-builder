@@ -86,21 +86,38 @@ export default class FormElement extends SortableItem {
     }
 
     render() {
-        return this.renderWithSortable(
+        let element = (
             <div className={'rfb-item' + (this.props.hidden ? ' rfb-hidden' : '')}>
                 { !this.props.mutable &&
                     <HeaderBar {...this.headerBarProps()} />
                 }
                 <div className="form-group">
                     {
-                        !this.static &&
+                        !this.static && !this.props.inline &&
                         <HeaderLabels {...this.headerLabelProps()}/>
                     }
-                    <div>
-                        {this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent()}
-                    </div>
+                    {
+                        !this.static && this.props.inline
+                        ?
+                        <div>
+                            <HeaderLabels {...this.headerLabelProps()}/>
+                            <span>: </span>
+                            {this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent()}
+                        </div>
+                        :
+                        <div>
+                            {this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent()}
+                        </div>
+                    }
+
                 </div>
             </div>
         );
+
+        if (this.props.mutable) {
+            return this.renderWithSortable(element);
+        } else {
+            return element;
+        }
     }
 }

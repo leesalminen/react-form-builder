@@ -189,6 +189,7 @@ export default class ReactForm extends React.Component {
                 data:           item,
                 readOnly:       this.props.readOnly,
                 requestParams:  this.props.requestParams,
+                inline:         this.props.inline,
             }
 
             // Use this.props.answerData if available, otherwise use the item's default value
@@ -289,4 +290,6 @@ ReactForm.defaultProps = {
     isAdmin:                false, // This is whether or not the user is an admin or not on an app basis
     readOnly:               false, // Whether or not this entire form is read only
     requestParams:          null,
+    inline:                 false, // If the form is inline, there won't be a line break between a field's label and the value
+                                   //If a field is inherently a block element, it will still display on a new line though
 };
