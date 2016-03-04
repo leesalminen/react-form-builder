@@ -10,6 +10,8 @@ ReactDOM.render(
         'placeholder_label': 'Name',
         'dropdown': 'option_2'
     }}
+    readOnly = {true}
+    inline = {true}
     requestParams = 'asdf=asdfasdf'
     handleSubmit = {function(data){console.log(data)}}/>,
   document.getElementById('form-builder')
