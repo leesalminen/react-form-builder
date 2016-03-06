@@ -67,6 +67,10 @@ export default class Dropdown extends FormElementWithOptions {
                     asyncOptionsRetrieved:  true,
                     options:                options,
                     value:                  this.parseValue(this.props.defaultValue),
+                }, function() {
+                    if(this.state.options.length === 1 && !_.isUndefined(_.first(this.state.options).value)) {
+                        this.handleChange(_.first(this.state.options).value);
+                    }
                 });
             }
             else {
