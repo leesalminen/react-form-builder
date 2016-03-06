@@ -152,7 +152,7 @@ export default class FormElementsEdit extends React.Component {
                         </label>
                     </div>
                 }
-                <div className="form-group" className={classNames({'hidden': this.props.isSuperUser !== true})}>
+                <div className={'form-group ' + classNames({'hidden': this.props.isSuperUser !== true})}>
                     <label>
                         <input type="checkbox" checked={cannotRemoveChecked} value={true} onChange={this.editElementProp.bind(this, 'cannotRemove', 'checked')} /> Cannot Remove
                     </label>
