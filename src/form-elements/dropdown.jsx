@@ -82,6 +82,7 @@ export default class Dropdown extends FormElementWithOptions {
 
 
     handleChange(value) {
+        console.log('changing value ', value);
         this.setState({
             value: value
         });
