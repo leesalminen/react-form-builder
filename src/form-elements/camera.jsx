@@ -68,7 +68,7 @@ export default class Camera extends FormElement {
                 <input {...this.baseInputProps()} type="hidden" value={this.state.img !== null ? this.state.img : ''} />
                 { !this.state.img &&
                     <div>
-                        <input type="file" accept="image/*" capture="camera" className="image-upload" onChange={this.displayImage} />
+                        <input type="file" accept="image/*" className="image-upload" onChange={this.displayImage} />
                         <div className="image-upload-control">
                             <div className="btn btn-default btn-school"><i className="fa fa-camera"></i> Upload Photo</div>
                             <p>Select an image from your computer or device.</p>
