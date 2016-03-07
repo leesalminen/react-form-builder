@@ -50,34 +50,44 @@ export default class Dropdown extends FormElementWithOptions {
     }
 
     getOptions() {
-        var xhr = new XMLHttpRequest();
+        if (_.get(window, ['ReactFormbuilder', 'Options', this.props.data.name])) {
+            this.setState({
+                asyncOptionsRetrieved:  true,
+                options:                _.get(window, ['ReactFormbuilder', 'Options', this.props.data.name]),
+                value:                  this.parseValue(this.props.defaultValue),
+            });
+        } else {
+            var xhr = new XMLHttpRequest();
 
-        let url = encodeURI(this.props.data.optionsUrl);
+            let url = encodeURI(this.props.data.optionsUrl);
 
-        if (this.props.requestParams) {
-            url += (url.indexOf('?') > -1 ? '&' : '?') + this.props.requestParams;
+            if (this.props.requestParams) {
+                url += (url.indexOf('?') > -1 ? '&' : '?') + this.props.requestParams;
+            }
+
+            xhr.open('GET', url);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    let options = JSON.parse(xhr.responseText);
+
+                    _.set(window, ['ReactFormbuilder', 'Options', this.props.data.name], options);
+
+                    this.setState({
+                        asyncOptionsRetrieved:  true,
+                        options:                options,
+                        value:                  this.parseValue(this.props.defaultValue),
+                    }, function() {
+                        if(this.state.options.length === 1 && !_.isUndefined(_.first(this.state.options).value)) {
+                            this.handleChange(this.parseValue(_.first(this.state.options).value));
+                        }
+                    });
+                }
+                else {
+                    console.warn('Error retrieving async options');
+                }
+            }.bind(this);
+            xhr.send();
         }
-
-        xhr.open('GET', url);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                let options = JSON.parse(xhr.responseText);
-
-                this.setState({
-                    asyncOptionsRetrieved:  true,
-                    options:                options,
-                    value:                  this.parseValue(this.props.defaultValue),
-                }, function() {
-                    if(this.state.options.length === 1 && !_.isUndefined(_.first(this.state.options).value)) {
-                        this.handleChange(this.parseValue(_.first(this.state.options).value));
-                    }
-                });
-            }
-            else {
-                console.warn('Error retrieving async options');
-            }
-        }.bind(this);
-        xhr.send();
     }
 
 
