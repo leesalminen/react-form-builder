@@ -8,7 +8,7 @@ ReactDOM.render(
     url         = "/ownerForm.json"
     answerData  = {{
         'placeholder_label': 'Name',
-        'dropdown': 'option_2'
+        'dropdown': '1'
     }}
     readOnly = {true}
     inline = {true}

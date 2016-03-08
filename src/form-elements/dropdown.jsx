@@ -16,7 +16,7 @@ export default class Dropdown extends FormElementWithOptions {
 
         // Hold off on setting the value to the default until we have options
         let state = {
-                asyncOptionsRetrieved:  false
+            asyncOptionsRetrieved:  false
         };
 
         if (props.optionsUrl) {
@@ -49,47 +49,15 @@ export default class Dropdown extends FormElementWithOptions {
         }
     }
 
-    getOptions() {
-        if (_.get(window, ['ReactFormbuilder', 'Options', this.props.data.name])) {
-            this.setState({
-                asyncOptionsRetrieved:  true,
-                options:                _.get(window, ['ReactFormbuilder', 'Options', this.props.data.name]),
-                value:                  this.parseValue(this.props.defaultValue),
-            });
+    onOptionsRetrieved() {
+        if (this.state.options.length === 1 && !_.isUndefined(_.first(this.state.options).value)) {
+            this.handleChange(this.parseValue(_.first(this.state.options).value));
         } else {
-            var xhr = new XMLHttpRequest();
-
-            let url = encodeURI(this.props.data.optionsUrl);
-
-            if (this.props.requestParams) {
-                url += (url.indexOf('?') > -1 ? '&' : '?') + this.props.requestParams;
-            }
-
-            xhr.open('GET', url);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    let options = JSON.parse(xhr.responseText);
-
-                    _.set(window, ['ReactFormbuilder', 'Options', this.props.data.name], options);
-
-                    this.setState({
-                        asyncOptionsRetrieved:  true,
-                        options:                options,
-                        value:                  this.parseValue(this.props.defaultValue),
-                    }, function() {
-                        if(this.state.options.length === 1 && !_.isUndefined(_.first(this.state.options).value)) {
-                            this.handleChange(this.parseValue(_.first(this.state.options).value));
-                        }
-                    });
-                }
-                else {
-                    console.warn('Error retrieving async options');
-                }
-            }.bind(this);
-            xhr.send();
+            this.setState({
+                value: this.parseValue(this.props.defaultValue),
+            });
         }
     }
-
 
     handleChange(value) {
         this.setState({
@@ -99,12 +67,6 @@ export default class Dropdown extends FormElementWithOptions {
 
     validateRequired() {
         return (this.refs.input.state.value.length > 0);
-    }
-
-    componentDidMount() {
-        if (!this.state.asyncOptionsRetrieved && this.props.data.optionsUrl) {
-            this.getOptions();
-        }
     }
 
     renderComponent() {
