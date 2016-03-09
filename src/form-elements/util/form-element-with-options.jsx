@@ -29,7 +29,7 @@ export default class FormElementWithOptions extends FormElement {
             options:                options,
         }, function() {
             if (this.onOptionsRetrieved) {
-                this.onOptionsRetrieved();
+                this.onOptionsRetrieved(options);
             }
         });
     }
