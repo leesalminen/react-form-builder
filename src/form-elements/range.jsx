@@ -27,6 +27,10 @@ export default class Range extends FormElement {
         }
     }
 
+     validateRequired() {
+        return parseInt(this.refs.rangeInput.state.value) >= 0;
+    }
+
     renderComponent() {
         let props = this.baseInputProps();
         props.type = "range";
@@ -68,6 +72,7 @@ export default class Range extends FormElement {
                         <span className="pull-right">{this.props.data.maxLabel}</span>
                     </div>
                     <SliderNativeBootstrap
+                        ref={'rangeInput'}
                         name={props.name}
                         value={props.defaultValue}
                         step={this.props.data.step}
