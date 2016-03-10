@@ -31,6 +31,15 @@ export default class Range extends FormElement {
         return parseInt(this.refs.rangeInput.state.value) >= 0;
     }
 
+    renderReadOnly() {
+        let value = _.get(this.props, 'defaultValue', '');
+        if (value) {
+            return value + '/' + this.props.data.maxValue;
+        } else {
+            return '';
+        }
+    }
+
     renderComponent() {
         let props = this.baseInputProps();
         props.type = "range";

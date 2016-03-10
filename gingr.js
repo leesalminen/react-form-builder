@@ -8,7 +8,7 @@ ReactDOM.render(
     url         = "/ownerForm.json"
     answerData  = {{
         'placeholder_label': 'Name',
-        'dropdown': '1'
+        'dropdown': '1',
     }}
     hideEmptyReadOnlyFields = {true}
     readOnly = {true}
