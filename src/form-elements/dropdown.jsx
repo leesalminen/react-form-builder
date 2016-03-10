@@ -66,7 +66,7 @@ export default class Dropdown extends FormElementWithOptions {
     }
 
     validateRequired() {
-        return (this.refs.input.state.value.length > 0);
+        return this.refs.input.state.value ? true : false;
     }
 
     renderComponent() {
