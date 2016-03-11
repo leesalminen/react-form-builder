@@ -190,6 +190,7 @@ export default class ReactForm extends React.Component {
                 readOnly:       this.props.readOnly,
                 requestParams:  this.props.requestParams,
                 inline:         this.props.inline,
+                autoComplete:   this.props.autoComplete,
             }
 
             // Use this.props.answerData if available, otherwise use the item's default value
