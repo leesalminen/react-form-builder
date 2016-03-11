@@ -264,11 +264,12 @@ export default class ReactForm extends React.Component {
                 <FormValidator emitter={this.emitter} />
                 <div className="react-form-builder-form">
                     <form
-                        encType   = "multipart/form-data"
-                        ref       = "form"
-                        action    = {this.props.form_action}
-                        onSubmit  = {this.handleSubmit.bind(this)}
-                        method    = {this.props.form_method}>
+                        encType         = "multipart/form-data"
+                        ref             = "form"
+                        action          = {this.props.form_action}
+                        onSubmit        = {this.handleSubmit.bind(this)}
+                        method          = {this.props.form_method}
+                        autoComplete    = {this.props.autoComplete === true ? 'on' : 'nope'}>
                         { this.props.authenticity_token &&
                             <div style={formTokenStyle}>
                                 <input name="utf8" type="hidden" value="&#x2713;" />
@@ -296,6 +297,7 @@ ReactForm.defaultProps = {
     readOnly:                   false, // Whether or not this entire form is read only
     requestParams:              null,
     inline:                     false, // If the form is inline, there won't be a line break between a field's label and the value
-                                // If a field is inherently a block element, it will still display on a new line though
+                                       // If a field is inherently a block element, it will still display on a new line though
     hideEmptyReadOnlyFields:    false, // Hide empty fields on read only
+    autoComplete:               true,  // Allow autocomplete on this form
 };
