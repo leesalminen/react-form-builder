@@ -41,7 +41,7 @@ export default class Toolbar extends React.Component {
         FormElements.Tags,
         FormElements.DatePicker,
         FormElements.Range,
-        //FormElements.Rating,
+        FormElements.Rating,
         FormElements.Download,
         FormElements.Signature,
         FormElements.Camera

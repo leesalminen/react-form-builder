@@ -13,7 +13,7 @@ import Paragraph    from './form-elements/paragraph.jsx';
 import Password     from './form-elements/password.jsx';
 import RadioButtons from './form-elements/radio-buttons.jsx';
 import Range        from './form-elements/range.jsx';
-//import Rating       from './form-elements/rating.jsx';
+import Rating       from './form-elements/rating.jsx';
 import Signature    from './form-elements/signature.jsx';
 import Tags         from './form-elements/tags.jsx';
 import Telephone    from './form-elements/telephone.jsx';
@@ -37,7 +37,7 @@ export {
     Password,
     RadioButtons,
     Range,
-    //Rating,
+    Rating,
     Signature,
     Tags,
     Telephone,

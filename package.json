@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blackjk3/react-form-builder.git"
+    "url": "git+ssh://gingr@wings.gingr.io:/git/react-form-builder.git"
   },
   "keywords": [
     "react",
@@ -28,12 +28,12 @@
     "fbemitter": "^2.0.0",
     "form-serialize": "^0.7.0",
     "react-bootstrap": "^0.27.3",
-    "react-bootstrap-native-slider": "git+https://github.com/lofiinterstate/react.bootstrap.slidertest.git",
+    "react-bootstrap-native-slider": "git+ssh://gingr@wings.gingr.io:/git/react-bootstrap-native-slider.git#master",
     "react-input-mask": "^0.5.10",
-    "react-select": "^0.9.1",
+    "react-select": "git+ssh://gingr@wings.gingr.io:/git/react-select.git#master",
     "react-signature-pad": "0.0.3",
-    "react-sortable-items": "git+https://github.com/lofiinterstate/react-sortable-items.git",
-    "react-star-rating": "git+https://github.com/blackjk3/react-star-rating.git",
+    "react-sortable-items": "git+ssh://gingr@wings.gingr.io:/git/react-sortable-items.git#master",
+    "react-star-rating": "git+ssh://gingr@wings.gingr.io:/git/react-star-rating.git#master",
     "react-textarea-autosize": "^2.3.1",
     "reflux": "^0.2.8"
   },
@@ -50,7 +50,9 @@
     "babel-preset-es2015": "^6.1.4",
     "babel-preset-react": "^6.1.4",
     "css-loader": "^0.16.0",
+    "jquery": "^1.11.3",
     "jsdom": "3.1.2",
+    "lodash": "~3.10.1",
     "mocha": "",
     "mocha-jsdom": "",
     "node-libs-browser": "^0.5.2",

@@ -16,9 +16,9 @@ export default class Rating extends FormElement {
   }
 
   static defaultOptions() {
-      return {
-          label: 'Placeholder Label'
-      }
+    return {
+        label: 'Placeholder Label',
+    };
   }
 
   validateRequired() {
@@ -30,9 +30,6 @@ export default class Rating extends FormElement {
     props.ratingAmount = 5;
     props.rating = (this.props.defaultValue !== undefined && this.props.defaultValue.length) ? parseFloat(this.props.defaultValue, 10) : 0;
 
-    if (this.props.mutable) {
-      props.editing = true;
-    }
     return (<StarRating {...props} />);
   }
 }

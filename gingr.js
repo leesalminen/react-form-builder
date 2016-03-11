@@ -14,6 +14,6 @@ ReactDOM.render(
     readOnly = {true}
     inline = {true}
     requestParams = 'asdf=asdfasdf'
-    handleSubmit = {function(data){console.log(data)}}/>,
+    handleSubmit = {function(event, data){console.log(data)}}/>,
   document.getElementById('form-builder')
 )
