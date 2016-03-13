@@ -33,6 +33,10 @@ export default React.createClass({
         { (!this.props.mutable && _.get(this.props.data, 'systemField', false) === true) &&
           <span className="label-required label label-warning">System Field</span>
         }
+        {
+          (!this.props.mutable && _.get(this.props.data, 'hideOnCreate', false) === true) &&
+          <span className="label-required label label-warning">Hidden on Registration Form</span>
+        }
       </label>
     )
   }
