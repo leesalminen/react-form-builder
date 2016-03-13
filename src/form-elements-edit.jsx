@@ -84,7 +84,7 @@ export default class FormElementsEdit extends React.Component {
         let suppressDataChecked     = _.get(this.props.element, 'suppressDataChecked', false);
         let allowCreateChecked      = _.get(this.props.element, 'allowCreate', false);
         let sendEmail               = _.get(this.props.element, 'sendEmail', false);
-        let hideOnCreate            = _.get(this.props.element, 'hideOnCreate', true);
+        let hideOnCreate            = _.get(this.props.element, 'hideOnCreate', false);
 
         let thisFiles = this.props.files.length ? this.props.files : [];
         if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
