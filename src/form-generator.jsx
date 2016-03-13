@@ -161,6 +161,10 @@ export default class ReactForm extends React.Component {
                 return;
             }
 
+            if(!isEditing && !this.props.isAdmin && !item.showOnCreate) {
+                return;
+            }
+
             // Only show properly tagged elements
             if (this.props.tags.length > 0) {
                 if (!item.tags) {
