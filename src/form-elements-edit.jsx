@@ -21,7 +21,7 @@ export default class FormElementsEdit extends React.Component {
     }
 
     getOptions(url) {
-        url += '?' + window.apiKey;
+        url += '?key=' + window.apiKey;
 
         var xhr = new XMLHttpRequest();
 
