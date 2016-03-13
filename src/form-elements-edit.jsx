@@ -139,6 +139,7 @@ export default class FormElementsEdit extends React.Component {
                         <label>
                             <input type="checkbox" checked={hideOnCreate} value={true} onChange={this.editElementProp.bind(this, 'hideOnCreate', 'checked')} /> Hide on Customer Registration Form?
                         </label>
+                        <br />
                         <label>
                             <input type="checkbox" checked={requiredPublicChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredPublic', 'checked')} /> Required for Customer Forms
                         </label>
