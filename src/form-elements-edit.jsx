@@ -10,9 +10,37 @@ export default class FormElementsEdit extends React.Component {
         this.state = {
             element: this.props.element,
             data: this.props.data,
-            dirty: false
+            dirty: false,
+            options: [],
+            defaultValue: false
+        }
+
+        if(this.props.element.hasOwnProperty('optionsUrl')) {
+            this.getOptions(this.props.element.optionsUrl);
         }
     }
+
+    getOptions(url) {
+        url += '?' + window.apiKey;
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', url);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let options = JSON.parse(xhr.responseText);
+
+                this.setState({
+                    options: options
+                })
+            }
+            else {
+                console.warn('Error retrieving async options');
+            }
+        }.bind(this);
+        xhr.send();
+    }
+
     toggleRequired() {
         let thisElement = this.state.element;
     }
@@ -25,6 +53,17 @@ export default class FormElementsEdit extends React.Component {
             element: thisElement,
             dirty: true
         });
+    }
+
+    editDefaultValue(value) {
+        let thisElement = this.state.element;
+        thisElement.defaultValue = value;
+
+        this.setState({
+            element:  thisElement,
+            defaultValue: value,
+            dirty: true
+        })
     }
 
     editElementProp(elemProperty, targProperty, e) {
@@ -236,15 +275,26 @@ export default class FormElementsEdit extends React.Component {
                         <input type="text" className="form-control" defaultValue={this.props.element.defaultValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'defaultValue', 'value')} />
                     </div>
                 }
-                { this.props.element.hasOwnProperty('options') &&
+                { this.props.element.hasOwnProperty('options') && !this.props.element.hasOwnProperty('optionsUrl') &&
                     <div className="form-group">
                         <DynamicOptionList ref="options" data={this.props.preview.state.data} updateElement={this.updateElement.bind(this)} preview={this.props.preview} element={this.props.element} key={this.props.element.options.length} />
                     </div>
                 }
                 { this.props.element.hasOwnProperty('optionsUrl') &&
-                    <div className="form-group">
-                        <label>Options URL</label>
-                        <input type="text" className="form-control" defaultValue={this.props.element.optionsUrl} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'optionsUrl', 'value')} />
+                    <div>
+                        <div className="form-group">
+                            <label>Options URL</label>
+                            <input type="text" className="form-control" defaultValue={this.props.element.optionsUrl} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'optionsUrl', 'value')} />
+                        </div>
+                        <div className="form-group">
+                            <label>Default Value</label>
+                            <Select
+                                multi     = {false}
+                                options   = {this.state.options}
+                                onChange  = {this.editDefaultValue.bind(this)}
+                                onBlur    = {this.updateElement.bind(this)}
+                                value     = {this.props.element.defaultValue} />
+                        </div>
                     </div>
                 }
                 <button className="pull-right btn btn-primary" onClick={this.props.manualEditModeOff}>Save</button>
