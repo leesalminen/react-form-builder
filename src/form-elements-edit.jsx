@@ -84,6 +84,7 @@ export default class FormElementsEdit extends React.Component {
         let suppressDataChecked     = _.get(this.props.element, 'suppressDataChecked', false);
         let allowCreateChecked      = _.get(this.props.element, 'allowCreate', false);
         let sendEmail               = _.get(this.props.element, 'sendEmail', false);
+        let hideOnCreate            = _.get(this.props.element, 'hideOnCreate', true);
 
         let thisFiles = this.props.files.length ? this.props.files : [];
         if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
@@ -135,6 +136,9 @@ export default class FormElementsEdit extends React.Component {
                                 <br />
                             */
                         }
+                        <label>
+                            <input type="checkbox" checked={hideOnCreate} value={true} onChange={this.editElementProp.bind(this, 'hideOnCreate', 'checked')} /> Hide on Customer Registration Form?
+                        </label>
                         <label>
                             <input type="checkbox" checked={requiredPublicChecked} value={true} onChange={this.editElementProp.bind(this, 'requiredPublic', 'checked')} /> Required for Customer Forms
                         </label>

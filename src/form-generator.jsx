@@ -161,7 +161,7 @@ export default class ReactForm extends React.Component {
                 return;
             }
 
-            if(!isEditing && !this.props.isAdmin && !item.showOnCreate) {
+            if(!isEditing && !this.props.isAdmin && item.hideOnCreate) {
                 return;
             }
 
