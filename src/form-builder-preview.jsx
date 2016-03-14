@@ -163,7 +163,8 @@ export default class FormBuilderPreview extends React.Component {
                             element             = {this.props.editElement}
                             updateElement       = {this.updateElement}
                             isSuperUser         = {this.props.isSuperUser}
-                            tags                = {this.props.tags} />
+                            tags                = {this.props.tags}
+                            requestParams       = {this.props.requestParams} />
                     }
                 </div>
                 <Sortable sensitivity={0} key={this.state.data.length} onSort={this.handleSort.bind(this)}>

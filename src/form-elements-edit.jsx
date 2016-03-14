@@ -14,16 +14,14 @@ export default class FormElementsEdit extends React.Component {
             options: [],
             defaultValue: false
         }
-
-        if(this.props.element.hasOwnProperty('optionsUrl')) {
-            this.getOptions(this.props.element.optionsUrl);
-        }
     }
 
     getOptions(url) {
-        url += '?key=' + window.apiKey;
-
         var xhr = new XMLHttpRequest();
+
+        if (this.props.requestParams) {
+            url += (url.indexOf('?') > -1 ? '&' : '?') + this.props.requestParams;
+        }
 
         xhr.open('GET', url);
         xhr.onload = function() {
@@ -110,6 +108,13 @@ export default class FormElementsEdit extends React.Component {
         this.props.updateElement.call(this.props.preview, thisElement);
         this.setState({dirty: false});
     }
+
+    componentDidMount() {
+        if(this.props.element.hasOwnProperty('optionsUrl')) {
+            this.getOptions(this.props.element.optionsUrl);
+        }
+    }
+
     render() {
         let requiredChecked         = _.get(this.props.element, 'required', false);
         let requiredPublicChecked   = _.get(this.props.element, 'requiredPublic', false);
