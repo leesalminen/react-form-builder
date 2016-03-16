@@ -92,33 +92,42 @@ export default class FormElement extends SortableItem {
     }
 
     render() {
-        let element = (
-            <div className={'rfb-item ' + (this.props.inline ? 'rfb-inline ' : '') + (this.props.hidden ? ' rfb-hidden' : '')}>
-                { !this.props.mutable &&
-                    <HeaderBar {...this.headerBarProps()} />
-                }
-                <div className="form-group">
-                    {
-                        !this.static && !this.props.inline &&
-                        <HeaderLabels {...this.headerLabelProps()}/>
-                    }
-                    {
-                        !this.static && this.props.inline
-                        ?
-                        <div>
-                            <HeaderLabels {...this.headerLabelProps()}/>
-                            <span>: </span>
-                            {this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent()}
-                        </div>
-                        :
-                        <div>
-                            {this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent()}
-                        </div>
-                    }
+        let element;
+        let item = this.props.readOnly === true ? this.renderReadOnly() : this.renderComponent();
 
+        // Show the full item with padding if we're editing and we're not static
+        // Just display the element if it's static though, since otherwise there's too much padding around it
+        if (!this.props.mutable || !this.static) {
+            element = (
+                <div className={'rfb-item ' + (this.props.inline ? 'rfb-inline ' : '') + (this.props.hidden ? ' rfb-hidden' : '')}>
+                    { !this.props.mutable &&
+                        <HeaderBar {...this.headerBarProps()} />
+                    }
+                    <div className="form-group">
+                        {
+                            !this.static && !this.props.inline &&
+                            <HeaderLabels {...this.headerLabelProps()}/>
+                        }
+                        {
+                            !this.static && this.props.inline
+                            ?
+                            <div>
+                                <HeaderLabels {...this.headerLabelProps()}/>
+                                <span>: </span>
+                                {item}
+                            </div>
+                            :
+                            <div>
+                                {item}
+                            </div>
+                        }
+
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        } else {
+            element = item;
+        }
 
         if (!this.props.mutable) {
             return this.renderWithSortable(element);

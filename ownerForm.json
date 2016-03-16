@@ -123,5 +123,24 @@
         "id": "860E7AB3-3980-48BF-9C94-1F7F2AD29BFA",
         "element": "Tags",
         "name": "tags"
+    },
+    {
+        "content": "Placeholder Text...",
+        "id": "E495050D-CEA1-4978-8134-0B1BB57B7B78",
+        "element": "Header"
+    },
+    {
+        "content": "Placeholder Text...",
+        "id": "21771983-5CA1-408B-89ED-86B8012C9D80",
+        "element": "Paragraph"
+    },
+    {
+        "id": "0F208232-0F98-4E8F-88EE-96536B2D17CC",
+        "element": "LineBreak"
+    },
+    {
+        "content": "Placeholder Text...",
+        "id": "EC2CE22F-10B1-45D1-85CE-410A8D397C28",
+        "element": "Header"
     }
 ]
