@@ -31,10 +31,11 @@ export default class Tags extends FormElementWithOptions {
             label: 'Placeholder Label',
             multiple: true,
             options: [
-                {value: 'place_holder_tag_1', label: 'Place holder tag 1', key: 'option_' + ID.uuid()},
-                {value: 'place_holder_tag_2', label: 'Place holder tag 2', key: 'option_' + ID.uuid()},
-                {value: 'place_holder_tag_3', label: 'Place holder tag 3', key: 'option_' + ID.uuid()}
-            ]
+                {value: 'place_holder_tag_1', label: 'Place holder tag 1', key: 'tag_' + ID.uuid()},
+                {value: 'place_holder_tag_2', label: 'Place holder tag 2', key: 'tag_' + ID.uuid()},
+                {value: 'place_holder_tag_3', label: 'Place holder tag 3', key: 'tag_' + ID.uuid()}
+            ],
+            optionsUrl: '',
         }
     }
 
@@ -47,18 +48,13 @@ export default class Tags extends FormElementWithOptions {
     }
 
     renderComponent() {
-        let options = this.props.data.options.map( option => {
-            option.label = option.text;
-            return option;
-        });
-
-        let props = this.baseInputProps;
+        let props = this.baseInputProps();
         props.multi = true;
         props.value = this.state.value;
         props.ref = 'input';
 
-        props.options = options;
-        if (!this.props.mutable) {props.value = options[0].text} // to show a sample of what tags looks like
+        props.options = this.props.data.options;
+        if (!this.props.mutable) {props.value = this.props.data.options[0].value} // to show a sample of what tags looks like
         if (this.props.mutable) {
             props.onChange = this.handleChange;
         }

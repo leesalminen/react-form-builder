@@ -10,9 +10,6 @@ ReactDOM.render(
         'placeholder_label': 'Name',
         'dropdown': '1',
     }}
-    hideEmptyReadOnlyFields = {true}
-    readOnly = {true}
-    inline = {true}
     requestParams = 'asdf=asdfasdf'
     handleSubmit = {function(event, data){console.log(data)}}/>,
   document.getElementById('form-builder')

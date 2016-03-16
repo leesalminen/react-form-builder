@@ -75,5 +75,53 @@
             "place_holder_option_2",
             "place_holder_option_3"
         ]
+    },
+    {
+        "label": "Dropdown2",
+        "options": [
+            {
+                "value": "Test1",
+                "label": "Test1",
+                "key": "option_66907E7A-8FDF-49DE-BE15-35159556F50E"
+            },
+            {
+                "value": "Test2",
+                "label": "Test2",
+                "key": "option_E9D61CA8-32DE-4899-98BC-5A12E18C47C9"
+            },
+            {
+                "value": "Test3",
+                "label": "Test3",
+                "key": "option_FCB2331A-0B5C-4103-932D-A467F2C38573"
+            }
+        ],
+        "optionsUrl": "",
+        "id": "62CACDF3-3702-4DF5-ACD6-9117E065442E",
+        "element": "Dropdown",
+        "name": "dropdown_2"
+    },
+    {
+        "label": "Tags",
+        "multiple": true,
+        "options": [
+            {
+                "value": "Test1",
+                "key": "option_A0DDAC0F-0649-4CEA-B396-F5E50665D752",
+                "label": "Test1"
+            },
+            {
+                "value": "Test2",
+                "key": "option_C90709A1-3393-4772-AB34-972E4D39AD68",
+                "label": "Test2"
+            },
+            {
+                "value": "Test3",
+                "key": "option_C4335E8A-D508-4CD0-AC97-891630C6BD99",
+                "label": "Test3"
+            }
+        ],
+        "id": "860E7AB3-3980-48BF-9C94-1F7F2AD29BFA",
+        "element": "Tags",
+        "name": "tags"
     }
 ]

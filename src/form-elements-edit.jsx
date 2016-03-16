@@ -110,7 +110,7 @@ export default class FormElementsEdit extends React.Component {
     }
 
     componentDidMount() {
-        if(this.props.element.hasOwnProperty('optionsUrl')) {
+        if(this.props.element.optionsUrl) {
             this.getOptions(this.props.element.optionsUrl);
         }
     }
@@ -280,7 +280,7 @@ export default class FormElementsEdit extends React.Component {
                         <input type="text" className="form-control" defaultValue={this.props.element.defaultValue} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'defaultValue', 'value')} />
                     </div>
                 }
-                { this.props.element.hasOwnProperty('options') && !this.props.element.hasOwnProperty('optionsUrl') &&
+                { this.props.element.hasOwnProperty('options') && !this.props.element.optionsUrl &&
                     <div className="form-group">
                         <DynamicOptionList ref="options" data={this.props.preview.state.data} updateElement={this.updateElement.bind(this)} preview={this.props.preview} element={this.props.element} key={this.props.element.options.length} />
                     </div>
