@@ -271,9 +271,9 @@ export default class ReactForm extends React.Component {
                     <form
                         encType         = "multipart/form-data"
                         ref             = "form"
-                        action          = {this.props.form_action}
+                        action          = {this.props.formAction}
+                        method          = {this.props.formMethod}
                         onSubmit        = {this.handleSubmit.bind(this)}
-                        method          = {this.props.form_method}
                         autoComplete    = {this.props.autoComplete === true ? 'on' : 'nope'}>
                         { this.props.authenticity_token &&
                             <div style={formTokenStyle}>
