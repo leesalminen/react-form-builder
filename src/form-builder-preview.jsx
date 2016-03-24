@@ -3,7 +3,6 @@
 */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Sortable from 'react-sortable-items';
 import ElementStore from './stores/ElementStore';
 import ElementActions from './actions/ElementActions';
@@ -25,9 +24,6 @@ export default class FormBuilderPreview extends React.Component {
 
         var loadData = (this.props.url) ? this.props.url : (this.props.data) ? this.props.data : [];
         var saveUrl = (this.props.saveUrl) ? this.props.saveUrl : '';
-
-        this.__onMoveUp     = this.__onMoveUp.bind(this);
-        this.__onMoveDown   = this.__onMoveDown.bind(this);
 
         ElementStore.load(loadData, saveUrl);
         ElementStore.listen(this._onChange.bind(this));
@@ -77,64 +73,13 @@ export default class FormBuilderPreview extends React.Component {
         }
     }
 
-    __onDestroy(item) {
+    _onDestroy(item) {
         ElementActions.deleteElement(item);
     }
 
     dismissErrors(e) {
         e.preventDefault();
         this.setState({errors: []});
-    }
-
-    __onMoveUp(item) {
-        let data = this.state.data;
-        let position = data.indexOf(item);
-
-        if (position > 0) {
-            let item2 = data[position - 1];
-
-            data[position - 1] = item;
-            data[position] = item2;
-
-            let $item  = $(ReactDOM.findDOMNode(this.refs[item.id]));
-            let $item2 = $(ReactDOM.findDOMNode(this.refs[item2.id]));
-
-            $item.animate({
-                'top': $item2.outerHeight() * -1
-            });
-
-            $item2.animate({
-                'top': $item.outerHeight(),
-            }, () => {
-                ElementActions.updateElements(data);
-            });
-        }
-
-    }
-
-    __onMoveDown(item) {
-        let data = this.state.data;
-        let position = data.indexOf(item);
-
-        if (position < data.length - 1) {
-            let item2 = data[position + 1];
-
-            data[position + 1] = item;
-            data[position] = item2;
-
-            let $item  = $(ReactDOM.findDOMNode(this.refs[item.id]));
-            let $item2 = $(ReactDOM.findDOMNode(this.refs[item2.id]));
-
-            $item.animate({
-                'top': $item2.outerHeight()
-            });
-
-            $item2.animate({
-                'top': $item.outerHeight() * -1,
-            }, () => {
-                ElementActions.updateElements(data);
-            });
-        }
     }
 
     handleSort(orderedIds) {
@@ -148,6 +93,7 @@ export default class FormBuilderPreview extends React.Component {
         }
 
         ElementActions.updateElements(sortedArray);
+        this.state.data = sortedArray;
     }
 
     render() {
@@ -157,16 +103,13 @@ export default class FormBuilderPreview extends React.Component {
         let items = this.state.data.map( item => {
             let props = {
                 key:            item.id,
-                ref:            item.id,
                 mutable:        false,
                 parent:         this.props.parent,
                 editModeOn:     this.props.editModeOn,
                 isDraggable:    true,
                 sortData:       item.id,
                 data:           item,
-                onDestroy:      this.__onDestroy,
-                onMoveUp:       this.__onMoveUp,
-                onMoveDown:     this.__onMoveDown,
+                _onDestroy:     this._onDestroy,
                 requestParams:  this.props.requestParams,
             };
 

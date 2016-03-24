@@ -26,10 +26,8 @@ export default class FormElement extends SortableItem {
             parent:         this.props.parent,
             editModeOn:     this.props.editModeOn,
             data:           this.props.data,
-            onDestroy:      this.props.onDestroy,
+            onDestroy:      this.props._onDestroy,
             onEdit:         this.props.onEdit,
-            onMoveUp:       this.props.onMoveUp,
-            onMoveDown:     this.props.onMoveDown,
             static:         this.props.data.static,
             required:       this.props.data.required,
             displayName:    this.constructor.toolbarEntry().displayName

@@ -18,16 +18,6 @@ export default class HeaderBar extends React.Component {
               onClick={!this.props.data.cannotRemove && this.props.onDestroy.bind(this.props.parent, this.props.data)}>
               <i className={'is-isolated fa fa-trash-o' + (this.props.data.cannotRemove ? ' icon-disabled' : '')}></i>
           </div>
-          <div
-              className="btn is-isolated btn-school"
-              onClick={this.props.onMoveUp.bind(this.props.parent, this.props.data)}>
-              <i className="fa fa-arrow-up"></i>
-          </div>
-          <div
-              className="btn is-isolated btn-school"
-              onClick={this.props.onMoveDown.bind(this.props.parent, this.props.data)}>
-              <i className="fa fa-arrow-down"></i>
-          </div>
         </div>
       </div>
     );
