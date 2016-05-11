@@ -39,6 +39,18 @@ export default class RadioButtons extends FormElementWithOptions {
     }
 
     renderReadOnly() {
+        if(this.props.defaultValue === '0') {
+            return (
+                <div>False</div>
+            );
+        }
+
+        if(this.props.defaultValue === '1') {
+            return (
+                <div>True</div>
+            );
+        }
+        
         return (
             <div>{this.props.defaultValue}</div>
         );
