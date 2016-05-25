@@ -80,7 +80,7 @@ export default class FormElementWithOptions extends FormElement {
             return value.indexOf(option.value) >= 0;
         });
 
-        if (this.props.data.multiple === true) {
+        if (selected.length > 1) {
             return (
                 <ul>
                 {
@@ -90,10 +90,8 @@ export default class FormElementWithOptions extends FormElement {
                 }
                 </ul>
             );
-        } else {
-            if (selected.length > 0) {
-                return selected[0].label;
-            }
+        } else if(selected.length > 0) {
+            return selected[0].label;
         }
     }
 }
