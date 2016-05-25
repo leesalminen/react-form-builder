@@ -80,7 +80,7 @@ export default class FormElementWithOptions extends FormElement {
             return value.indexOf(option.value) >= 0;
         });
 
-        if (this.props.multiple === true) {
+        if (this.props.data.multiple === true) {
             return (
                 <ul>
                 {
