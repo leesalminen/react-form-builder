@@ -149,14 +149,9 @@ export default class FormElementsEdit extends React.Component {
                 }
                 { this.props.element.hasOwnProperty('filePath') &&
                     <div className="form-group">
-                    <label>Choose file:</label>
-                        <select className="form-control" defaultValue={this.props.element.filePath} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'filePath', 'value')}>
-                            {thisFiles.map(function (file) {
-                                let this_key = 'file_' + file.id;
-                                return <option value={file.id} key={this_key}>{file.file_name}</option>;
-                                })}
-                        </select>
-                        </div>
+                        <label>File URL:</label>
+                        <input defaultValue={this.props.element.filePath} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'filePath', 'value')} />    
+                    </div>
                 }
                 { this.props.element.hasOwnProperty('href') &&
                     <div className="form-group">
