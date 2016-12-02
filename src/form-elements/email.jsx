@@ -33,7 +33,8 @@ export default class Email extends FormElement {
         return {
             label: 'Email',
             isUnique: false,
-            sendEmail: false
+            sendEmail: false,
+            checkExists: true
         }
     }
 
