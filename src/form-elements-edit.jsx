@@ -229,6 +229,13 @@ export default class FormElementsEdit extends React.Component {
                         </label>
                     </div>
                 }
+                { !_.isUndefined(this.props.element.checkExists) &&
+                    <div className="form-group">
+                        <label>
+                            <input type="checkbox" checked={checkExists} value={true} onChange={this.editElementProp.bind(this, 'checkExists', 'checked')} /> Check if Email Exists in System?
+                        </label>
+                    </div>
+                }
                 { this.props.hasOwnProperty('tags') &&
                     <div className="form-group">
                         <div className="form-group-range">
