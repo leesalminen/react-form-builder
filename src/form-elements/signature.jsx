@@ -68,6 +68,8 @@ export default class Signature extends FormElement {
 
         let pad_props = {};
         pad_props.clearButton = {true};
+        pad_props.height = 200;
+        pad_props.width  = $(".container").width() || window.innerWidth;
         if (this.props.mutable) {
             pad_props.defaultValue = this.props.defaultValue;
             pad_props.ref = 'canvas';
@@ -76,7 +78,7 @@ export default class Signature extends FormElement {
             <div>
                 {(this.state.showPad) ?
                     <div>
-                        <SignaturePad {...pad_props} height={200} width={$(".container").width() || window.innerWidth} />
+                        <SignaturePad {...pad_props} />
                         <input {...props} />
                     </div>
                 :
