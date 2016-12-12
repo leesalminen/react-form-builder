@@ -76,7 +76,7 @@ export default class Signature extends FormElement {
             <div>
                 {(this.state.showPad) ?
                     <div>
-                        <SignaturePad height={200} width={$(".container").width() || window.innerWidth} {...pad_props} />
+                        <SignaturePad {...pad_props} height={200} width={$(".container").width() || window.innerWidth} />
                         <input {...props} />
                     </div>
                 :
