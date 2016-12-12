@@ -40,9 +40,13 @@ export default class Signature extends FormElement {
         if (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) {
             let canvas = this.refs.canvas;
             canvas.fromDataURL('data:image/png;base64,' + this.props.defaultValue);
-        }
+        }   
+
+        var props = this.props;
 
         setTimeout(function() {
+            console.log('signature')
+            console.log(props);
             window.dispatchEvent(new Event('resize'));
         }, 1000);
     }
