@@ -8,6 +8,14 @@ import HeaderBar from './util/header-bar.jsx';
 import HeaderLabels from './util/header-labels.jsx';
 
 export default class Signature extends FormElement {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showPad: false
+        };
+    }
     static toolbarEntry() {
         return {
             element: 'Signature',
@@ -43,6 +51,12 @@ export default class Signature extends FormElement {
         }
     }
 
+    toggleShowPad() {
+        this.setState({
+            showPad: !this.state.showPad
+        })
+    }
+
     renderComponent() {
         let props = this.baseInputProps();
         props.type = "hidden";
@@ -55,7 +69,13 @@ export default class Signature extends FormElement {
         }
         return (
             <div>
-                <SignaturePad {...pad_props} />
+                {(this.state.showPad) ?
+                    <SignaturePad {...pad_props} />
+                :
+                    <a className="btn btn-default" onClick={this.toggleShowPad.bind(this)}>
+                        {"I'm ready to sign"}
+                    </a>
+                }
                 <input {...props} />
             </div>
         );
