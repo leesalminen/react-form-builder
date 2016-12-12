@@ -54,6 +54,11 @@ export default class Signature extends FormElement {
     toggleShowPad() {
         this.setState({
             showPad: !this.state.showPad
+        }, function() {
+            if(this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) {
+                let canvas = this.refs.canvas;
+                canvas.fromDataURL('data:image/png;base64,' + this.props.defaultValue);
+            }
         })
     }
 
@@ -71,7 +76,7 @@ export default class Signature extends FormElement {
             <div>
                 {(this.state.showPad) ?
                     <div>
-                        <SignaturePad {...pad_props} height={200} width={$(".container").width() || window.innerWidth} />
+                        <SignaturePad height={200} width={$(".container").width() || window.innerWidth} {...pad_props} />
                         <input {...props} />
                     </div>
                 :
