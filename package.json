@@ -31,7 +31,7 @@
     "react-bootstrap-native-slider": "git+ssh://gingr@wings.gingr.io:/git/react-bootstrap-native-slider.git#master",
     "react-input-mask": "^0.5.10",
     "react-select": "git+ssh://gingr@wings.gingr.io:/git/react-select.git#master",
-    "react-signature-pad": "0.0.3",
+    "react-signature-pad": "git+ssh://git@github.com:leesalminen/react-signature-pad.git",
     "react-sortable-items": "git+ssh://gingr@wings.gingr.io:/git/react-sortable-items.git#master",
     "react-star-rating": "git+ssh://gingr@wings.gingr.io:/git/react-star-rating.git#master",
     "react-textarea-autosize": "^2.3.1",
