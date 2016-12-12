@@ -31,24 +31,19 @@ export default class Signature extends FormElement {
     }
 
     validate() {
-        let $canvas_sig = this.refs.canvas;
+        if(this.refs.canvas) {
+            let $canvas_sig = this.refs.canvas;
+            let base64      = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
+            let isEmpty     = $canvas_sig.isEmpty();
+            let $input_sig  = ReactDOM.findDOMNode(this.refs.input);
 
-        if($canvas_sig) {
-            let base64 = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
-            let isEmpty = $canvas_sig.isEmpty();
-        } else {
-            let base64  = this.props.defaultValue;
-            let isEmpty = _.isUndefined(this.props.defaultValue) || _.isEmpty(this.props.defaultValue);
-        }
-
-        let $input_sig = ReactDOM.findDOMNode(this.refs.input);
-        if($input_sig) {
             if (isEmpty) {
                 $input_sig.value = "";
             } else {
                 $input_sig.value = base64;
             }
         }
+
         return true;
     }
 
