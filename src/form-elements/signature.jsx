@@ -41,6 +41,10 @@ export default class Signature extends FormElement {
             let canvas = this.refs.canvas;
             canvas.fromDataURL('data:image/png;base64,' + this.props.defaultValue);
         }
+
+        setTimeout(function() {
+            window.dispatchEvent(new Event('resize'));
+        }, 1000);
     }
 
     renderComponent() {
