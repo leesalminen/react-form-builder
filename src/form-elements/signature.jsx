@@ -35,13 +35,14 @@ export default class Signature extends FormElement {
             let $canvas_sig = this.refs.canvas;
             let base64      = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
             let isEmpty     = $canvas_sig.isEmpty();
-            let $input_sig  = ReactDOM.findDOMNode(this.refs.input);
+        }
 
-            if (isEmpty) {
-                $input_sig.value = "";
-            } else {
-                $input_sig.value = base64;
-            }
+        let $input_sig  = ReactDOM.findDOMNode(this.refs.input);
+
+        if (isEmpty) {
+            $input_sig.value = "";
+        } else {
+            $input_sig.value = base64;
         }
 
         return true;
@@ -82,13 +83,13 @@ export default class Signature extends FormElement {
                 {(this.state.showPad) ?
                     <div>
                         <SignaturePad {...pad_props} />
-                        <input {...props} />
                     </div>
                 :
                     <a className="btn btn-default" onClick={this.toggleShowPad.bind(this)}>
                         {"I'm ready to sign"}
                     </a>
                 }   
+                <input {...props} />
             </div>
         );
     }
