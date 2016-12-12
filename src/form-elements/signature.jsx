@@ -45,7 +45,7 @@ export default class Signature extends FormElement {
     }
 
     componentDidMount() {
-        if (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) {
+        if (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0 && this.state.showPad) {
             let canvas = this.refs.canvas;
             canvas.fromDataURL('data:image/png;base64,' + this.props.defaultValue);
         }
