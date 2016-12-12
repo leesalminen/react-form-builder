@@ -48,7 +48,7 @@ export default class Signature extends FormElement {
             console.log('signature')
             console.log(props);
             window.dispatchEvent(new Event('resize'));
-        }, 1000);
+        }, 3000);
     }
 
     renderComponent() {
