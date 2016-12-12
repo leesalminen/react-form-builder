@@ -70,7 +70,7 @@ export default class Signature extends FormElement {
         return (
             <div>
                 {(this.state.showPad) ?
-                    <SignaturePad {...pad_props} />
+                    <SignaturePad {...pad_props} minWidth={500} minHeight={244} />
                 :
                     <a className="btn btn-default" onClick={this.toggleShowPad.bind(this)}>
                         {"I'm ready to sign"}
