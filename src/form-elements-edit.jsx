@@ -80,7 +80,7 @@ export default class FormElementsEdit extends React.Component {
             && !nameChanged
             && !_.get(this.props.element, 'systemField', false)
         ) {
-            thisElement.name = _.snakeCase(e.target[targProperty]);
+            thisElement.name = _.snakeCase(e.target[targProperty]).substring(0, 254);
         }
 
         this.setState({
