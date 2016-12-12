@@ -13,7 +13,7 @@ export default class Signature extends FormElement {
         super(props);
 
         this.state = {
-            showPad: (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0) ? true : false
+            showPad: false
         };
     }
     static toolbarEntry() {
@@ -70,13 +70,15 @@ export default class Signature extends FormElement {
         return (
             <div>
                 {(this.state.showPad) ?
-                    <SignaturePad {...pad_props} height={200} width={$(".container").width() || window.innerWidth} />
+                    <div>
+                        <SignaturePad {...pad_props} height={200} width={$(".container").width() || window.innerWidth} />
+                        <input {...props} />
+                    </div>
                 :
                     <a className="btn btn-default" onClick={this.toggleShowPad.bind(this)}>
                         {"I'm ready to sign"}
                     </a>
-                }
-                <input {...props} />
+                }   
             </div>
         );
     }
