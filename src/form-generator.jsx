@@ -157,7 +157,7 @@ export default class ReactForm extends React.Component {
         let isEditing = Object.keys(this.props.answerData).length > 0;
 
         this.state._data.forEach( item => {
-            if ((item.publicOnly && this.props.isAdmin === true) || (item.adminOnly && this.props.isAdmin !== true)) {
+            if (!this.props.readOnly && (item.publicOnly && this.props.isAdmin === true) || (item.adminOnly && this.props.isAdmin !== true)) {
                 return;
             }
 
