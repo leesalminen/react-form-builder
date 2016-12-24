@@ -35,6 +35,8 @@ export default class Signature extends FormElement {
             let $canvas_sig = this.refs.canvas;
             let base64      = $canvas_sig.toDataURL().replace('data:image/png;base64,', '');
             let isEmpty     = $canvas_sig.isEmpty();
+        } else {
+            isEmpty = (this.props.defaultValue !== undefined && this.props.defaultValue.length > 0 ? false : true);
         }
 
         let $input_sig  = ReactDOM.findDOMNode(this.refs.input);
