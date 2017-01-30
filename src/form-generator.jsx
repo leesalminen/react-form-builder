@@ -267,7 +267,10 @@ export default class ReactForm extends React.Component {
                 <input type="submit" className="btn btn-primary btn-big btn-agree" value={this.props.submitLabel} id="first" />
                 {
                     this.props.secondSubmitLabel &&
-                    <input type="submit" className="btn btn-primary btn-big btn-agree" value={this.props.secondSubmitLabel} id="second" />
+                    <span>
+                        &nbsp;&nbsp;
+                        <input type="submit" className="btn btn-info btn-big btn-agree" value={this.props.secondSubmitLabel} id="second" />
+                    </span>
                 }
             </div>
         );
