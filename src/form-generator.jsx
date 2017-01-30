@@ -128,7 +128,11 @@ export default class ReactForm extends React.Component {
 
     submitForm(e) {
         if (this.props.handleSubmit) {
-            this.props.handleSubmit(e, this.serialize());
+            if(e.target && e.target.id === 'second') {
+                this.props.secondHandleSubmit(e, this.serialize())
+            } else {
+                this.props.handleSubmit(e, this.serialize());
+            }
         } else {
             let $form = ReactDOM.findDOMNode(this.refs.form);
             $form.submit();
@@ -260,7 +264,11 @@ export default class ReactForm extends React.Component {
                     this.props.back_action &&
                     <a href={this.props.back_action} className="btn btn-default btn-cancel btn-big"> Cancel</a>
                 }
-                <input type="submit" className="btn btn-primary btn-big btn-agree" value={this.props.submitLabel} />
+                <input type="submit" className="btn btn-primary btn-big btn-agree" value={this.props.submitLabel} id="first" />
+                {
+                    this.props.secondSubmitLabel &&
+                    <input type="submit" className="btn btn-primary btn-big btn-agree" value={this.props.secondSubmitLabel} id="second" />
+                }
             </div>
         );
 
