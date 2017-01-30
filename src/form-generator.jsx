@@ -126,11 +126,9 @@ export default class ReactForm extends React.Component {
         return serializeForm(this.refs.form, {hash: true})
     }
 
-    submitForm(e) {
+    submitForm(e, second) {
         if (this.props.handleSubmit) {
-            console.log(e);
-            console.log(e.target);
-            if(e.target && e.target.id === 'second') {
+            if(second) {
                 this.props.secondHandleSubmit(e, this.serialize())
             } else {
                 this.props.handleSubmit(e, this.serialize());
@@ -155,6 +153,23 @@ export default class ReactForm extends React.Component {
             });
         } else {
             self.submitForm(e);
+        }
+    }
+
+    handleSecondSubmit(e) {
+        e.preventDefault();
+
+        let self = this;
+        let errors  = [];
+
+        if (self.props.validate !== false) {
+            self.validate().then(function(errors) {
+                if (errors.length === 0) {
+                    self.submitForm(e, true);
+                }
+            });
+        } else {
+            self.submitForm(e, true);
         }
     }
 
@@ -266,13 +281,15 @@ export default class ReactForm extends React.Component {
                     this.props.back_action &&
                     <a href={this.props.back_action} className="btn btn-default btn-cancel btn-big"> Cancel</a>
                 }
-                <input type="submit" className="btn btn-primary btn-big btn-agree" value={this.props.submitLabel} id="first" />
+                <a className="btn btn-primary btn-big btn-agree" onClick={this.handleSubmit.bind(this)}>
+                    {this.props.submitLabel}
+                </a>
                 {
                     this.props.secondSubmitLabel &&
-                    <span>
+                    <a className="btn btn-info btn-big btn-agree" onClick={this.handleSecondSubmit.bind(this)}>
                         &nbsp;&nbsp;
-                        <input type="submit" className="btn btn-info btn-big btn-agree" value={this.props.secondSubmitLabel} id="second" />
-                    </span>
+                        {this.props.secondSubmitLabel}}
+                    </a>
                 }
             </div>
         );
