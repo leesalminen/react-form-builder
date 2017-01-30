@@ -286,9 +286,12 @@ export default class ReactForm extends React.Component {
                 </a>
                 {
                     this.props.secondSubmitLabel &&
-                    <a className="btn btn-info btn-big btn-agree" onClick={this.handleSecondSubmit.bind(this)}>
-                        {"  " + this.props.secondSubmitLabel}
-                    </a>
+                    <span>
+                        &nbsp;&nbsp;
+                        <a className="btn btn-info btn-big btn-agree" onClick={this.handleSecondSubmit.bind(this)}>
+                            {this.props.secondSubmitLabel}
+                        </a>
+                    </span>
                 }
             </div>
         );
