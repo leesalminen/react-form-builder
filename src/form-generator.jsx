@@ -128,6 +128,8 @@ export default class ReactForm extends React.Component {
 
     submitForm(e) {
         if (this.props.handleSubmit) {
+            console.log(e);
+            console.log(e.target);
             if(e.target && e.target.id === 'second') {
                 this.props.secondHandleSubmit(e, this.serialize())
             } else {
