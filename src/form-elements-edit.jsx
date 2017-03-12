@@ -130,6 +130,7 @@ export default class FormElementsEdit extends React.Component {
         let sendEmail               = _.get(this.props.element, 'sendEmail', false);
         let checkExists             = _.get(this.props.element, 'checkExists', false);
         let hideOnCreate            = _.get(this.props.element, 'hideOnCreate', false);
+        let allowFuture             = _.get(this.props.element, 'allowFuture', false);
 
         let thisFiles = this.props.files.length ? this.props.files : [];
         if (thisFiles.length < 1 || thisFiles.length > 0 && thisFiles[0].id !== "") {
@@ -233,6 +234,13 @@ export default class FormElementsEdit extends React.Component {
                     <div className="form-group">
                         <label>
                             <input type="checkbox" checked={checkExists} value={true} onChange={this.editElementProp.bind(this, 'checkExists', 'checked')} /> Check if Email Exists in System?
+                        </label>
+                    </div>
+                }
+                { !_.isUndefined(this.props.element.allowFuture) &&
+                    <div className="form-group">
+                        <label>
+                            <input type="checkbox" checked={allowFuture} value={true} onChange={this.editElementProp.bind(this, 'allowFuture', 'checked')} /> Include Future Years?
                         </label>
                     </div>
                 }
